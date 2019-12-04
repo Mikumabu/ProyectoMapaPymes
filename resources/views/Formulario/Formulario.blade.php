@@ -70,12 +70,22 @@
 </div>
 
 <div class="col-md-4 mb-3">
-    <p align="left">Página de Facebook</p>
+    <p align="left">(Opcional) Página de Facebook</p>
     <input type="search"
            name="facebook"
            class="form-control"
            id="facebook"
-           placeholder="Ingrese Link de Página Oficial"
+           placeholder="Ingrese Link de Facebook Oficial"
+    >
+</div>
+
+<div class="col-md-4 mb-3">
+    <p align="left">(Opcional) Página de Instagram</p>
+    <input type="search"
+           name="instagram"
+           class="form-control"
+           id="instagram"
+           placeholder="Ingrese Link de Instagram Oficial"
     >
 </div>
 
@@ -129,5 +139,15 @@
            class="form-control"
            id="email"
            placeholder="Ingrese un Email"
+    >
+</div>
+
+<div class="col-md-4 mb-3">
+    <p align="left">Descripcion</p>
+    <input type="search"
+           name="descripcion"
+           class="form-control"
+           id="descripcion"
+           placeholder="Descripción de la Empresa"
     >
 </div>
