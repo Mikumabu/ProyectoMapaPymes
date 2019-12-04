@@ -18,6 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Mapa', function () {
-    return view('Mapa/PruebaMapa');
-});
+Route::get('/Mapa', 'MapaController@maps');
