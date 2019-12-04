@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/Mapa', 'MapaController@maps');
+
+Route::get('/Formulario', function () {
+    return view('Formulario/Formulario');
+});
