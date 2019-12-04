@@ -1,4 +1,7 @@
 
+<form method="POST" action="{{ route('ingresarFormulario') }}">
+    {{ csrf_field() }}
+
 <div class="col-md-4 mb-3">
     <p align="left">Nombre Empresa</p>
     <input type="search"
@@ -150,4 +153,10 @@
            id="descripcion"
            placeholder="Descripción de la Empresa"
     >
+</div>
+
+<div class="form-group mt-4">
+    <button type="submit" class="btn btn-primary">
+        {{ __('Ingresar Datos') }}
+    </button>
 </div>

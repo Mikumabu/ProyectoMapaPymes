@@ -22,5 +22,8 @@
 <div style="width:500px;height:500px;">
     {!! Mapper::render() !!}
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4&callback=initMap"
+        async defer></script>
 </body>
 </html>
