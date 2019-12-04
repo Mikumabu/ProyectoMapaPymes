@@ -17,6 +17,11 @@
             padding: 0;
         }
     </style>
+    <div>
+        <?php
+            echo(app('geocoder')->geocode('Guayaquil 1498, Antofagasta')->get());
+        ?>
+    </div>
 </head>
 <body>
 <div style="width:500px;height:500px;">
