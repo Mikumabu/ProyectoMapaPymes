@@ -11,6 +11,13 @@
 |
 */
 
+use Cornford\Googlmapper\Facades\MapperFacade;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/Mapa', function () {
+    return view('Mapa/PruebaMapa');
 });
