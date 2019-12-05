@@ -14,8 +14,6 @@ class FormularioController extends Controller
         $nombreEmpresa = request()->nombreEmpresa;
         $rutEmpresa = request()->rutEmpresa;
         $queOfrece = request()->queOfrece;
-        $longitud = request()->longitud;
-        $latitud = request()->latitud;
         $calle = request()->calle;
         $horario = request()->horario;
         $facebook = request()->facebook;
@@ -26,6 +24,18 @@ class FormularioController extends Controller
         $telefono = request()->telefono;
         $email = request()->email;
         $descripcion = request()->descripcion;
+        $key = 'AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4';
+        $url = urlencode("https://maps.googleapis.com/maps/api/geocode/json?address=".$calle.", ".$comuna."&key=".$key);
+        $url = str_replace("%3A", ":", $url);
+        $url = str_replace("%2F", "/", $url);
+        $url = str_replace("%3F", "?", $url);
+        $url = str_replace("%3D", "=", $url);
+        $url = str_replace("%2B", "+", $url);
+        $url = str_replace("%2C", ",", $url);
+        $url = str_replace("%26", "&", $url);
+        $json = json_decode(file_get_contents($url), true);
+        $latitud = $json['results']['0']['geometry']['location']['lat'];
+        $longitud = $json['results']['0']['geometry']['location']['lng'];
 
 
         DB::table('formularios')->insert([

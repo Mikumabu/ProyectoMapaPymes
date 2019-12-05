@@ -33,26 +33,6 @@
 </div>
 
 <div class="col-md-4 mb-3">
-    <p align="left">Longitud en el Mapa</p>
-    <input type="search"
-           name="longitud"
-           class="form-control"
-           id="longitud"
-           placeholder="Longitud en el Mapa de Google"
-    >
-</div>
-
-<div class="col-md-4 mb-3">
-    <p align="left">Latitud en el Mapa</p>
-    <input type="search"
-           name="latitud"
-           class="form-control"
-           id="latitud"
-           placeholder="Latitud en el Mapa de Google"
-    >
-</div>
-
-<div class="col-md-4 mb-3">
     <p align="left">Ubicación de Calle</p>
     <input type="search"
            name="calle"
