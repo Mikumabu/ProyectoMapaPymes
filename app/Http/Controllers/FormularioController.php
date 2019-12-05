@@ -59,4 +59,10 @@ class FormularioController extends Controller
 
 
     }
+
+    public function eliminar(Request $request){
+
+        $id = request()->idEliminar;
+        DB::table('formularios')->where('id', '=', $id)->delete();
+    }
 }
