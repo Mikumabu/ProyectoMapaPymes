@@ -33,9 +33,12 @@ Route::get('/IngresarFormulario', function () {
     return view('Formulario/Formulario');
 });
 
-Route::post('Administrador', 'FormularioController@eliminar')->name('eliminarFormulario');
-Route::get('/EliminarFormulario', function () {
+Route::post('Administrador', 'FormularioController@aceptar')->name('aceptarFormulario');
+Route::get('/AceptarFormulario', function () {
     return view('Administrador/Administrador');
 });
+
+
+
 
 Route::resource('admin', 'AdministradorController');

@@ -53,24 +53,25 @@
     </div>
 </div>
 
-<form method="POST" action="{{ route('eliminarFormulario') }}">
+<form method="POST" action="{{ route('aceptarFormulario') }}">
     {{ csrf_field() }}
 
-<div class="col-md-4 mb-3">
-    <p align="left">Ingrese ID a eliminar</p>
-    <input type="search"
-           name="idEliminar"
-           class="form-control"
-           id="idEliminar"
-           placeholder="Ingrese ID"
-    >
-</div>
+    <div class="col-md-4 mb-3">
+        <p align="left">Ingrese ID de Formulario a Aceptar</p>
+        <input type="search"
+               name="idAceptar"
+               class="form-control"
+               id="idAceptar"
+               placeholder="Ingrese ID"
+        >
+    </div>
 
-<div class="form-group mt-4">
-    <button type="submit" class="btn btn-primary">
-        {{ __('Eliminar Registro') }}
-    </button>
-</div>
+    <div class="form-group mt-4">
+        <button type="submit" class="btn btn-primary">
+            {{ __('Aceptar Registro') }}
+        </button>
+    </div>
+
 
 
 
