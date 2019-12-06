@@ -67,7 +67,7 @@ class FormularioController extends Controller
         $id = request()->idEliminar;
         DB::table('formularios')->where('id', '=', $id)->delete();
 
-        eturn back()->with('exito2','Formulario rechazado correctamente');
+        return back()->with('exito2','Formulario rechazado correctamente');
     }
 
     public function aceptar(Request $request){
@@ -123,8 +123,9 @@ class FormularioController extends Controller
 
             ]);
 
-
         }
+
+        DB::table('formularios')->where('id', '=', $id)->delete();
 
         return back()->with('exito3','Formulario ingresado correctamente');
 

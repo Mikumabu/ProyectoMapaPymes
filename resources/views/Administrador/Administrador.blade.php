@@ -22,6 +22,8 @@
                 <th scope="col">Descripcion</th>
                 <th scope="col">Aceptar</th>
                 <th scope="col">Rechazar</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Ver Detalles</th>
             </tr>
             </thead>
 
@@ -44,6 +46,12 @@
                     </td>
                     <td width="10px">
                         <a href="#" class="btn btn-warning btn-sm">Rechazar</a>
+                    </td>
+                    <td width="10px">
+                        <a href="#" class="btn btn-warning btn-sm">Editar</a>
+                    </td>
+                    <td width="10px">
+                        <a href="#" class="btn btn-warning btn-sm">Ver Detalles</a>
                     </td>
                 </tr>
                 </tr>

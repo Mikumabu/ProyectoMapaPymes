@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 class MapaController extends Controller {
     public function maps() {
         Mapper::map(-23.6, -70.4, ['zoom' => 14, 'marker' => false]);
-        $users = DB::table('formularios')->get();
+        $users = DB::table('formularios_aprobados')->get();
         foreach($users as $user){
             $nombreEmpresa = $user->nombre_empresa;
             $rutEmpresa = $user->rut_empresa;
