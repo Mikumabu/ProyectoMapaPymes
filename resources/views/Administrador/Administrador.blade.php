@@ -22,8 +22,6 @@
                 <th scope="col">Descripcion</th>
                 <th scope="col">Aceptar</th>
                 <th scope="col">Rechazar</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Ver Detalles</th>
             </tr>
             </thead>
 
@@ -41,18 +39,18 @@
                     <td scope="row">{!! $formulario->telefono !!}</td>
                     <td scope="row">{!! $formulario->mail !!}</td>
                     <td scope="row">{!! $formulario->descripcion !!}</td>
-                    <td width="10px">
-                        <a href="#" class="btn btn-warning btn-sm">Aceptar</a>
+                    <td>
+                        <a href="/Administrador/aceptar/{{$formulario->id}}" class="btn btn-primary">
+                            <input type = "submit" value = "Aceptar">
+                        </a>
                     </td>
-                    <td width="10px">
-                        <a href="#" class="btn btn-warning btn-sm">Rechazar</a>
+                    <td>
+                        <a href="/Administrador/eliminar/{{$formulario->id}}" class="btn btn-primary">
+                            <input type = "submit" value = "Rechazar">
+                        </a>
                     </td>
-                    <td width="10px">
-                        <a href="#" class="btn btn-warning btn-sm">Editar</a>
-                    </td>
-                    <td width="10px">
-                        <a href="#" class="btn btn-warning btn-sm">Ver Detalles</a>
-                    </td>
+                </tr>
+
                 </tr>
                 </tr>
             @endforeach
@@ -61,24 +59,6 @@
     </div>
 </div>
 
-<form method="POST" action="{{ route('aceptarFormulario') }}">
-    {{ csrf_field() }}
-
-    <div class="col-md-4 mb-3">
-        <p align="left">Ingrese ID de Formulario a Aceptar</p>
-        <input type="search"
-               name="idAceptar"
-               class="form-control"
-               id="idAceptar"
-               placeholder="Ingrese ID"
-        >
-    </div>
-
-    <div class="form-group mt-4">
-        <button type="submit" class="btn btn-primary">
-            {{ __('Aceptar Registro') }}
-        </button>
-    </div>
 
     @if ($message = Session::get('exito2'))
         <div class="alert alert-danger alert-block">

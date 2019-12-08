@@ -20,25 +20,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// MAPA
+
 Route::get('/Mapa', 'MapaController@maps');
 
 Route::get('/Formulario', function () {
     return view('Formulario/Formulario');
 });
 
-Route::get('Administrador', 'AdministradorController@mostrarDatos');
+// FORMULARIO
 
 Route::post('Formulario', 'FormularioController@ingresar')->name('ingresarFormulario');
 Route::get('/IngresarFormulario', function () {
     return view('Formulario/Formulario');
 });
 
-Route::post('Administrador', 'FormularioController@aceptar')->name('aceptarFormulario');
-Route::get('/AceptarFormulario', function () {
-    return view('Administrador/Administrador');
-});
+// ADMINISTRADOR
 
+Route::get('Administrador', 'AdministradorController@mostrarDatos');
 
+Route::get('Administrador/aceptar/{id}','AdministradorController@aceptar');
+Route::get('Administrador/eliminar/{id}','AdministradorController@eliminar');
 
-
-Route::resource('admin', 'AdministradorController');
+;
