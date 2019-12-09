@@ -68,5 +68,25 @@ class FormularioController extends Controller
 
     }
 
+    public function actualizar(Request $request){
+
+        $id = request()->idEmpresa;
+        dd($id);
+        $nombreEmpresa = request()->nombreEmpresa;
+        $rutEmpresa = request()->rutEmpresa;
+        $queOfrece = request()->queOfrece;
+        $calle = request()->calle;
+        $horario = request()->horario;
+        $facebook = request()->facebook;
+        $instagram = request()->instagram;
+        $formalizado = request()->formalizado;
+        $comuna = request()->comuna;
+        $contacto = request()->contacto;
+        $telefono = request()->telefono;
+        $email = request()->email;
+        $descripcion = request()->descripcion;
+
+    }
+
 
 }

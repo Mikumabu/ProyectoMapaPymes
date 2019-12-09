@@ -86,6 +86,23 @@ class AdministradorController extends Controller
 
         return back()->with('exito3','Formulario ingresado correctamente');
 
+    }
+
+    public function mostrarDetalles($id){
+
+        $formularios = DB::select('select ubicacion, contacto, telefono, mail, descripcion  
+                                    from formularios where id = :id', ['id' => $id]);
+
+        dd($formularios);
+
+    }
+
+    public function editar($id){
+
+        $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  
+                                    from formularios where id = :id', ['id' => $id]);
+
+        return view('Administrador/AdministradorEditar',compact('formularios', 'request'));
 
     }
 

@@ -35,11 +35,18 @@ Route::get('/IngresarFormulario', function () {
     return view('Formulario/Formulario');
 });
 
+Route::post('Administrador', 'FormularioController@actualizar')->name('actualizarFormulario');
+Route::get('/ActualizarFormulario', function () {
+    return view('Administrador/Administrador');
+});
+
 // ADMINISTRADOR
 
 Route::get('Administrador', 'AdministradorController@mostrarDatos');
 
 Route::get('Administrador/aceptar/{id}','AdministradorController@aceptar');
 Route::get('Administrador/eliminar/{id}','AdministradorController@eliminar');
+Route::get('Administrador/detalles/{id}','AdministradorController@mostrarDetalles');
+Route::get('Administrador/editar/{id}','AdministradorController@editar');
 
 ;
