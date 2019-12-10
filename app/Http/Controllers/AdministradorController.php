@@ -21,7 +21,7 @@ class AdministradorController extends Controller
 
     }
 
-    public function eliminar($id){
+    public function rechazar($id){
 
         DB::table('formularios')->where('id', '=', $id)->delete();
 
@@ -102,7 +102,38 @@ class AdministradorController extends Controller
         $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  
                                     from formularios where id = :id', ['id' => $id]);
 
-        return view('Administrador/AdministradorEditar',compact('formularios', 'request'));
+        return view('Administrador/AdministradorEditarPendientes',compact('formularios', 'request'));
+
+    }
+
+    public function aprobados(){
+
+        $formularios_aprobados = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  from formularios_aprobados');
+        return view('Administrador/AdministradorAprobados',compact('formularios_aprobados', 'request'));
+    }
+
+    public function eliminar($id){
+
+        DB::table('formularios_aprobados')->where('id', '=', $id)->delete();
+
+        return back()->with('exito2','Formulario eliminado correctamente');
+    }
+
+    public function editarAprobado($id){
+
+        $formularios_aprobados = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  
+                                    from formularios_aprobados where id = :id', ['id' => $id]);
+
+        return view('Administrador/AdministradorEditarAprobados',compact('formularios_aprobados', 'request'));
+
+    }
+
+    public function mostrarDetallesAprobados($id){
+
+        $formularios_aprobados = DB::select('select ubicacion, contacto, telefono, mail, descripcion  
+                                    from formularios_aprobados where id = :id', ['id' => $id]);
+
+        dd($formularios_aprobados);
 
     }
 
