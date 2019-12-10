@@ -42,7 +42,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="/Administrador/eliminar/{{$formulario->id}}" class="btn btn-primary">
+                        <a href="/Administrador/rechazar/{{$formulario->id}}" class="btn btn-primary">
                             <input type = "submit" value = "Rechazar">
                         </a>
                     </td>
