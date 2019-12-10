@@ -37,7 +37,7 @@ Route::get('/IngresarFormulario', function () {
 
 Route::post('Administrador', 'FormularioController@actualizar')->name('actualizarFormulario');
 Route::get('/ActualizarFormulario', function () {
-    return view('Administrador/Administrador');
+    return view('Administrador/Administrador', compact('id'));
 });
 
 // ADMINISTRADOR

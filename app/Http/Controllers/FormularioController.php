@@ -70,8 +70,7 @@ class FormularioController extends Controller
 
     public function actualizar(Request $request){
 
-        $id = request()->idEmpresa;
-        dd($id);
+        $idEmpresa = request()->idEmpresa;
         $nombreEmpresa = request()->nombreEmpresa;
         $rutEmpresa = request()->rutEmpresa;
         $queOfrece = request()->queOfrece;
@@ -85,6 +84,12 @@ class FormularioController extends Controller
         $telefono = request()->telefono;
         $email = request()->email;
         $descripcion = request()->descripcion;
+
+        DB::table('formularios')
+            ->where('id', $idEmpresa)
+            ->update(['categoria' => $queOfrece, 'ubicacion' => $calle, 'horario' => $horario, 'facebook' => $facebook, 'instagram' => $instagram, 'formalizado' => $formalizado, 'comuna' => $comuna, 'contacto' => $contacto, 'telefono' => $telefono, 'mail' => $email, 'descripcion' => $descripcion]);
+
+        return back()->with('exito1','Formulario Actualizado con Éxito');
 
     }
 

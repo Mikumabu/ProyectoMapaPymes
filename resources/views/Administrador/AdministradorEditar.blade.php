@@ -17,6 +17,8 @@
                 <th scope="col">¿Qué Ofrece?</th>
                 <th scope="col">Ubicación de Calle</th>
                 <th scope="col">Horario de Atención</th>
+                <th scope="col">Facebook</th>
+                <th scope="col">Instagram</th>
                 <th scope="col">¿Formalizado?</th>
                 <th scope="col">Comuna</th>
                 <th scope="col">Contacto</th>
@@ -61,6 +63,25 @@
                                placeholder="{!! $formulario->horario !!}"
                         >
                     </div></td>
+
+                    <td <div class="col-md-4 mb-3">
+                        <input type="search"
+                               name="facebook"
+                               class="form-control"
+                               id="facebook"
+                               placeholder="{!! $formulario->facebook !!}"
+                        >
+                    </div></td>
+
+                    <td <div class="col-md-4 mb-3">
+                        <input type="search"
+                               name="instagram"
+                               class="form-control"
+                               id="instagram"
+                               placeholder="{!! $formulario->instagram !!}"
+                        >
+                    </div></td>
+
                     <td <div class="col-md-4 mb-3">
                         <select
                             id="formalizado"
@@ -117,6 +138,10 @@
                         >
                     </div></td>
 
+                    <input type="hidden" value="{{ $formulario->id }}" name="idEmpresa">
+                    <input type="hidden" value="{{ $formulario->nombre_empresa }}" name="nombreEmpresa">
+                    <input type="hidden" value="{{ $formulario->rut_empresa }}" name="rutEmpresa">
+
                 </tr>
 
                 </tr>
@@ -129,9 +154,16 @@
 
 <div class="form-group mt-4">
     <button type="submit" class="btn btn-primary">
-        {{ __('Actualizar Datos') }}
+        {{ __('Actualizar Datos', compact($formulario->id)) }}
     </button>
 </div>
+
+    @if ($message = Session::get('exito1'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+@endif
 
 
 
