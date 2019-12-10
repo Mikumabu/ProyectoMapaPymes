@@ -1,3 +1,4 @@
+           class="form-control"
 
 <form method="POST" action="{{ route('ingresarFormulario') }}">
     {{ csrf_field() }}
