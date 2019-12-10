@@ -33,19 +33,30 @@ Route::get('/IngresarFormulario', function () {
     return view('Formulario/Formulario');
 });
 
-Route::post('Administrador', 'FormularioController@actualizar')->name('actualizarFormulario');
+Route::post('Administrador', 'FormularioController@actualizarPendiente')->name('actualizarFormularioPendiente');
 Route::get('/ActualizarFormulario', function () {
     return view('Administrador/Administrador', compact('id'));
 });
+
+Route::post('AdministradorAprobados', 'FormularioController@actualizarAprobado')->name('actualizarFormularioAprobado');
+Route::get('/ActualizarFormularioAprobado', function () {
+    return view('Administrador/Administrador', compact('id'));
+});
+
 
 // ADMINISTRADOR
 
 Route::get('Administrador', 'AdministradorController@mostrarDatos');
 
 Route::get('Administrador/aceptar/{id}','AdministradorController@aceptar');
-Route::get('Administrador/eliminar/{id}','AdministradorController@eliminar');
+Route::get('Administrador/rechazar/{id}','AdministradorController@rechazar');
 Route::get('Administrador/detalles/{id}','AdministradorController@mostrarDetalles');
 Route::get('Administrador/editar/{id}','AdministradorController@editar');
+
+Route::get('Administrador/Aprobados','AdministradorController@aprobados');
+Route::get('Administrador/editarAprobado/{id}','AdministradorController@editarAprobado');
+Route::get('Administrador/eliminar/{id}','AdministradorController@eliminar');
+Route::get('Administrador/detallesAprobados/{id}','AdministradorController@mostrarDetallesAprobados');
 
 ;
 
