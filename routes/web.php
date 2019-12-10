@@ -14,8 +14,6 @@
 use Cornford\Googlmapper\Facades\MapperFacade;
 use Illuminate\Support\Facades\Route;
 
-
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -50,3 +48,7 @@ Route::get('Administrador/detalles/{id}','AdministradorController@mostrarDetalle
 Route::get('Administrador/editar/{id}','AdministradorController@editar');
 
 ;
+
+Auth::routes(['register' => false]);
+
+Route::get('/home', 'HomeController@index')->name('home');

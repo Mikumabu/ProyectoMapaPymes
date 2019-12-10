@@ -7,14 +7,20 @@
         <link rel="stylesheet" href="{{asset('/css/index.css')}}">
     </head>
     <body>
-        <div class="header">
+        <div class="nav">
             Mapa PYMES
+            @if (Route::has('login'))
+                @auth
+                    <a href="{{ url('/Administrador') }}">Panel Administración</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
+                @endauth
+            @endif
         </div>
         <div>
-            <br>
-            <br>
-            <br>
-            <br>
             <br>
         </div>
         <div id="presentacion">
