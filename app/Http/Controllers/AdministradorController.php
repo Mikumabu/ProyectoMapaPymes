@@ -30,10 +30,11 @@ class AdministradorController extends Controller
 
     public function aceptar($id){
 
-        $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  
-                                    from formularios where id = :id', ['id' => $id]);
-        foreach($formularios as $formulario){
+        $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
+        instagram, formalizado, comuna, contacto, telefono, mail, descripcion, latitud, longitud
+        from formularios where id = :id', ['id' => $id]);
 
+        foreach($formularios as $formulario){
             $nombreEmpresa = $formulario->nombre_empresa;
             $rutEmpresa = $formulario->rut_empresa;
             $queOfrece = $formulario->categoria;
@@ -47,19 +48,8 @@ class AdministradorController extends Controller
             $telefono = $formulario->telefono;
             $email = $formulario->mail;
             $descripcion = $formulario->descripcion;
-            $key = 'AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4';
-            $url = urlencode("https://maps.googleapis.com/maps/api/geocode/json?address=".$calle.", ".$comuna."&key=".$key);
-            $url = str_replace("%3A", ":", $url);
-            $url = str_replace("%2F", "/", $url);
-            $url = str_replace("%3F", "?", $url);
-            $url = str_replace("%3D", "=", $url);
-            $url = str_replace("%2B", "+", $url);
-            $url = str_replace("%2C", ",", $url);
-            $url = str_replace("%26", "&", $url);
-            $json = json_decode(file_get_contents($url), true);
-            $latitud = $json['results']['0']['geometry']['location']['lat'];
-            $longitud = $json['results']['0']['geometry']['location']['lng'];
-
+            $latitud = $formulario->latitud;
+            $longitud = $formulario->longitud;
 
             DB::table('formularios_aprobados')->insert([
                 'nombre_empresa' => $nombreEmpresa,

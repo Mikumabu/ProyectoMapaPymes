@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\formulario;
 
 use DB;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class FormularioController extends Controller
 {
@@ -41,8 +42,14 @@ class FormularioController extends Controller
         $url = str_replace("%2C", ",", $url);
         $url = str_replace("%26", "&", $url);
         $json = json_decode(file_get_contents($url), true);
-        $latitud = $json['results']['0']['geometry']['location']['lat'];
-        $longitud = $json['results']['0']['geometry']['location']['lng'];
+        for($i = 0; $i < count($json['results']); $i++){
+            if($json['results'][$i]['formatted_address'] == $comuna.", Chile"){
+                $latitud = $json['results'][$i]['geometry']['location']['lat'];
+                $longitud = $json['results'][$i]['geometry']['location']['lng'];
+            }else{
+                return back()->with('error1','Dirección de calle desconocida');
+            }
+        }
 
 
         DB::table('formularios')->insert([
