@@ -7,20 +7,7 @@
         <link rel="stylesheet" href="{{asset('/css/index.css')}}">
     </head>
     <body>
-        <div class="nav">
-            Mapa PYMES
-            @if (Route::has('login'))
-                @auth
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                    <a href="{{ url('/Mapa') }}">Home</a>
-                @endauth
-            @endif
-        </div>
+        @include('navbar.navbar')
         <div>
             <br>
         </div>
