@@ -18,7 +18,7 @@
             <br>
         </div>
         <div id="map">
-            {!! Mapper::render() !!}
+            {!! Mapper::render(0) !!}
         </div>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4&callback=initMap"

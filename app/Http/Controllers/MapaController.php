@@ -33,4 +33,12 @@ class MapaController extends Controller {
         }
         return view('Mapa/PruebaMapa');
     }
+
+    public function test(){
+        Mapper::map(-23.6, -70.4, ['zoom' => 14, 'marker' => false]);
+        $newlat = 0;
+        $newlong = 0;
+        Mapper::marker(-23.6, -70.4, ['draggable' => true, 'eventDragEnd' => '$newlat = event.latLng.lat(); $newlong = event.latLng.lng(); document.getElementById("latitud").value = $newlat; document.getElementById("longitud").value = $newlong']);
+        return view('Mapa/TestMapa');
+    }
 }

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MapaController@maps');
 Route::get('/Mapa', 'MapaController@maps');
+Route::get('/TestMapa', 'MapaController@test');
 
 Route::get('/Formulario', function () {
     return view('Formulario/Formulario');
