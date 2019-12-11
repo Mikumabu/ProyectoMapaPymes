@@ -24,7 +24,7 @@
             <br>
         </div>
         <div id="presentacion">
-            Este mapa contiene las PYMES (Pequeñas y medianas empresas) del país
+            Este mapa contiene las PYMES (Pequeñas y medianas empresas) del país <a href="{{ url('/Formulario') }}">Ingrese su PYME</a>
         </div>
         <div>
             <br>
