@@ -26,9 +26,9 @@ class MapaController extends Controller {
             Mapper::informationWindow($latitud, $longitud, '<b>Nombre Empresa: </b>'.$nombreEmpresa.'<br><b>Descripción: </b>'.$descripcion.
                 '<br><b>¿Qué ofrece? </b>'.$queOfrece.'<br><b>Dirección: </b>'.$calle.'<br><b>Ciudad: </b>'.$comuna.'
                 <br><b>Horario atención: </b>'.$horario.'<br><b>¿Formalizado? </b>'.$formalizado.'<br><b>Contacto: </b>'
-                .$contacto.'<br><b>Teléfono: </b>'.$telefono.'<br><b>Correo: </b>'.$email.'<br><br><a href="https://www.facebook.com/">
+                .$contacto.'<br><b>Teléfono: </b>'.$telefono.'<br><b>Correo: </b>'.$email.'<br><br><a href="'.$facebook.'">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/1024px-Facebook_icon_2013.svg.png"
-                width="20" height="20"></a> <a href="https://www.instagram.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/600px-Instagram-Icon.png"
+                width="20" height="20"></a> <a href="'.$instagram.'"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/600px-Instagram-Icon.png"
                 width="20" height="20"></a>', ['maxWidth' => 300, 'marker' => true/*, 'icon' => 'http://icons.iconarchive.com/icons/icons-land/points-of-interest/128/Golf-Club-Green-2-icon.png'*/]);
         }
         return view('Mapa/PruebaMapa');
