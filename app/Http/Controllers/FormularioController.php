@@ -52,13 +52,6 @@ class FormularioController extends Controller
             }
         }
 
-        if($facebook == null){
-            $facebook = "Sin Registro";
-        }
-        if($instagram == null){
-            $instagram = "Sin Registro";
-        }
-
 
         DB::table('formularios')->insert([
             'nombre_empresa' => $nombreEmpresa,
