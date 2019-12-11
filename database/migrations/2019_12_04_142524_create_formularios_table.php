@@ -23,8 +23,8 @@ class CreateFormulariosTable extends Migration
             $table->string('latitud');
             $table->string('ubicacion');
             $table->string('horario');
-            $table->string('facebook');
-            $table->string('instagram');
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
             $table->string('formalizado');
             $table->string('comuna');
             $table->string('contacto');

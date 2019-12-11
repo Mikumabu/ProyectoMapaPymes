@@ -2,7 +2,13 @@
 <div class="container col-md-8 col-md-offset-2">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h2>Solicitudes Aprobadas</h2>
+            <h2>Solicitudes Aprobadas
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <a href=" {{route('actualizarFormularioPendiente')}} " class="btn btn-primary"> Regresar </a>
+                    </button>
+
+                </div></h2>
 
         </div>
 
