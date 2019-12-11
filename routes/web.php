@@ -14,12 +14,9 @@
 use Cornford\Googlmapper\Facades\MapperFacade;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // MAPA
 
+Route::get('/', 'MapaController@maps');
 Route::get('/Mapa', 'MapaController@maps');
 
 Route::get('/Formulario', function () {
