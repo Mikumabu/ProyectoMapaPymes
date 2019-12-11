@@ -52,7 +52,6 @@ class FormularioController extends Controller
             }
         }
 
-
         DB::table('formularios')->insert([
             'nombre_empresa' => $nombreEmpresa,
             'rut_empresa' => $rutEmpresa,
