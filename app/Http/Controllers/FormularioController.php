@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\formulario;
+use Illuminate\Support\Str;
 
 use DB;
 use PhpParser\Node\Expr\Cast\Object_;
@@ -43,7 +44,7 @@ class FormularioController extends Controller
         $url = str_replace("%26", "&", $url);
         $json = json_decode(file_get_contents($url), true);
         for($i = 0; $i < count($json['results']); $i++){
-            if($json['results'][$i]['formatted_address'] == $comuna.", Chile"){
+            if(Str::contains($json['results'][$i]['formatted_address'], $comuna)){
                 $latitud = $json['results'][$i]['geometry']['location']['lat'];
                 $longitud = $json['results'][$i]['geometry']['location']['lng'];
             }else{
