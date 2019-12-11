@@ -1,4 +1,5 @@
-
+<link rel="stylesheet" href="{{asset('/css/index.css')}}">
+@include('navbar.navbar')
 <form method="POST" action="{{ route('actualizarFormularioAprobado') }}">
     {{ csrf_field() }}
 
