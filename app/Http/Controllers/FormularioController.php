@@ -92,6 +92,18 @@ class FormularioController extends Controller
         $email = request()->email;
         $descripcion = request()->descripcion;
 
+        if($nombreEmpresa != null){
+            DB::table('formularios')
+                ->where('id', $idEmpresa)
+                ->update(['nombre_empresa' => $nombreEmpresa]);
+        }
+
+        if($rutEmpresa != null){
+            DB::table('formularios')
+                ->where('id', $idEmpresa)
+                ->update(['rut_empresa' => $rutEmpresa]);
+        }
+
         if($queOfrece != null){
             DB::table('formularios')
                 ->where('id', $idEmpresa)
@@ -228,6 +240,18 @@ class FormularioController extends Controller
             DB::table('formularios_aprobados')
                 ->where('id', $idEmpresa)
                 ->update(['longitud' => $longitud]);
+        }
+
+        if($nombreEmpresa != null){
+            DB::table('formularios_aprobados')
+                ->where('id', $idEmpresa)
+                ->update(['nombre_empresa' => $nombreEmpresa]);
+        }
+
+        if($rutEmpresa != null){
+            DB::table('formularios_aprobados')
+                ->where('id', $idEmpresa)
+                ->update(['rut_empresa' => $rutEmpresa]);
         }
 
         if($horario != null){

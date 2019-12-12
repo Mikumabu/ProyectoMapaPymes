@@ -23,79 +23,85 @@
 
             <table class="table table-striped table-sm">
                 <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre Empresa</th>
-                    <th scope="col">Rut Empresa</th>
-                    <th scope="col">¿Qué Ofrece?</th>
-                    <th scope="col">Ubicación de Calle</th>
-                    <th scope="col">Horario de Atención</th>
-                    <th scope="col">Facebook</th>
-                    <th scope="col">Instagram</th>
-                    <th scope="col">¿Formalizado?</th>
-                    <th scope="col">Comuna</th>
-                    <th scope="col">Contacto</th>
-                    <th scope="col">Teléfono</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Descripcion</th>
 
-                </tr>
                 </thead>
 
                 @foreach($formularios as $formulario)
                     <tr>
-                        <th scope="row" id="idEmpresa">{!! $formulario->id !!}</th>
 
-                        <th scope="row" id="nombreEmpresa">{!! $formulario->nombre_empresa !!}</th>
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Nombre Empresa</p>
+                            <input type="search"
+                                   name="nombreEmpresa"
+                                   class="form-control"
+                                   id="nombreEmpresa"
+                                   placeholder="{!! $formulario->nombre_empresa !!}"
+                            >
+                        </div>
 
-                        <td scope="row" id="rutEmpresa">{!! $formulario->rut_empresa !!}</td>
 
-                        <td <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Rut Empresa</p>
+                            <input type="search"
+                                   name="rutEmpresa"
+                                   class="form-control"
+                                   id="rutEmpresa"
+                                   placeholder="{!! $formulario->rut_empresa !!}"
+                            >
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Giro</p>
                             <input type="search"
                                    name="queOfrece"
                                    class="form-control"
                                    id="queOfrece"
                                    placeholder="{!! $formulario->categoria !!}"
                             >
-                        </div></td>
+                        </div>
 
-                        <td <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Ubicación</p>
                             <input type="search"
                                    name="calle"
                                    class="form-control"
                                    id="calle"
                                    placeholder="{!! $formulario->ubicacion !!}"
                             >
-                        </div></td>
+                        </div>
 
-                        <td <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Horario</p>
                             <input type="search"
                                    name="horario"
                                    class="form-control"
                                    id="horario"
                                    placeholder="{!! $formulario->horario !!}"
                             >
-                        </div></td>
+                        </div>
 
-                        <td <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Facebook</p>
                             <input type="search"
                                    name="facebook"
                                    class="form-control"
                                    id="facebook"
                                    placeholder="{!! $formulario->facebook !!}"
                             >
-                        </div></td>
+                        </div>
 
-                        <td <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Instagram</p>
                             <input type="search"
                                    name="instagram"
                                    class="form-control"
                                    id="instagram"
                                    placeholder="{!! $formulario->instagram !!}"
                             >
-                        </div></td>
+                        </div>
 
-                        <td <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <p align="left">¿Formalizado?</p>
                             <select
                                 id="formalizado"
                                 name="formalizado"
@@ -105,60 +111,62 @@
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                             </select>
-                        </div></td>
+                        </div>
 
-                        <td <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Comuna</p>
                             <input type="search"
                                    name="comuna"
                                    class="form-control"
                                    id="comuna"
                                    placeholder="{!! $formulario->comuna !!}"
                             >
-                        </div></td>
-                        <td <div class="col-md-4 mb-3">
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Contacto</p>
                             <input type="search"
                                    name="contacto"
                                    class="form-control"
                                    id="contacto"
                                    placeholder="{!! $formulario->contacto !!}"
                             >
-                        </div></td>
+                        </div>
 
-                        <td <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Teléfono</p>
                             <input type="search"
                                    name="telefono"
                                    class="form-control"
                                    id="telefono"
                                    placeholder="{!! $formulario->telefono !!}"
                             >
-                        </div></td>
+                        </div>
 
-                        <td <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Correo</p>
                             <input type="search"
                                    name="email"
                                    class="form-control"
                                    id="email"
                                    placeholder="{!! $formulario->mail !!}"
                             >
-                        </div></td>
+                        </div>
 
-                        <td <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Descripción</p>
                             <input type="search"
                                    name="descripcion"
                                    class="form-control"
                                    id="descripcion"
                                    placeholder="{!! $formulario->descripcion !!}"
                             >
-                        </div></td>
+                        </div>
 
                         <input type="hidden" value="{{ $formulario->id }}" name="idEmpresa">
-                        <input type="hidden" value="{{ $formulario->nombre_empresa }}" name="nombreEmpresa">
-                        <input type="hidden" value="{{ $formulario->rut_empresa }}" name="rutEmpresa">
 
                     </tr>
 
-                    </tr>
-                    </tr>
                 @endforeach
             </table>
 
