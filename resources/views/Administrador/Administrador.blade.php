@@ -51,7 +51,7 @@
                                 <a href="/Administrador/aceptar/{{$formulario->id}}" class="btn btn-success">
                                     Aceptar
                                 </a>
-                                <a href="/Administrador/eliminar/{{$formulario->id}}" class="btn btn-danger">
+                                <a href="/Administrador/rechazar/{{$formulario->id}}" class="btn btn-danger">
                                     Rechazar
                                 </a>
                                 <a href="/Administrador/editar/{{$formulario->id}}" class="btn btn-primary">
