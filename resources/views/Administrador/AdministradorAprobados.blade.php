@@ -9,7 +9,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h2>Solicitudes Aprobadas
-                <div class="form-group mt-4">
+                <div class="form-group mt-4 float-right">
                     <button type="submit" class="btn btn-primary">
                         <a href=" {{route('actualizarFormularioPendiente')}} " class="btn btn-primary"> Regresar </a>
                     </button>
@@ -22,14 +22,12 @@
             <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Nombre Empresa</th>
+                <th scope="col">Empresa</th>
                 <th scope="col">Rut Empresa</th>
-                <th scope="col">¿Qué Ofrece?</th>
+                <th scope="col">Giro</th>
                 <th scope="col">¿Formalizado?</th>
                 <th scope="col">Comuna</th>
-
-                <th scope="col">Eliminar</th>
-                <th scope="col">Ver Detalles/Editar</th>
+                <th scope="col">Opciones</th>
 
             </tr>
             </thead>
@@ -42,20 +40,14 @@
                     <td scope="row">{!! $formulario->categoria !!}</td>
                     <td scope="row">{!! $formulario->formalizado !!}</td>
                     <td scope="row">{!! $formulario->comuna !!}</td>
-
-                    <td>
-                        <a href="/Administrador/eliminar/{{$formulario->id}}" class="btn btn-primary">
-                            <input type = "submit" value = "Eliminar">
-                        </a>
-                    </td>
                     <td>
                         <a href="/Administrador/editarAprobado/{{$formulario->id}}" class="btn btn-primary">
-                            <input type = "submit" value = "Ver Detalles/Editar">
+                            Detalles/Editar
+                        </a>
+                        <a href="/Administrador/eliminar/{{$formulario->id}}" class="btn btn-danger">
+                            Eliminar
                         </a>
                     </td>
-                </tr>
-
-                </tr>
                 </tr>
             @endforeach
         </table>
