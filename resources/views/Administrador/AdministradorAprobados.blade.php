@@ -29,8 +29,8 @@
                 <th scope="col">Comuna</th>
 
                 <th scope="col">Eliminar</th>
-                <th scope="col">Ver Detalles</th>
-                <th scope="col">Editar</th>
+                <th scope="col">Ver Detalles/Editar</th>
+
             </tr>
             </thead>
 
@@ -49,13 +49,8 @@
                         </a>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#detalles" data-catid={{$formulario->id}}>
-                            Ver Detalles
-                        </a>
-                    </td>
-                    <td>
                         <a href="/Administrador/editarAprobado/{{$formulario->id}}" class="btn btn-primary">
-                            <input type = "submit" value = "Editar">
+                            <input type = "submit" value = "Ver Detalles/Editar">
                         </a>
                     </td>
                 </tr>
@@ -67,53 +62,6 @@
 
     </div>
 </div>
-
-
-<div class="modal fade" id="detalles" style="width: 750px; margin: 100px auto; min-width: 1200px;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>×</span>
-                </button>
-                <h4>Detalles</h4>
-            </div>
-            <div class="modal-body" >
-
-                <table class="table table-striped table-sm">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Ubicación</th>
-                        <th scope="col">Horario</th>
-                        <th scope="col">Facebook</th>
-                        <th scope="col">Instagram</th>
-                        <th scope="col">Contacto</th>
-                        <th scope="col">Teléfono</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">Descripción</th>
-
-                    </tr>
-                    </thead>
-                    @foreach($formularios_aprobados as $formulario)
-                        <tr>
-                            <td scope="row">{!! $formulario->ubicacion !!}</td>
-                            <td scope="row">{!! $formulario->horario !!}</td>
-                            <td scope="row">{!! $formulario->facebook !!}</td>
-                            <td scope="row">{!! $formulario->instagram !!}</td>
-                            <td scope="row">{!! $formulario->contacto !!}</td>
-                            <td scope="row">{!! $formulario->telefono !!}</td>
-                            <td scope="row">{!! $formulario->mail !!}</td>
-                            <td scope="row">{!! $formulario->descripcion !!}</td>
-
-                        </tr>
-                    @endforeach
-                </table>
-
-            </div>
-        </div>
-    </div>
-</div>
-
 
 
 @if ($message = Session::get('exito2'))

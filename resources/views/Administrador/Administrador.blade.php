@@ -38,8 +38,8 @@
                             <th scope="col">Comuna</th>
                             <th scope="col">Aceptar</th>
                             <th scope="col">Rechazar</th>
-                            <th scope="col">Ver Detalles</th>
-                            <th scope="col">Editar</th>
+                            <th scope="col">Ver Detalles/Editar</th>
+
                         </tr>
                     </thead>
                     @foreach($formularios as $formulario)
@@ -62,15 +62,8 @@
                             </td>
 
                             <td>
-                                <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#detalles" data-catid={{$formulario->id}}>
-                                    Ver Detalles
-                                </a>
-                            </td>
-
-
-                            <td>
                                 <a href="/Administrador/editar/{{$formulario->id}}" class="btn btn-primary">
-                                    <input type = "submit" value = "Editar">
+                                    <input type = "submit" value = "Ver Detalles/Editar">
                                 </a>
                             </td>
                         </tr>

@@ -42,19 +42,21 @@ Route::get('/ActualizarFormularioAprobado', function () {
 });
 
 Route::group(['middleware' => 'auth'], function(){
-    // ADMINISTRADOR
+
+
+// ADMINISTRADOR
 
     Route::get('Administrador', 'AdministradorController@mostrarDatos');
 
     Route::get('Administrador/aceptar/{id}','AdministradorController@aceptar');
     Route::get('Administrador/rechazar/{id}','AdministradorController@rechazar');
-    Route::get('Administrador/detalles/{id}','AdministradorController@mostrarDetalles');
+    //Route::get('Administrador/detalles/{id}','AdministradorController@mostrarDetalles');
     Route::get('Administrador/editar/{id}','AdministradorController@editar');
 
     Route::get('Administrador/Aprobados','AdministradorController@aprobados');
     Route::get('Administrador/editarAprobado/{id}','AdministradorController@editarAprobado');
     Route::get('Administrador/eliminar/{id}','AdministradorController@eliminar');
-    Route::get('Administrador/detallesAprobados/{id}','AdministradorController@mostrarDetallesAprobados');
+    //Route::get('Administrador/detallesAprobados/{id}','AdministradorController@mostrarDetallesAprobados');
 });
 
 Auth::routes(['register' => false]);
