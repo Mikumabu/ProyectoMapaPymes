@@ -42,6 +42,12 @@ class FormularioController extends Controller
         $url = str_replace("%2B", "+", $url);
         $url = str_replace("%2C", ",", $url);
         $url = str_replace("%26", "&", $url);
+        $url = str_replace("%C3%A1", "á", $url);
+        $url = str_replace("%C3%A9", "é", $url);
+        $url = str_replace("%C3%AD", "í", $url);
+        $url = str_replace("%C3%B3", "ó", $url);
+        $url = str_replace("%C3%BA", "ú", $url);
+        $url = str_replace("%C3%B1", "ñ", $url);
         $json = json_decode(file_get_contents($url), true);
         for($i = 0; $i < count($json['results']); $i++){
             if(Str::contains($json['results'][$i]['formatted_address'], $comuna)){
