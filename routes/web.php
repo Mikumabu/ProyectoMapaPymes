@@ -24,6 +24,11 @@ Route::get('/Formulario', function () {
     return view('Formulario/Formulario');
 });
 
+Route::post('buscar', 'MapaController@buscador')->name('filtrar');
+Route::get('/BuscarDatos', function () {
+    return view('Mapa/MapaFiltrado', compact('categoria'));
+});
+
 // FORMULARIO
 
 Route::post('Formulario', 'FormularioController@ingresar')->name('ingresarFormulario');

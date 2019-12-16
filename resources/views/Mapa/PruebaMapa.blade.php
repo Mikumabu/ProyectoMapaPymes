@@ -20,6 +20,39 @@
         <div id="presentacion">
             Este mapa contiene las PYMES (Pequeñas y medianas empresas) del país <a href="{{ url('/Formulario') }}">Ingrese su PYME</a>
         </div>
+
+        <form method="POST" action="{{ route('filtrar') }}">
+            {{ csrf_field() }}
+
+        <?php
+            $datos = DB::table('formularios_aprobados')->select('categoria')->get();
+        ?>
+
+        <div class="col-md-4 mb-3">
+            <p align="left">Filtrar por Categoría <select
+                    id="categoria"
+                    name="categoria"
+                    class="form-control"
+                    required>
+
+                    <option value="">Seleccione una Categoría</option>
+                    @foreach($datos as $dato)
+                        <option value="{{ $dato->categoria }}">
+                            {{ $dato->categoria }}
+                        </option>
+                    @endforeach
+                </select></p>
+
+        </div>
+
+
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Buscar') }}
+                </button>
+            </div>
+
         <div>
             <br>
         </div>
@@ -31,3 +64,29 @@
                 async defer></script>
     </body>
 </html>
+
+<script>
+
+    $("#mySelect").change(function myFunction() {
+        var tr, element, table, colCurso, txtValue;
+        element = (document.getElementById("mySelect")).value;
+        table = document.getElementById("tabla");
+        tr = table.getElementsByTagName("tr");
+
+        for(i = 0; i<tr.length; i++){
+            colCurso = tr[i].getElementsByTagName(tr[3]);
+            if (colCurso) {
+                txtValue = colCurso.textContent || colCurso.innerText;
+                if ((txtValue.toUpperCase().indexOf(element) > -1)){
+                    // Checkeo Fecha
+
+                    tr[i].style.display = "";
+                }
+                else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    })
+
+</script>
