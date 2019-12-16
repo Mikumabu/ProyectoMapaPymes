@@ -34,7 +34,7 @@
                                    name="nombreEmpresa"
                                    class="form-control"
                                    id="nombre_empresa"
-                                   placeholder="{!! $formulario_aprobado->nombre_empresa !!}"
+                                   value="{!! $formulario_aprobado->nombre_empresa !!}"
                             >
                         </div>
 
@@ -45,7 +45,7 @@
                                    name="rutEmpresa"
                                    class="form-control"
                                    id="rut_empresa"
-                                   placeholder="{!! $formulario_aprobado->rut_empresa !!}"
+                                   value="{!! $formulario_aprobado->rut_empresa !!}"
                             >
                         </div>
 
@@ -55,7 +55,7 @@
                                    name="queOfrece"
                                    class="form-control"
                                    id="queOfrece"
-                                   placeholder="{!! $formulario_aprobado->categoria !!}"
+                                   value="{!! $formulario_aprobado->categoria !!}"
                             >
                         </div>
 
@@ -65,7 +65,7 @@
                                    name="calle"
                                    class="form-control"
                                    id="calle"
-                                   placeholder="{!! $formulario_aprobado->ubicacion !!}"
+                                   value="{!! $formulario_aprobado->ubicacion !!}"
                             >
                         </div>
 
@@ -76,7 +76,7 @@
                                    name="horario"
                                    class="form-control"
                                    id="horario"
-                                   placeholder="{!! $formulario_aprobado->horario !!}"
+                                   value="{!! $formulario_aprobado->horario !!}"
                             >
                         </div>
 
@@ -86,7 +86,7 @@
                                    name="facebook"
                                    class="form-control"
                                    id="facebook"
-                                   placeholder="{!! $formulario_aprobado->facebook !!}"
+                                   value="{!! $formulario_aprobado->facebook !!}"
                             >
                         </div>
 
@@ -96,7 +96,7 @@
                                    name="instagram"
                                    class="form-control"
                                    id="instagram"
-                                   placeholder="{!! $formulario_aprobado->instagram !!}"
+                                   value="{!! $formulario_aprobado->instagram !!}"
                             >
                         </div>
 
@@ -119,7 +119,7 @@
                                    name="comuna"
                                    class="form-control"
                                    id="comuna"
-                                   placeholder="{!! $formulario_aprobado->comuna !!}"
+                                   value="{!! $formulario_aprobado->comuna !!}"
                             >
                         </div>
 
@@ -129,7 +129,7 @@
                                    name="contacto"
                                    class="form-control"
                                    id="contacto"
-                                   placeholder="{!! $formulario_aprobado->contacto !!}"
+                                   value="{!! $formulario_aprobado->contacto !!}"
                             >
                         </div>
 
@@ -139,7 +139,7 @@
                                    name="telefono"
                                    class="form-control"
                                    id="telefono"
-                                   placeholder="{!! $formulario_aprobado->telefono !!}"
+                                   value="{!! $formulario_aprobado->telefono !!}"
                             >
                         </div>
 
@@ -149,7 +149,7 @@
                                    name="email"
                                    class="form-control"
                                    id="email"
-                                   placeholder="{!! $formulario_aprobado->mail !!}"
+                                   value="{!! $formulario_aprobado->mail !!}"
                             >
                         </div>
 
@@ -159,7 +159,7 @@
                                    name="descripcion"
                                    class="form-control"
                                    id="descripcion"
-                                   placeholder="{!! $formulario_aprobado->descripcion !!}"
+                                   value="{!! $formulario_aprobado->descripcion !!}"
                             >
                         </div>
 
