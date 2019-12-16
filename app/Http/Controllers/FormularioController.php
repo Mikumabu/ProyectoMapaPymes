@@ -49,7 +49,11 @@ class FormularioController extends Controller
 
         $nombreEmpresa = request()->nombreEmpresa;
         $rutEmpresa = request()->rutEmpresa;
+
         $queOfrece = request()->queOfrece;
+        $queOfrece = strtolower($queOfrece);
+        $queOfrece = ucfirst($queOfrece);
+
         $calle = request()->calle;
         $horario = request()->horario;
         $facebook = request()->facebook;
@@ -111,7 +115,11 @@ class FormularioController extends Controller
         $idEmpresa = request()->idEmpresa;
         $nombreEmpresa = request()->nombreEmpresa;
         $rutEmpresa = request()->rutEmpresa;
+
         $queOfrece = request()->queOfrece;
+        $queOfrece = strtolower($queOfrece);
+        $queOfrece = ucfirst($queOfrece);
+
         $calle = request()->calle;
         $horario = request()->horario;
         $facebook = request()->facebook;
@@ -238,7 +246,11 @@ class FormularioController extends Controller
         $idEmpresa = request()->idEmpresa;
         $nombreEmpresa = request()->nombreEmpresa;
         $rutEmpresa = request()->rutEmpresa;
+
         $queOfrece = request()->queOfrece;
+        $queOfrece = strtolower($queOfrece);
+        $queOfrece = ucfirst($queOfrece);
+
         $calle = request()->calle;
         $horario = request()->horario;
         $facebook = request()->facebook;
