@@ -25,7 +25,7 @@
             {{ csrf_field() }}
 
         <?php
-            $datos = DB::table('formularios_aprobados')->select('categoria')->get();
+            $datos = DB::table('formularios_aprobados')->select('categoria')->distinct()->get();
         ?>
 
         <div class="col-md-4 mb-3">
