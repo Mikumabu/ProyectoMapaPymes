@@ -67,7 +67,6 @@ class AdministradorController extends Controller
                 'telefono' => $telefono,
                 'mail' => $email,
                 'descripcion' => $descripcion
-
             ]);
 
         }

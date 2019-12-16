@@ -60,6 +60,7 @@ class FormularioController extends Controller
         $telefono = request()->telefono;
         $email = request()->email;
         $descripcion = request()->descripcion;
+
         $key = 'AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4';
         $url = urlencode("https://maps.googleapis.com/maps/api/geocode/json?address=".$calle.", ".$comuna."&key=".$key);
         $url = str_replace("%3A", ":", $url);
@@ -80,11 +81,8 @@ class FormularioController extends Controller
             if(Str::contains($json['results'][$i]['formatted_address'], $comuna)){
                 $latitud = $json['results'][$i]['geometry']['location']['lat'];
                 $longitud = $json['results'][$i]['geometry']['location']['lng'];
-            }else{
-                return back()->with('error1','Dirección de calle desconocida');
             }
         }
-
         DB::table('formularios')->insert([
             'nombre_empresa' => $nombreEmpresa,
             'rut_empresa' => $rutEmpresa,
@@ -123,6 +121,8 @@ class FormularioController extends Controller
         $contacto = request()->contacto;
         $telefono = request()->telefono;
         $email = request()->email;
+        $latitud = request()->latitud;
+        $longitud = request()->longitud;
         $descripcion = request()->descripcion;
 
         if($nombreEmpresa != null){
@@ -154,10 +154,19 @@ class FormularioController extends Controller
             $url = str_replace("%2B", "+", $url);
             $url = str_replace("%2C", ",", $url);
             $url = str_replace("%26", "&", $url);
+            $url = str_replace("%C3%A1", "á", $url);
+            $url = str_replace("%C3%A9", "é", $url);
+            $url = str_replace("%C3%AD", "í", $url);
+            $url = str_replace("%C3%B3", "ó", $url);
+            $url = str_replace("%C3%BA", "ú", $url);
+            $url = str_replace("%C3%B1", "ñ", $url);
             $json = json_decode(file_get_contents($url), true);
-            $latitud = $json['results']['0']['geometry']['location']['lat'];
-            $longitud = $json['results']['0']['geometry']['location']['lng'];
-
+            for($i = 0; $i < count($json['results']); $i++){
+                if(Str::contains($json['results'][$i]['formatted_address'], $comuna)){
+                    $latitud = $json['results'][$i]['geometry']['location']['lat'];
+                    $longitud = $json['results'][$i]['geometry']['location']['lng'];
+                }
+            }
             DB::table('formularios')
                 ->where('id', $idEmpresa)
                 ->update(['ubicacion' => $calle]);
@@ -239,6 +248,8 @@ class FormularioController extends Controller
         $contacto = request()->contacto;
         $telefono = request()->telefono;
         $email = request()->email;
+        $latitud = request()->latitud;
+        $longitud = request()->longitud;
         $descripcion = request()->descripcion;
 
         if($queOfrece != null){
@@ -258,10 +269,19 @@ class FormularioController extends Controller
             $url = str_replace("%2B", "+", $url);
             $url = str_replace("%2C", ",", $url);
             $url = str_replace("%26", "&", $url);
+            $url = str_replace("%C3%A1", "á", $url);
+            $url = str_replace("%C3%A9", "é", $url);
+            $url = str_replace("%C3%AD", "í", $url);
+            $url = str_replace("%C3%B3", "ó", $url);
+            $url = str_replace("%C3%BA", "ú", $url);
+            $url = str_replace("%C3%B1", "ñ", $url);
             $json = json_decode(file_get_contents($url), true);
-            $latitud = $json['results']['0']['geometry']['location']['lat'];
-            $longitud = $json['results']['0']['geometry']['location']['lng'];
-
+            for($i = 0; $i < count($json['results']); $i++){
+                if(Str::contains($json['results'][$i]['formatted_address'], $comuna)){
+                    $latitud = $json['results'][$i]['geometry']['location']['lat'];
+                    $longitud = $json['results'][$i]['geometry']['location']['lng'];
+                }
+            }
             DB::table('formularios_aprobados')
                 ->where('id', $idEmpresa)
                 ->update(['ubicacion' => $calle]);
