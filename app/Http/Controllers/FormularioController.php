@@ -367,6 +367,11 @@ class FormularioController extends Controller
                 ->update(['mail' => $email]);
         }
 
+        if($descripcion != null){
+            DB::table('formularios_aprobados')
+                ->where('id', $idEmpresa)
+                ->update(['descripcion' => $descripcion]);
+        }
 
         return back()->with('exito1','Formulario Actualizado con Éxito');
 
