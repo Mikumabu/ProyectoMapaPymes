@@ -34,7 +34,7 @@
                                    name="nombreEmpresa"
                                    class="form-control"
                                    id="nombreEmpresa"
-                                   placeholder="{!! $formulario->nombre_empresa !!}"
+                                   value="{!! $formulario->nombre_empresa !!}"
                             >
                         </div>
 
@@ -45,7 +45,7 @@
                                    name="rutEmpresa"
                                    class="form-control"
                                    id="rutEmpresa"
-                                   placeholder="{!! $formulario->rut_empresa !!}"
+                                   value="{!! $formulario->rut_empresa !!}"
                             >
                         </div>
 
@@ -55,7 +55,7 @@
                                    name="queOfrece"
                                    class="form-control"
                                    id="queOfrece"
-                                   placeholder="{!! $formulario->categoria !!}"
+                                   value="{!! $formulario->categoria !!}"
                             >
                         </div>
 
@@ -65,7 +65,7 @@
                                    name="calle"
                                    class="form-control"
                                    id="calle"
-                                   placeholder="{!! $formulario->ubicacion !!}"
+                                   value="{!! $formulario->ubicacion !!}"
                             >
                         </div>
 
@@ -75,7 +75,7 @@
                                    name="horario"
                                    class="form-control"
                                    id="horario"
-                                   placeholder="{!! $formulario->horario !!}"
+                                   value="{!! $formulario->horario !!}"
                             >
                         </div>
 
@@ -85,7 +85,7 @@
                                    name="facebook"
                                    class="form-control"
                                    id="facebook"
-                                   placeholder="{!! $formulario->facebook !!}"
+                                   value="{!! $formulario->facebook !!}"
                             >
                         </div>
 
@@ -95,7 +95,7 @@
                                    name="instagram"
                                    class="form-control"
                                    id="instagram"
-                                   placeholder="{!! $formulario->instagram !!}"
+                                   value="{!! $formulario->instagram !!}"
                             >
                         </div>
 
@@ -118,7 +118,7 @@
                                    name="comuna"
                                    class="form-control"
                                    id="comuna"
-                                   placeholder="{!! $formulario->comuna !!}"
+                                   value="{!! $formulario->comuna !!}"
                             >
                         </div>
 
@@ -128,7 +128,7 @@
                                    name="contacto"
                                    class="form-control"
                                    id="contacto"
-                                   placeholder="{!! $formulario->contacto !!}"
+                                   value="{!! $formulario->contacto !!}"
                             >
                         </div>
 
@@ -138,7 +138,7 @@
                                    name="telefono"
                                    class="form-control"
                                    id="telefono"
-                                   placeholder="{!! $formulario->telefono !!}"
+                                   value="{!! $formulario->telefono !!}"
                             >
                         </div>
 
@@ -148,7 +148,7 @@
                                    name="email"
                                    class="form-control"
                                    id="email"
-                                   placeholder="{!! $formulario->mail !!}"
+                                   value="{!! $formulario->mail !!}"
                             >
                         </div>
 
@@ -158,7 +158,7 @@
                                    name="descripcion"
                                    class="form-control"
                                    id="descripcion"
-                                   placeholder="{!! $formulario->descripcion !!}"
+                                   value="{!! $formulario->descripcion !!}"
                             >
                         </div>
 
