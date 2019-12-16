@@ -27,6 +27,13 @@
                         </td>
                     </h2>
                 </div>
+                <div>
+                    <br>
+                </div>
+                <input class="form-control" id="myInput" type="text" placeholder="Busque por rut, nombre, etc...">
+                <div>
+                    <br>
+                </div>
                 <table class="table table-striped table-sm">
                     <thead class="thead-dark">
                         <tr>
@@ -39,72 +46,30 @@
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
-                    @foreach($formularios as $formulario)
-                        <tr>
-                            <th scope="row">{!! $formulario->id !!}</th>
-                            <th scope="row">{!! $formulario->nombre_empresa !!}</th>
-                            <td scope="row">{!! $formulario->rut_empresa !!}</td>
-                            <td scope="row">{!! $formulario->categoria !!}</td>
-                            <td scope="row">{!! $formulario->formalizado !!}</td>
-                            <td scope="row">{!! $formulario->comuna !!}</td>
-                            <td class="col-sm">
-                                <a href="/Administrador/aceptar/{{$formulario->id}}" class="btn btn-success">
-                                    Aceptar
-                                </a>
-                                <a href="/Administrador/rechazar/{{$formulario->id}}" class="btn btn-danger">
-                                    Rechazar
-                                </a>
-                                <a href="/Administrador/editar/{{$formulario->id}}" class="btn btn-primary">
-                                    Detalles/Editar
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </table>
-            </div>
-        </div>
-
-        <div class="modal fade" id="detalles" style="width: 750px; margin: 100px auto; min-width: 1200px;">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span>×</span>
-                        </button>
-                        <h4>Detalles</h4>
-                    </div>
-                    <div class="modal-body" >
-
-                        <table class="table table-striped table-sm">
-                            <thead class="thead-dark">
+                    <tbody id="myTable">
+                        @foreach($formularios as $formulario)
                             <tr>
-                                <th scope="col">Ubicación</th>
-                                <th scope="col">Horario</th>
-                                <th scope="col">Facebook</th>
-                                <th scope="col">Instagram</th>
-                                <th scope="col">Contacto</th>
-                                <th scope="col">Teléfono</th>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Descripción</th>
-
+                                <th scope="row">{!! $formulario->id !!}</th>
+                                <th scope="row">{!! $formulario->nombre_empresa !!}</th>
+                                <td scope="row">{!! $formulario->rut_empresa !!}</td>
+                                <td scope="row">{!! $formulario->categoria !!}</td>
+                                <td scope="row">{!! $formulario->formalizado !!}</td>
+                                <td scope="row">{!! $formulario->comuna !!}</td>
+                                <td class="col-sm">
+                                    <a href="/Administrador/aceptar/{{$formulario->id}}" class="btn btn-success">
+                                        Aceptar
+                                    </a>
+                                    <a href="/Administrador/rechazar/{{$formulario->id}}" class="btn btn-danger">
+                                        Rechazar
+                                    </a>
+                                    <a href="/Administrador/editar/{{$formulario->id}}" class="btn btn-primary">
+                                        Detalles/Editar
+                                    </a>
+                                </td>
                             </tr>
-                            </thead>
-                            @foreach($formularios as $formulario)
-                                <tr>
-                                    <td scope="row">{!! $formulario->ubicacion !!}</td>
-                                    <td scope="row">{!! $formulario->horario !!}</td>
-                                    <td scope="row">{!! $formulario->facebook !!}</td>
-                                    <td scope="row">{!! $formulario->instagram !!}</td>
-                                    <td scope="row">{!! $formulario->contacto !!}</td>
-                                    <td scope="row">{!! $formulario->telefono !!}</td>
-                                    <td scope="row">{!! $formulario->mail !!}</td>
-                                    <td scope="row">{!! $formulario->descripcion !!}</td>
-                                </tr>
-                            @endforeach
-                        </table>
-
-                    </div>
-                </div>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
         @if ($message = Session::get('exito2'))
@@ -120,4 +85,14 @@
             </div>
         @endif
     </body>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </html>

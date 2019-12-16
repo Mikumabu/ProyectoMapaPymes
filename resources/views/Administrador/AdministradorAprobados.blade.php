@@ -15,9 +15,14 @@
                     </button>
 
                 </div></h2>
-
         </div>
-
+        <div>
+            <br>
+        </div>
+        <input class="form-control" id="myInput" type="text" placeholder="Busque por rut, nombre, etc...">
+        <div>
+            <br>
+        </div>
         <table class="table table-striped table-sm">
             <thead class="thead-dark">
             <tr>
@@ -31,25 +36,26 @@
 
             </tr>
             </thead>
-
-            @foreach($formularios_aprobados as $formulario)
-                <tr>
-                    <th scope="row">{!! $formulario->id !!}</th>
-                    <th scope="row">{!! $formulario->nombre_empresa !!}</th>
-                    <td scope="row">{!! $formulario->rut_empresa !!}</td>
-                    <td scope="row">{!! $formulario->categoria !!}</td>
-                    <td scope="row">{!! $formulario->formalizado !!}</td>
-                    <td scope="row">{!! $formulario->comuna !!}</td>
-                    <td>
-                        <a href="/Administrador/editarAprobado/{{$formulario->id}}" class="btn btn-primary">
-                            Detalles/Editar
-                        </a>
-                        <a href="/Administrador/eliminar/{{$formulario->id}}" class="btn btn-danger">
-                            Eliminar
-                        </a>
-                    </td>
-                </tr>
-            @endforeach
+            <tbody id="myTable">
+                @foreach($formularios_aprobados as $formulario)
+                    <tr>
+                        <th scope="row">{!! $formulario->id !!}</th>
+                        <th scope="row">{!! $formulario->nombre_empresa !!}</th>
+                        <td scope="row">{!! $formulario->rut_empresa !!}</td>
+                        <td scope="row">{!! $formulario->categoria !!}</td>
+                        <td scope="row">{!! $formulario->formalizado !!}</td>
+                        <td scope="row">{!! $formulario->comuna !!}</td>
+                        <td>
+                            <a href="/Administrador/editarAprobado/{{$formulario->id}}" class="btn btn-primary">
+                                Detalles/Editar
+                            </a>
+                            <a href="/Administrador/eliminar/{{$formulario->id}}" class="btn btn-danger">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
         </table>
 
     </div>
@@ -69,5 +75,15 @@
         <strong>{{ $message }}</strong>
     </div>
 @endif
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 
 

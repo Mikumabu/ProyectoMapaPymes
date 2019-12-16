@@ -8,71 +8,71 @@
 <form method="POST" action="{{ route('ingresarFormulario') }}">
     {{ csrf_field() }}
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('nombreEmpresa') ? ' has-error' : '' }}">
     <p align="left">Nombre Empresa <input type="search"
                                           name="nombreEmpresa"
                                           class="form-control"
                                           id="nombreEmpresa"
-                                          placeholder="Ingrese Nombre Empresa"
-        ></p>
-
+                                          placeholder="Ingrese Nombre Empresa">
+    </p>
+    <small class="text-danger">{{ $errors->first('nombreEmpresa') }}</small>
 </div>
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('rutEmpresa') ? ' has-error' : '' }}">
     <p align="left">Rut Empresa <input type="search"
                                        name="rutEmpresa"
                                        class="form-control"
                                        id="rutEmpresa"
-                                       placeholder="Ingrese Rut Empresa"
-        ></p>
-
+                                       placeholder="Ingrese Rut Empresa">
+    </p>
+    <small class="text-danger">{{ $errors->first('rutEmpresa') }}</small>
 </div>
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('queOfrece') ? ' has-error' : '' }}">
     <p align="left">Giro <input type="search"
                                         name="queOfrece"
                                         class="form-control"
                                         id="queOfrece"
                                         placeholder="Categoría (Por ejemplo: Educación)"
         ></p>
-
+    <small class="text-danger">{{ $errors->first('queOfrece') }}</small>
 </div>
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('calle') ? ' has-error' : '' }}">
     <p align="left">Dirección de Calle <input type="search"
                                               name="calle"
                                               class="form-control"
                                               id="calle"
                                               placeholder="Por Ejemplo: Blumel 1552"
         ></p>
-
+    <small class="text-danger">{{ $errors->first('calle') }}</small>
 </div>
 
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('comuna') ? ' has-error' : '' }}">
     <p align="left">Comuna <input type="search"
                                   name="comuna"
                                   class="form-control"
                                   id="comuna"
                                   placeholder="Ingrese Comuna. Por Ejemplo: Antofagasta"
         ></p>
-
+    <small class="text-danger">{{ $errors->first('comuna') }}</small>
 </div>
 
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('horario') ? ' has-error' : '' }}">
     <p align="left">Horario de Atención <input type="search"
                                                name="horario"
                                                class="form-control"
                                                id="horario"
                                                placeholder="Por ejemplo: 9:00 a 15:00"
         ></p>
-
+    <small class="text-danger">{{ $errors->first('horario') }}</small>
 </div>
 
 
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('formalizado') ? ' has-error' : '' }}">
     <p align="left">¿Formalizado? <select
             id="formalizado"
             name="formalizado"
@@ -82,69 +82,69 @@
             <option value="Si">Si</option>
             <option value="No">No</option>
         </select></p>
-
+    <small class="text-danger">{{ $errors->first('formalizado') }}</small>
 </div>
 
 
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('contacto') ? ' has-error' : '' }}">
     <p align="left">Representante <input type="search"
                                     name="contacto"
                                     class="form-control"
                                     id="contacto"
                                     placeholder="Ingrese un Contacto. Por Ejemplo: Juan Pérez"
         ></p>
-
+    <small class="text-danger">{{ $errors->first('contacto') }}</small>
 </div>
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('telefono') ? ' has-error' : '' }}">
     <p align="left">Teléfono <input type="search"
                                     name="telefono"
                                     class="form-control"
                                     id="telefono"
                                     placeholder="Ingrese un Teléfono"
         ></p>
-
+    <small class="text-danger">{{ $errors->first('telefono') }}</small>
 </div>
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('email') ? ' has-error' : '' }}">
     <p align="left">Email <input type="search"
                                  name="email"
                                  class="form-control"
                                  id="email"
                                  placeholder="Ingrese un Email"
         ></p>
-
+    <small class="text-danger">{{ $errors->first('email') }}</small>
 </div>
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('facebook') ? ' has-error' : '' }}">
     <p align="left">(Opcional) Página de Facebook <input type="search"
                                                          name="facebook"
                                                          class="form-control"
                                                          id="facebook"
                                                          placeholder="Ingrese Link de Facebook Oficial"
         ></p>
-
+    <small class="text-danger">{{ $errors->first('facebook') }}</small>
 </div>
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('instagram') ? ' has-error' : '' }}">
     <p align="left">(Opcional) Página de Instagram <input type="search"
                                                           name="instagram"
                                                           class="form-control"
                                                           id="instagram"
                                                           placeholder="Ingrese Link de Instagram Oficial"
         ></p>
-
+    <small class="text-danger">{{ $errors->first('instagram') }}</small>
 </div>
 
-<div class="col-md-4 mb-3">
+<div class="col-md-4 mb-3{{ $errors->has('descripcion') ? ' has-error' : '' }}">
     <p align="left">Descripcion <input type="search"
                                        name="descripcion"
                                        class="form-control"
                                        id="descripcion"
                                        placeholder="Descripción de la Empresa"
         ></p>
-
+    <small class="text-danger">{{ $errors->first('descripcion') }}</small>
 </div>
 
 <div class="form-group mt-4">

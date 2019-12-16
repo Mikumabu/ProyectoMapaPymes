@@ -12,13 +12,40 @@ use PhpParser\Node\Expr\Cast\Object_;
 class FormularioController extends Controller
 {
 
-    public function index()
-    {
-        //
-    }
-
-
     public function ingresar(Request $request){
+
+        $reglas = [
+            'nombreEmpresa' => 'required',
+            'rutEmpresa' => 'required',
+            'queOfrece' => 'required',
+            'calle' => 'required',
+            'horario' => 'required',
+            'facebook' => 'url|nullable',
+            'instagram' => 'url|nullable',
+            'comuna' => 'required',
+            'contacto' => 'required',
+            'telefono' => 'required',
+            'email' => 'required|email',
+            'descripcion' => 'required|max:500'
+        ];
+        $mensajes=[
+            'nombreEmpresa.required' => 'El nombre de la empresa es obligatorio.',
+            'rutEmpresa.required' => 'El rut de la empresa es obligatorio.',
+            'queOfrece.required' => 'La categoría de la empresa es obligatoria.',
+            'calle.required' => 'Se necesita una dirección.',
+            'horario.required' => 'Es importante saber las horas que atiende.',
+            'facebook.url' => 'Debe ser una dirección de facebook.',
+            'instagram.url' => 'Debe ser una dirección de instagram.',
+            'comuna.required' => 'Indique la comuna que se encuentra la empresa.',
+            'contacto.required' => 'Indique el nombre del representante de la empresa.',
+            'telefono.required' => 'El telefono de la empresa es importante para comunicarse con usted.',
+            'email.required' => 'El correo electronico es importante para comunicarse con usted.',
+            'email.email' => 'Debe ser un correo electronico.',
+            'descripcion.required' => 'Debe incluir una descripción de la empresa.',
+            'descripcion.max' => 'La descripción debe ser de unos 500 carácteres.',
+        ];
+
+        $this->validate($request, $reglas, $mensajes);
 
         $nombreEmpresa = request()->nombreEmpresa;
         $rutEmpresa = request()->rutEmpresa;
