@@ -175,8 +175,8 @@
     <div id="map">
         {!! Mapper::render() !!}
     </div>
-    <input type="hidden" name="latitud" id="latitud">
-    <input type="hidden" name="longitud" id="longitud">
+    <input type="hidden" name="latitud" id="latitud" value="{{$formularios->latitud}}">
+    <input type="hidden" name="longitud" id="longitud" value="{{$formularios->longitud}}">
     <div>
         <br>
     </div>
