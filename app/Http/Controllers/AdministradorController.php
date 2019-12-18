@@ -25,7 +25,7 @@ class AdministradorController extends Controller
             $to_name = 'JC';
             $to_email = $email;
             $data = array('name'=>"Administrador de Mapas PYMES",
-                "body" => "Estimado, le informamos que su solicitud ha sido aceptada");
+                "body" => "Estimado, le informamos que su solicitud ha sido rechazada");
 
             \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                 $message->to($to_email, $to_name)
