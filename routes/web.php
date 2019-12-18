@@ -64,6 +64,12 @@ Route::group(['middleware' => 'auth'], function(){
     //Route::get('Administrador/detallesAprobados/{id}','AdministradorController@mostrarDetallesAprobados');
 });
 
+
+// EMAIL
+
+Route::get('/sendemail', 'SendEmailController@index');
+Route::post('/sendemail/send', 'SendEmailController@send');
+
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
