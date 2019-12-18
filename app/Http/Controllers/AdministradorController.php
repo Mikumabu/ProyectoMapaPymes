@@ -29,23 +29,11 @@ class AdministradorController extends Controller
 
             \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                 $message->to($to_email, $to_name)
-                    ->subject('Solicitud Aceptada');
+                    ->subject('Solicitud Rechazada');
                 $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
             });
 
         }
-
-
-        $to_name = 'JC';
-        $to_email = 'jcmauryr@gmail.com';
-        $data = array('name'=>"Administrador de Mapas PYMES",
-            "body" => "Estimado, lamentamos informar que su solicitud ha sido rechazada");
-
-        \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
-            $message->to($to_email, $to_name)
-                ->subject('Solicitud Rechazada');
-            $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
-        });
 
         DB::table('formularios')->where('id', '=', $id)->delete();
         return back()->with('exito2','Formulario rechazado correctamente');
