@@ -24,8 +24,6 @@
                 <thead class="thead-dark">
 
                 </thead>
-
-                @foreach($formularios_aprobados as $formulario_aprobado)
                     <tr>
 
                         <div class="col-md-4 mb-3">
@@ -34,10 +32,9 @@
                                    name="nombreEmpresa"
                                    class="form-control"
                                    id="nombre_empresa"
-                                   value="{!! $formulario_aprobado->nombre_empresa !!}"
+                                   value="{{ $formularios->nombre_empresa }}"
                             >
                         </div>
-
 
                         <div class="col-md-4 mb-3">
                             <p align="left">Rut Empresa</p>
@@ -45,7 +42,7 @@
                                    name="rutEmpresa"
                                    class="form-control"
                                    id="rut_empresa"
-                                   value="{!! $formulario_aprobado->rut_empresa !!}"
+                                   value="{{ $formularios->rut_empresa }}"
                             >
                         </div>
 
@@ -55,7 +52,7 @@
                                    name="queOfrece"
                                    class="form-control"
                                    id="queOfrece"
-                                   value="{!! $formulario_aprobado->categoria !!}"
+                                   value="{{ $formularios->categoria }}"
                             >
                         </div>
 
@@ -65,7 +62,7 @@
                                    name="calle"
                                    class="form-control"
                                    id="calle"
-                                   value="{!! $formulario_aprobado->ubicacion !!}"
+                                   value="{{ $formularios->ubicacion }}"
                             >
                         </div>
 
@@ -76,7 +73,7 @@
                                    name="horario"
                                    class="form-control"
                                    id="horario"
-                                   value="{!! $formulario_aprobado->horario !!}"
+                                   value="{{ $formularios->horario }}"
                             >
                         </div>
 
@@ -86,7 +83,7 @@
                                    name="facebook"
                                    class="form-control"
                                    id="facebook"
-                                   value="{!! $formulario_aprobado->facebook !!}"
+                                   value="{{ $formularios->facebook }}"
                             >
                         </div>
 
@@ -96,7 +93,7 @@
                                    name="instagram"
                                    class="form-control"
                                    id="instagram"
-                                   value="{!! $formulario_aprobado->instagram !!}"
+                                   value="{{ $formularios->instagram }}"
                             >
                         </div>
 
@@ -119,7 +116,7 @@
                                    name="comuna"
                                    class="form-control"
                                    id="comuna"
-                                   value="{!! $formulario_aprobado->comuna !!}"
+                                   value="{{ $formularios->comuna }}"
                             >
                         </div>
 
@@ -129,7 +126,7 @@
                                    name="contacto"
                                    class="form-control"
                                    id="contacto"
-                                   value="{!! $formulario_aprobado->contacto !!}"
+                                   value="{{ $formularios->contacto }}"
                             >
                         </div>
 
@@ -139,7 +136,7 @@
                                    name="telefono"
                                    class="form-control"
                                    id="telefono"
-                                   value="{!! $formulario_aprobado->telefono !!}"
+                                   value="{{ $formularios->telefono }}"
                             >
                         </div>
 
@@ -149,7 +146,7 @@
                                    name="email"
                                    class="form-control"
                                    id="email"
-                                   value="{!! $formulario_aprobado->mail !!}"
+                                   value="{{ $formularios->mail }}"
                             >
                         </div>
 
@@ -159,23 +156,33 @@
                                    name="descripcion"
                                    class="form-control"
                                    id="descripcion"
-                                   value="{!! $formulario_aprobado->descripcion !!}"
+                                   value="{{ $formularios->descripcion }}"
                             >
                         </div>
 
-                        <input type="hidden" value="{{ $formulario_aprobado->id }}" name="idEmpresa">
+                        <input type="hidden" value="{{ $formularios->id }}" name="idEmpresa">
 
                     </tr>
 
-                @endforeach
             </table>
 
         </div>
     </div>
-
+    <div class="form-group">
+        Por último, confirme la dirección de su empresa en el mapa
+        <br>
+    </div>
+    <div id="map">
+        {!! Mapper::render() !!}
+    </div>
+    <input type="hidden" name="latitud" id="latitud">
+    <input type="hidden" name="longitud" id="longitud">
+    <div>
+        <br>
+    </div>
     <div class="form-group mt-4">
         <button type="submit" class="btn btn-primary">
-            {{ __('Actualizar Datos', compact($formulario_aprobado->id)) }}
+            {{ __('Actualizar Datos', compact($formularios->id)) }}
         </button>
     </div>
 

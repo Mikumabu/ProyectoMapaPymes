@@ -38,6 +38,32 @@ class MapaController extends Controller {
         return view('Mapa/PruebaMapa');
     }
 
+    public function seleccionarPosicion(){
+        Mapper::map(-23.6, -70.4, ['zoom' => 14, 'marker' => false]);
+        $newlat = 0;
+        $newlong = 0;
+        Mapper::marker(-23.6, -70.4, ['draggable' => true, 'eventDragEnd' => '$newlat = event.latLng.lat(); $newlong = event.latLng.lng(); document.getElementById("latitud").value = $newlat; document.getElementById("longitud").value = $newlong']);
+        return view('Formulario/Formulario');
+    }
+
+    public function editarMapa($id){
+        $formularios = DB::table('formularios')->where('id', $id)->first();
+        Mapper::map($formularios->latitud, $formularios->longitud, ['zoom' => 14, 'marker' => false]);
+        $newlat = 0;
+        $newlong = 0;
+        Mapper::marker($formularios->latitud, $formularios->longitud, ['draggable' => true, 'eventDragEnd' => '$newlat = event.latLng.lat(); $newlong = event.latLng.lng(); document.getElementById("latitud").value = $newlat; document.getElementById("longitud").value = $newlong']);
+        return view('Administrador/AdministradorEditarPendientes',compact('formularios', 'request'));
+    }
+
+    public function editarMapaAdmin($id){
+        $formularios = DB::table('formularios_aprobados')->where('id', $id)->first();
+        Mapper::map($formularios->latitud, $formularios->longitud, ['zoom' => 14, 'marker' => false]);
+        $newlat = 0;
+        $newlong = 0;
+        Mapper::marker($formularios->latitud, $formularios->longitud, ['draggable' => true, 'eventDragEnd' => '$newlat = event.latLng.lat(); $newlong = event.latLng.lng(); document.getElementById("latitud").value = $newlat; document.getElementById("longitud").value = $newlong']);
+        return view('Administrador/AdministradorEditarAprobados',compact('formularios', 'request'));
+    }
+
     public function test(){
         Mapper::map(-23.6, -70.4, ['zoom' => 14, 'marker' => false]);
         $newlat = 0;

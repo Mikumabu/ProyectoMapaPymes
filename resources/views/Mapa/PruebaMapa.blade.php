@@ -18,7 +18,7 @@
             <br>
         </div>
         <div id="presentacion">
-            Este mapa contiene las PYMES (Pequeñas y medianas empresas) del país <a href="{{ url('/Formulario') }}">Ingrese su PYME</a>
+            Este mapa contiene las PYMES (Pequeñas y medianas empresas) del país <a href="{{ route('formulario') }}">Ingrese su PYME</a>
         </div>
 
         <form method="POST" action="{{ route('filtrar') }}">
@@ -66,7 +66,6 @@
 </html>
 
 <script>
-
     $("#mySelect").change(function myFunction() {
         var tr, element, table, colCurso, txtValue;
         element = (document.getElementById("mySelect")).value;
@@ -87,6 +86,5 @@
                 }
             }
         }
-    })
-
+    });
 </script>

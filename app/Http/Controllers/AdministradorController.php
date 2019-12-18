@@ -3,20 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use DB;
 
 class AdministradorController extends Controller
 {
-
-    public function index()
-    {
-        //
-    }
-
     public function mostrarDatos(Request $request){
 
         $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  from formularios');
+
         return view('Administrador/Administrador',compact('formularios', 'request'));
 
     }
@@ -77,24 +71,6 @@ class AdministradorController extends Controller
 
     }
 
-    public function mostrarDetalles($id){
-
-        $formularios = DB::select('select ubicacion, contacto, telefono, mail, descripcion  
-                                    from formularios where id = :id', ['id' => $id]);
-
-        dd($formularios);
-
-    }
-
-    public function editar($id){
-
-        $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  
-                                    from formularios where id = :id', ['id' => $id]);
-
-        return view('Administrador/AdministradorEditarPendientes',compact('formularios', 'request'));
-
-    }
-
     public function aprobados(){
 
         $formularios_aprobados = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  from formularios_aprobados');
@@ -107,24 +83,5 @@ class AdministradorController extends Controller
 
         return back()->with('exito2','Formulario eliminado correctamente');
     }
-
-    public function editarAprobado($id){
-
-        $formularios_aprobados = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  
-                                    from formularios_aprobados where id = :id', ['id' => $id]);
-
-        return view('Administrador/AdministradorEditarAprobados',compact('formularios_aprobados', 'request'));
-
-    }
-
-    public function mostrarDetallesAprobados($id){
-
-        $formularios_aprobados = DB::select('select ubicacion, contacto, telefono, mail, descripcion  
-                                    from formularios_aprobados where id = :id', ['id' => $id]);
-
-        dd($formularios_aprobados);
-
-    }
-
 }
 

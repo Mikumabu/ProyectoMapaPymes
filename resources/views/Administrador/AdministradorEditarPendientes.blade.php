@@ -24,20 +24,16 @@
                 <thead class="thead-dark">
 
                 </thead>
-
-                @foreach($formularios as $formulario)
                     <tr>
-
                         <div class="col-md-4 mb-3">
                             <p align="left">Nombre Empresa</p>
                             <input type="search"
                                    name="nombreEmpresa"
                                    class="form-control"
                                    id="nombreEmpresa"
-                                   value="{!! $formulario->nombre_empresa !!}"
+                                   value="{{$formularios->nombre_empresa }}"
                             >
                         </div>
-
 
                         <div class="col-md-4 mb-3">
                             <p align="left">Rut Empresa</p>
@@ -45,7 +41,7 @@
                                    name="rutEmpresa"
                                    class="form-control"
                                    id="rutEmpresa"
-                                   value="{!! $formulario->rut_empresa !!}"
+                                   value="{{ $formularios->rut_empresa }}"
                             >
                         </div>
 
@@ -55,7 +51,7 @@
                                    name="queOfrece"
                                    class="form-control"
                                    id="queOfrece"
-                                   value="{!! $formulario->categoria !!}"
+                                   value="{{$formularios->categoria }}"
                             >
                         </div>
 
@@ -65,7 +61,7 @@
                                    name="calle"
                                    class="form-control"
                                    id="calle"
-                                   value="{!! $formulario->ubicacion !!}"
+                                   value="{{ $formularios->ubicacion }}"
                             >
                         </div>
 
@@ -75,7 +71,7 @@
                                    name="horario"
                                    class="form-control"
                                    id="horario"
-                                   value="{!! $formulario->horario !!}"
+                                   value="{{ $formularios->horario }}"
                             >
                         </div>
 
@@ -85,7 +81,7 @@
                                    name="facebook"
                                    class="form-control"
                                    id="facebook"
-                                   value="{!! $formulario->facebook !!}"
+                                   value="{{ $formularios->facebook }}"
                             >
                         </div>
 
@@ -95,17 +91,17 @@
                                    name="instagram"
                                    class="form-control"
                                    id="instagram"
-                                   value="{!! $formulario->instagram !!}"
+                                   value="{{ $formularios->instagram }}"
                             >
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <p align="left">¿Formalizado?</p>
                             <select
-                                id="formalizado"
-                                name="formalizado"
-                                class="form-control"
-                                required>
+                                    id="formalizado"
+                                    name="formalizado"
+                                    class="form-control"
+                                    required>
 
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
@@ -118,7 +114,7 @@
                                    name="comuna"
                                    class="form-control"
                                    id="comuna"
-                                   value="{!! $formulario->comuna !!}"
+                                   value="{{ $formularios->comuna }}"
                             >
                         </div>
 
@@ -128,7 +124,7 @@
                                    name="contacto"
                                    class="form-control"
                                    id="contacto"
-                                   value="{!! $formulario->contacto !!}"
+                                   value="{{ $formularios->contacto }}"
                             >
                         </div>
 
@@ -138,7 +134,7 @@
                                    name="telefono"
                                    class="form-control"
                                    id="telefono"
-                                   value="{!! $formulario->telefono !!}"
+                                   value="{{ $formularios->telefono }}"
                             >
                         </div>
 
@@ -148,7 +144,7 @@
                                    name="email"
                                    class="form-control"
                                    id="email"
-                                   value="{!! $formulario->mail !!}"
+                                   value="{{ $formularios->mail }}"
                             >
                         </div>
 
@@ -158,23 +154,33 @@
                                    name="descripcion"
                                    class="form-control"
                                    id="descripcion"
-                                   value="{!! $formulario->descripcion !!}"
+                                   value="{{ $formularios->descripcion }}"
                             >
                         </div>
 
-                        <input type="hidden" value="{{ $formulario->id }}" name="idEmpresa">
+                        <input type="hidden" value="{{ $formularios->id }}" name="idEmpresa">
 
                     </tr>
 
-                @endforeach
             </table>
 
         </div>
     </div>
-
+    <div class="form-group">
+        Por último, confirme la dirección de su empresa en el mapa
+        <br>
+    </div>
+    <div id="map">
+        {!! Mapper::render(0) !!}
+    </div>
+    <input type="hidden" name="latitud" id="latitud">
+    <input type="hidden" name="longitud" id="longitud">
+    <div>
+        <br>
+    </div>
     <div class="form-group mt-4">
         <button type="submit" class="btn btn-primary">
-            {{ __('Actualizar Datos', compact($formulario->id)) }}
+            {{ __('Actualizar Datos', compact($formularios->id)) }}
         </button>
     </div>
 
@@ -184,5 +190,3 @@
             <strong>{{ $message }}</strong>
         </div>
 @endif
-
-
