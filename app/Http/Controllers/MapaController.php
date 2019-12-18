@@ -5,6 +5,7 @@ use Appitventures\Phpgmaps\Phpgmaps;
 use Mapper;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Mail;
 
 
 class MapaController extends Controller {

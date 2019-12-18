@@ -17,8 +17,37 @@ class AdministradorController extends Controller
 
     public function rechazar($id){
 
-        DB::table('formularios')->where('id', '=', $id)->delete();
+        $formularios = DB::select('select mail from formularios where id = :id', ['id' => $id]);
 
+        foreach($formularios as $formulario){
+
+            $email = $formulario->mail;
+            $to_name = 'JC';
+            $to_email = $email;
+            $data = array('name'=>"Administrador de Mapas PYMES",
+                "body" => "Estimado, le informamos que su solicitud ha sido aceptada");
+
+            \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                $message->to($to_email, $to_name)
+                    ->subject('Solicitud Aceptada');
+                $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+            });
+
+        }
+
+
+        $to_name = 'JC';
+        $to_email = 'jcmauryr@gmail.com';
+        $data = array('name'=>"Administrador de Mapas PYMES",
+            "body" => "Estimado, lamentamos informar que su solicitud ha sido rechazada");
+
+        \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+                ->subject('Solicitud Rechazada');
+            $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+        });
+
+        DB::table('formularios')->where('id', '=', $id)->delete();
         return back()->with('exito2','Formulario rechazado correctamente');
     }
 
@@ -62,6 +91,17 @@ class AdministradorController extends Controller
                 'mail' => $email,
                 'descripcion' => $descripcion
             ]);
+
+            $to_name = 'JC';
+            $to_email = $email;
+            $data = array('name'=>"Administrador de Mapas PYMES",
+                "body" => "Estimado, le informamos que su solicitud ha sido aceptada");
+
+            \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                $message->to($to_email, $to_name)
+                    ->subject('Solicitud Aceptada');
+                $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+            });
 
         }
 
