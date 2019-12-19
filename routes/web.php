@@ -67,5 +67,9 @@ Route::get('/sendemail', 'SendEmailController@index');
 Route::post('/sendemail/send', 'SendEmailController@send');
 
 Auth::routes(['register' => false]);
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+// EXCEL
+
+Route::get('formularios/export/', 'ExcelController@exportarAprobados')->name('exportarFormulario');
+

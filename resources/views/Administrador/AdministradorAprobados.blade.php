@@ -13,6 +13,9 @@
                     <button type="submit" class="btn btn-primary">
                         <a href=" {{route('actualizarFormularioPendiente')}} " class="btn btn-primary"> Regresar </a>
                     </button>
+                    <button type="submit" class="btn btn-primary">
+                        <a href=" {{route('exportarFormulario')}} " class="btn btn-primary"> Exportar Excel </a>
+                    </button>
 
                 </div></h2>
         </div>
