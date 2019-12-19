@@ -16,6 +16,7 @@ class formularios_aprobados extends Model
         'horario',
         'facebook',
         'instagram',
+        'url',
         'formalizado',
         'comuna',
         'contacto',

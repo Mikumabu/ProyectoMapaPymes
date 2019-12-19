@@ -58,18 +58,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('Administrador/Aprobados','AdministradorController@aprobados');
     Route::get('Administrador/editarAprobado/{id}','MapaController@editarMapaAdmin');
     Route::get('Administrador/eliminar/{id}','AdministradorController@eliminar');
+
+    Route::get('formularios/export/', 'ExcelController@exportarAprobados')->name('exportarFormulario');
+
 });
-
-
-// EMAIL
-
-Route::get('/sendemail', 'SendEmailController@index');
-Route::post('/sendemail/send', 'SendEmailController@send');
 
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
-// EXCEL
 
-Route::get('formularios/export/', 'ExcelController@exportarAprobados')->name('exportarFormulario');
+
 
