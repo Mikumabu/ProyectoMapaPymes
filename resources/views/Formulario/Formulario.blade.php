@@ -40,6 +40,17 @@
                 <small class="text-danger">{{ $errors->first('queOfrece') }}</small>
             </div>
             <div class="form-group">
+                <p align="left">(Opcional) Página de Facebook <input type="search"
+                                                                     name="facebook"
+                                                                     class="form-control"
+                                                                     id="facebook"
+                                                                     placeholder="Ingrese Link de Facebook Oficial">
+                </p>
+                <small class="text-danger">{{ $errors->first('facebook') }}</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
                 <p align="left">Dirección <input type="search"
                                                  name="calle"
                                                  class="form-control"
@@ -48,8 +59,6 @@
                 </p>
                 <small class="text-danger">{{ $errors->first('calle') }}</small>
             </div>
-        </div>
-        <div class="col-md-3">
             <div class="form-group">
                 <p align="left">Comuna <input type="search"
                                               name="comuna"
@@ -69,6 +78,29 @@
                 <small class="text-danger">{{ $errors->first('horario') }}</small>
             </div>
             <div class="form-group">
+                <p align="left">(Opcional) Página de Instagram <input type="search"
+                                                                      name="instagram"
+                                                                      class="form-control"
+                                                                      id="instagram"
+                                                                      placeholder="Ingrese Link de Instagram Oficial"
+                    ></p>
+                <small class="text-danger">{{ $errors->first('instagram') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">¿Formalizado? <select
+                            id="formalizado"
+                            name="formalizado"
+                            class="form-control"
+                            required>
+
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                    </select></p>
+                <small class="text-danger">{{ $errors->first('formalizado') }}</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
                 <p align="left">Representante <input type="search"
                                                      name="contacto"
                                                      class="form-control"
@@ -86,8 +118,6 @@
                 </p>
                 <small class="text-danger">{{ $errors->first('telefono') }}</small>
             </div>
-        </div>
-        <div class="col-md-3">
             <div class="form-group">
                 <p align="left">Email <input type="search"
                                              name="email"
@@ -98,34 +128,13 @@
                 <small class="text-danger">{{ $errors->first('email') }}</small>
             </div>
             <div class="form-group">
-                <p align="left">¿Formalizado? <select
-                            id="formalizado"
-                            name="formalizado"
-                            class="form-control"
-                            required>
-
-                        <option value="Si">Si</option>
-                        <option value="No">No</option>
-                    </select></p>
-                <small class="text-danger">{{ $errors->first('formalizado') }}</small>
-            </div>
-            <div class="form-group">
-                <p align="left">(Opcional) Página de Facebook <input type="search"
-                                                                     name="facebook"
-                                                                     class="form-control"
-                                                                     id="facebook"
-                                                                     placeholder="Ingrese Link de Facebook Oficial">
-                </p>
-                <small class="text-danger">{{ $errors->first('facebook') }}</small>
-            </div>
-            <div class="form-group">
-                <p align="left">(Opcional) Página de Instagram <input type="search"
-                                                                      name="instagram"
+                <p align="left">(Opcional) Otro sitio web <input type="search"
+                                                                      name="url"
                                                                       class="form-control"
-                                                                      id="instagram"
-                                                                      placeholder="Ingrese Link de Instagram Oficial"
+                                                                      id="url"
+                                                                      placeholder="Ingrese Link de web u otra red social"
                     ></p>
-                <small class="text-danger">{{ $errors->first('instagram') }}</small>
+                <small class="text-danger">{{ $errors->first('url') }}</small>
             </div>
         </div>
     </div>

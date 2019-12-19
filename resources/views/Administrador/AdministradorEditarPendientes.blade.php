@@ -94,6 +94,15 @@
                                    value="{{ $formularios->instagram }}"
                             >
                         </div>
+                        <div class="col-md-4 mb-3">
+                            <p align="left">Otro sitio</p>
+                            <input type="search"
+                                   name="instagram"
+                                   class="form-control"
+                                   id="instagram"
+                                   value="{{ $formularios->url }}"
+                            >
+                        </div>
 
                         <div class="col-md-4 mb-3">
                             <p align="left">¿Formalizado?</p>
@@ -173,8 +182,8 @@
     <div id="map">
         {!! Mapper::render(0) !!}
     </div>
-    <input type="hidden" name="latitud" id="latitud">
-    <input type="hidden" name="longitud" id="longitud">
+    <input type="hidden" name="latitud" id="latitud" value="{{$formularios->latitud}}">
+    <input type="hidden" name="longitud" id="longitud" value="{{$formularios->longitud}}">
     <div>
         <br>
     </div>

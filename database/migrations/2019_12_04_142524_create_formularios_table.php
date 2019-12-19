@@ -17,7 +17,7 @@ class CreateFormulariosTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('nombre_empresa');
-            $table->string('rut_empresa');
+            $table->string('rut_empresa')->nullable();
             $table->string('categoria');
             $table->string('longitud');
             $table->string('latitud');
@@ -25,6 +25,7 @@ class CreateFormulariosTable extends Migration
             $table->string('horario');
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
+            $table->string('url')->nullable();
             $table->string('formalizado');
             $table->string('comuna');
             $table->string('contacto');

@@ -42,7 +42,7 @@ class AdministradorController extends Controller
     public function aceptar($id){
 
         $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
-        instagram, formalizado, comuna, contacto, telefono, mail, descripcion, latitud, longitud
+        instagram,url, formalizado, comuna, contacto, telefono, mail, descripcion, latitud, longitud
         from formularios where id = :id', ['id' => $id]);
 
         foreach($formularios as $formulario){
@@ -53,6 +53,7 @@ class AdministradorController extends Controller
             $horario = $formulario->horario;
             $facebook = $formulario->facebook;
             $instagram = $formulario->instagram;
+            $url = $formulario->url;
             $formalizado = $formulario->formalizado;
             $comuna = $formulario->comuna;
             $contacto = $formulario->contacto;
@@ -72,6 +73,7 @@ class AdministradorController extends Controller
                 'horario' => $horario,
                 'facebook' => $facebook,
                 'instagram' => $instagram,
+                'url' => $url,
                 'formalizado' => $formalizado,
                 'comuna' => $comuna,
                 'contacto' => $contacto,
@@ -101,7 +103,7 @@ class AdministradorController extends Controller
 
     public function aprobados(){
 
-        $formularios_aprobados = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  from formularios_aprobados');
+        $formularios_aprobados = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion  from formularios_aprobados');
         return view('Administrador/AdministradorAprobados',compact('formularios_aprobados', 'request'));
     }
 
