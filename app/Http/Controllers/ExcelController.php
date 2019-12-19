@@ -9,7 +9,7 @@ class ExcelController extends Controller
 {
     public function exportarAprobados()
     {
-        return Excel::download(new ExcelExport, 'formularios_aprobados.xlsx');
+        return Excel::download(new ExcelExport, 'Aprobados.xlsx');
     }
 
 }
