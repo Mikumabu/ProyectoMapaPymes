@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\formulario;
 use Illuminate\Support\Str;
-
+use Illuminate\Validation\Rule;
 use DB;
 use PhpParser\Node\Expr\Cast\Object_;
 
@@ -14,12 +14,13 @@ class FormularioController extends Controller
     public function validar(Request $request){
         $reglas = [
             'nombreEmpresa' => 'required',
-            'rutEmpresa' => 'required',
+            'rutEmpresa' => 'required_if:formalizado,==,Si',
             'queOfrece' => 'required',
             'calle' => 'required',
             'horario' => 'required',
             'facebook' => 'url|nullable',
             'instagram' => 'url|nullable',
+            'url' => 'url|nullable',
             'comuna' => 'required',
             'contacto' => 'required',
             'telefono' => 'required',
@@ -28,12 +29,13 @@ class FormularioController extends Controller
         ];
         $mensajes=[
             'nombreEmpresa.required' => 'El nombre de la empresa es obligatorio.',
-            'rutEmpresa.required' => 'El rut de la empresa es obligatorio.',
+            'rutEmpresa.required_if' => 'El rut es obligatorio si está formalizado.',
             'queOfrece.required' => 'La categoría de la empresa es obligatoria.',
             'calle.required' => 'Se necesita una dirección.',
             'horario.required' => 'Es importante saber las horas que atiende.',
             'facebook.url' => 'Debe ser una dirección de facebook.',
             'instagram.url' => 'Debe ser una dirección de instagram.',
+            'url.url' => 'Debe ser una dirección de sitio web u otro',
             'comuna.required' => 'Indique la comuna que se encuentra la empresa.',
             'contacto.required' => 'Indique el nombre del representante de la empresa.',
             'telefono.required' => 'El telefono de la empresa es importante para comunicarse con usted.',
@@ -60,6 +62,7 @@ class FormularioController extends Controller
         $horario = request()->horario;
         $facebook = request()->facebook;
         $instagram = request()->instagram;
+        $url = request()->url;
         $formalizado = request()->formalizado;
         $comuna = request()->comuna;
         $contacto = request()->contacto;
@@ -101,6 +104,7 @@ class FormularioController extends Controller
             'horario' => $horario,
             'facebook' => $facebook,
             'instagram' => $instagram,
+            'url' => $url,
             'formalizado' => $formalizado,
             'comuna' => $comuna,
             'contacto' => $contacto,
@@ -128,6 +132,7 @@ class FormularioController extends Controller
         $horario = request()->horario;
         $facebook = request()->facebook;
         $instagram = request()->instagram;
+        $url = request()->url;
         $formalizado = request()->formalizado;
         $comuna = request()->comuna;
         $contacto = request()->contacto;
@@ -140,10 +145,10 @@ class FormularioController extends Controller
         DB::table('formularios')->where('id', $idEmpresa)->update(['nombre_empresa' => $nombreEmpresa,
             'rut_empresa' => $rutEmpresa, 'categoria' => $queOfrece, 'ubicacion' => $calle, 'latitud' => $latitud,
             'longitud' => $longitud,'horario' => $horario,'facebook' => $facebook,'instagram' => $instagram,
-            'formalizado' => $formalizado,'comuna' => $comuna,'contacto' => $contacto,'telefono' => $telefono,
-            'mail' => $email,'descripcion' => $descripcion]);
+            'url' => $url,'formalizado' => $formalizado,'comuna' => $comuna,'contacto' => $contacto,
+            'telefono' => $telefono, 'mail' => $email,'descripcion' => $descripcion]);
 
-        return back()->with('exito1','Formulario Actualizado con Éxito');;
+        return back()->with('exito1','Formulario Actualizado con Éxito');
 
     }
 
@@ -162,6 +167,7 @@ class FormularioController extends Controller
         $horario = request()->horario;
         $facebook = request()->facebook;
         $instagram = request()->instagram;
+        $url = request()->url;
         $formalizado = request()->formalizado;
         $comuna = request()->comuna;
         $contacto = request()->contacto;
@@ -171,11 +177,11 @@ class FormularioController extends Controller
         $longitud = request()->longitud;
         $descripcion = request()->descripcion;
 
-        DB::table('formularios_aprobados')->where('id', $idEmpresa)->update(['nombre_empresa' => $nombreEmpresa,
+        DB::table('formularios')->where('id', $idEmpresa)->update(['nombre_empresa' => $nombreEmpresa,
             'rut_empresa' => $rutEmpresa, 'categoria' => $queOfrece, 'ubicacion' => $calle, 'latitud' => $latitud,
             'longitud' => $longitud,'horario' => $horario,'facebook' => $facebook,'instagram' => $instagram,
-            'formalizado' => $formalizado,'comuna' => $comuna,'contacto' => $contacto,'telefono' => $telefono,
-            'mail' => $email,'descripcion' => $descripcion]);
+            'url' => $url,'formalizado' => $formalizado,'comuna' => $comuna,'contacto' => $contacto,
+            'telefono' => $telefono, 'mail' => $email,'descripcion' => $descripcion]);
 
         return back()->with('exito1','Formulario Actualizado con Éxito');
 
