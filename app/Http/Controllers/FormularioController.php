@@ -177,7 +177,7 @@ class FormularioController extends Controller
         $longitud = request()->longitud;
         $descripcion = request()->descripcion;
 
-        DB::table('formularios')->where('id', $idEmpresa)->update(['nombre_empresa' => $nombreEmpresa,
+        DB::table('formularios_aprobados')->where('id', $idEmpresa)->update(['nombre_empresa' => $nombreEmpresa,
             'rut_empresa' => $rutEmpresa, 'categoria' => $queOfrece, 'ubicacion' => $calle, 'latitud' => $latitud,
             'longitud' => $longitud,'horario' => $horario,'facebook' => $facebook,'instagram' => $instagram,
             'url' => $url,'formalizado' => $formalizado,'comuna' => $comuna,'contacto' => $contacto,
