@@ -99,7 +99,7 @@
                         <div class="col-md-4 mb-3">
                             <p align="left">Otro sitio</p>
                             <input type="search"
-                                   name="instagram"
+                                   name="url"url
                                    class="form-control"
                                    id="instagram"
                                    value="{{ $formularios->url }}"
