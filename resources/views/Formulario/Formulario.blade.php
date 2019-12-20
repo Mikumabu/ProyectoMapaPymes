@@ -171,8 +171,8 @@
     <div id="map">
         {!! Mapper::render(0) !!}
     </div>
-    <input type="hidden" name="latitud" id="latitud">
-    <input type="hidden" name="longitud" id="longitud">
+    <input type="hidden" name="latitud" id="latitud" value="-23.6">
+    <input type="hidden" name="longitud" id="longitud" value="-70.4">
     <div>
         <br>
     </div>

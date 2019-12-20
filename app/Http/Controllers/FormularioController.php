@@ -120,6 +120,8 @@ class FormularioController extends Controller
 
     public function actualizarPendiente(Request $request){
 
+        self::validar($request);
+
         $idEmpresa = request()->idEmpresa;
         $nombreEmpresa = request()->nombreEmpresa;
         $rutEmpresa = request()->rutEmpresa;
