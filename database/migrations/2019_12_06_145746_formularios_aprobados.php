@@ -32,6 +32,7 @@ class FormulariosAprobados extends Migration
             $table->string('telefono');
             $table->string('mail');
             $table->string('descripcion');
+            $table->string('imagen');
         });
     }
 

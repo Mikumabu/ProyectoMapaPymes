@@ -42,7 +42,7 @@ class AdministradorController extends Controller
     public function aceptar($id){
 
         $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
-        instagram,url, formalizado, comuna, contacto, telefono, mail, descripcion, latitud, longitud
+        instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, latitud, longitud, imagen
         from formularios where id = :id', ['id' => $id]);
 
         foreach($formularios as $formulario){
@@ -62,6 +62,7 @@ class AdministradorController extends Controller
             $descripcion = $formulario->descripcion;
             $latitud = $formulario->latitud;
             $longitud = $formulario->longitud;
+            $rutaImagen = $formulario->imagen;
 
             DB::table('formularios_aprobados')->insert([
                 'nombre_empresa' => $nombreEmpresa,
@@ -79,7 +80,8 @@ class AdministradorController extends Controller
                 'contacto' => $contacto,
                 'telefono' => $telefono,
                 'mail' => $email,
-                'descripcion' => $descripcion
+                'descripcion' => $descripcion,
+                'imagen' => $rutaImagen
             ]);
 
             $to_name = 'JC';

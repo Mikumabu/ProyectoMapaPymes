@@ -71,7 +71,7 @@ class FormularioController extends Controller
         $descripcion = request()->descripcion;
         $latitud = request()->latitud;
         $longitud = request()->longitud;
-        $request->file('archivo')->store('public');
+        $rutaImagen = $request->file('archivo')->store('public');
 
         /*$key = 'AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4';
         $url = urlencode("https://maps.googleapis.com/maps/api/geocode/json?address=".$calle.", ".$comuna."&key=".$key);
@@ -111,7 +111,8 @@ class FormularioController extends Controller
             'contacto' => $contacto,
             'telefono' => $telefono,
             'mail' => $email,
-            'descripcion' => $descripcion
+            'descripcion' => $descripcion,
+            'imagen' => $rutaImagen
         ]);
 
         return back()->with('exito1','Petición ingresada correctamente. Se debe esperar a la aprobación de un Administrador');

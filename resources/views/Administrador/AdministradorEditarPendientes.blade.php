@@ -156,6 +156,7 @@
             </div>
         </div>
     </div>
+
     <div class="form-group">
         Por último, confirme la dirección de su empresa en el mapa
         <br>
