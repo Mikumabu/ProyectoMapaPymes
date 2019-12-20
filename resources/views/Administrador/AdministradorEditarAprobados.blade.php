@@ -7,174 +7,153 @@
 @include('navbar.navbar')
 <form method="POST" action="{{ route('actualizarFormularioAprobado') }}">
     {{ csrf_field() }}
-
-    <div class="container col-md-8 col-md-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2>Solicitudes Aprobadas
-                    <div class="form-group mt-4">
-                        <button type="submit" class="btn btn-primary">
-                            <a href=" {{route('actualizarFormularioPendiente')}} " class="btn btn-primary"> Regresar </a>
-                        </button>
-
-                    </div></h2>
+    <div class="form-row justify-content-center">
+        <input type="hidden" value="{{ $formularios->id }}" name="idEmpresa">
+        <div class="col-md-3">
+            <div class="form-group">
+                <p align="left">Nombre Empresa <input type="search"
+                                                      name="nombreEmpresa"
+                                                      class="form-control"
+                                                      id="nombreEmpresa"
+                                                      value="{{$formularios->nombre_empresa}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('nombreEmpresa') }}</small>
             </div>
-
-            <table class="table table-striped table-sm">
-                <thead class="thead-dark">
-
-                </thead>
-                    <tr>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Nombre Empresa</p>
-                            <input type="search"
-                                   name="nombreEmpresa"
-                                   class="form-control"
-                                   id="nombre_empresa"
-                                   value="{{ $formularios->nombre_empresa }}"
-                            >
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Rut Empresa</p>
-                            <input type="search"
-                                   name="rutEmpresa"
-                                   class="form-control"
-                                   id="rut_empresa"
-                                   value="{{ $formularios->rut_empresa }}"
-                            >
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Giro</p>
-                            <input type="search"
-                                   name="queOfrece"
-                                   class="form-control"
-                                   id="queOfrece"
-                                   value="{{ $formularios->categoria }}"
-                            >
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Ubicación</p>
-                            <input type="search"
-                                   name="calle"
-                                   class="form-control"
-                                   id="calle"
-                                   value="{{ $formularios->ubicacion }}"
-                            >
-                        </div>
-
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Horario</p>
-                            <input type="search"
-                                   name="horario"
-                                   class="form-control"
-                                   id="horario"
-                                   value="{{ $formularios->horario }}"
-                            >
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Facebook</p>
-                            <input type="search"
-                                   name="facebook"
-                                   class="form-control"
-                                   id="facebook"
-                                   value="{{ $formularios->facebook }}"
-                            >
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Instagram</p>
-                            <input type="search"
-                                   name="instagram"
-                                   class="form-control"
-                                   id="instagram"
-                                   value="{{ $formularios->instagram }}"
-                            >
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Otro sitio</p>
-                            <input type="search"
-                                   name="url"url
-                                   class="form-control"
-                                   id="instagram"
-                                   value="{{ $formularios->url }}"
-                            >
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">¿Formalizado?</p>
-                            <select
-                                id="formalizado"
-                                name="formalizado"
-                                class="form-control"
-                                required>
-
-                                <option value="Si">Si</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Comuna</p>
-                            <input type="search"
-                                   name="comuna"
-                                   class="form-control"
-                                   id="comuna"
-                                   value="{{ $formularios->comuna }}"
-                            >
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Contacto</p>
-                            <input type="search"
-                                   name="contacto"
-                                   class="form-control"
-                                   id="contacto"
-                                   value="{{ $formularios->contacto }}"
-                            >
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Teléfono</p>
-                            <input type="search"
-                                   name="telefono"
-                                   class="form-control"
-                                   id="telefono"
-                                   value="{{ $formularios->telefono }}"
-                            >
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Correo</p>
-                            <input type="search"
-                                   name="email"
-                                   class="form-control"
-                                   id="email"
-                                   value="{{ $formularios->mail }}"
-                            >
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <p align="left">Descripción</p>
-                            <input type="search"
-                                   name="descripcion"
-                                   class="form-control"
-                                   id="descripcion"
-                                   value="{{ $formularios->descripcion }}"
-                            >
-                        </div>
-
-                        <input type="hidden" value="{{ $formularios->id }}" name="idEmpresa">
-
-                    </tr>
-
-            </table>
-
+            <div class="form-group">
+                <p align="left">Rut Empresa <input type="search"
+                                                   name="rutEmpresa"
+                                                   class="form-control"
+                                                   id="rutEmpresa"
+                                                   value="{{$formularios->rut_empresa}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('rutEmpresa') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">Giro <input type="search"
+                                            name="queOfrece"
+                                            class="form-control"
+                                            id="queOfrece"
+                                            value="{{$formularios->categoria}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('queOfrece') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">(Opcional) Página de Facebook <input type="search"
+                                                                     name="facebook"
+                                                                     class="form-control"
+                                                                     id="facebook"
+                                                                     value="{{$formularios->facebook}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('facebook') }}</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <p align="left">Dirección <input type="search"
+                                                 name="calle"
+                                                 class="form-control"
+                                                 id="calle"
+                                                 value="{{$formularios->ubicacion}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('calle') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">Comuna <input type="search"
+                                              name="comuna"
+                                              class="form-control"
+                                              id="comuna"
+                                              value="{{$formularios->comuna}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('comuna') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">Horario de Atención <input type="search"
+                                                           name="horario"
+                                                           class="form-control"
+                                                           id="horario"
+                                                           value="{{$formularios->horario}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('horario') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">(Opcional) Página de Instagram <input type="search"
+                                                                      name="instagram"
+                                                                      class="form-control"
+                                                                      id="instagram"
+                                                                      value="{{$formularios->instagram}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('instagram') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">¿Formalizado? <select
+                            id="formalizado"
+                            name="formalizado"
+                            class="form-control"
+                            required>
+                        @if($formularios->formalizado == "Si"){
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        }
+                        @else
+                            <option value="Si">Si</option>
+                            <option value="No" selected>No</option>
+                        @endif
+                    </select></p>
+                <small class="text-danger">{{ $errors->first('formalizado') }}</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <p align="left">Representante <input type="search"
+                                                     name="contacto"
+                                                     class="form-control"
+                                                     id="contacto"
+                                                     value="{{$formularios->contacto}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('contacto') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">Teléfono <input type="search"
+                                                name="telefono"
+                                                class="form-control"
+                                                id="telefono"
+                                                value="{{$formularios->telefono}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('telefono') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">Email <input type="search"
+                                             name="email"
+                                             class="form-control"
+                                             id="email"
+                                             value="{{$formularios->mail}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('email') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">(Opcional) Otro sitio web <input type="search"
+                                                                 name="url"
+                                                                 class="form-control"
+                                                                 id="url"
+                                                                 value="{{$formularios->url}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('url') }}</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-row justify-content-center">
+        <div class="col-md-4">
+            <div class="form-group">
+                <p align="left">Descripción de la empresa <textarea
+                            name="descripcion"
+                            class="form-control"
+                            id="descripcion"
+                            maxlength="300"
+                            style="width:100%; height:200px;"
+                    >{{$formularios->descripcion}}</textarea></p>
+                <div id="textarea_feedback"></div>
+                <small class="text-danger">{{ $errors->first('descripcion') }}</small>
+            </div>
         </div>
     </div>
     <div class="form-group">
@@ -182,24 +161,47 @@
         <br>
     </div>
     <div id="map">
-        {!! Mapper::render() !!}
+        {!! Mapper::render(0) !!}
     </div>
     <input type="hidden" name="latitud" id="latitud" value="{{$formularios->latitud}}">
     <input type="hidden" name="longitud" id="longitud" value="{{$formularios->longitud}}">
     <div>
         <br>
     </div>
-    <div class="form-group mt-4">
-        <button type="submit" class="btn btn-primary">
-            {{ __('Actualizar Datos', compact($formularios->id)) }}
-        </button>
-    </div>
-
-    @if ($message = Session::get('exito1'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
+    <div class="form-row justify-content-center">
+        <div class="col-md-3">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Actualizar Datos', compact($formularios->id)) }}
+                </button>
+            </div>
         </div>
+    </div>
+</form>
+@if ($message = Session::get('exito1'))
+    <div class="alert alert-danger alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $message }}</strong>
+    </div>
 @endif
 
+@if ($message = Session::get('error1'))
+    <div class="alert alert-danger alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $message }}</strong>
+    </div>
+@endif
 
+<script>
+    $(document).ready(function() {
+        var text_max = 300;
+        $('#textarea_feedback').html(text_max+'/'+text_max);
+
+        $('#descripcion').keyup(function() {
+            var text_length = $('#descripcion').val().length;
+            var text_remaining = text_max - text_length;
+
+            $('#textarea_feedback').html(text_remaining+'/'+text_max);
+        });
+    });
+</script>
