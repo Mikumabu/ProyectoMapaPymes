@@ -44,6 +44,8 @@ Route::get('/ActualizarFormularioAprobado', function () {
     return view('Administrador/Administrador', compact('id'));
 });
 
+Route::post('/subir','FormularioController@subirArchivo')->name('subir');
+
 Route::group(['middleware' => 'auth'], function(){
 
 
