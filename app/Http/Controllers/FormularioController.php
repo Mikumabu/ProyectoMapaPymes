@@ -71,6 +71,7 @@ class FormularioController extends Controller
         $descripcion = request()->descripcion;
         $latitud = request()->latitud;
         $longitud = request()->longitud;
+        $request->file('archivo')->store('public');
 
         /*$key = 'AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4';
         $url = urlencode("https://maps.googleapis.com/maps/api/geocode/json?address=".$calle.", ".$comuna."&key=".$key);
@@ -111,7 +112,6 @@ class FormularioController extends Controller
             'telefono' => $telefono,
             'mail' => $email,
             'descripcion' => $descripcion
-
         ]);
 
         return back()->with('exito1','Petición ingresada correctamente. Se debe esperar a la aprobación de un Administrador');
@@ -187,13 +187,6 @@ class FormularioController extends Controller
 
         return back()->with('exito1','Formulario Actualizado con Éxito');
 
-    }
-
-    public function subirArchivo(Request $request)
-    {
-        //Recibimos el archivo y lo guardamos en la carpeta storage/app/public
-        $request->file('archivo')->store('public');
-        dd("subido y guardado");
     }
 
 

@@ -8,7 +8,7 @@
 <div>
     <br>
 </div>
-<form method="POST" action="{{ route('ingresarFormulario') }}">
+<form method="POST" action="{{ route('ingresarFormulario') }}" enctype="multipart/form-data" >
     {{ csrf_field() }}
     <div class="form-row justify-content-center">
         <div class="col-md-3">
@@ -156,12 +156,8 @@
     </div>
 
     <div class="form-row justify-content-center">
-        <form method="POST" action="{{route('subir')}}" accept-charset="UTF-8" enctype="multipart/form-data">
-            {{ csrf_field() }}
             <label for="archivo"><b>Archivo: </b></label><br>
             <input type="file" name="archivo" required>
-            <input class="btn btn-success" type="submit" value="Enviar" >
-        </form>
     </div>
 
     <div class="form-group">
