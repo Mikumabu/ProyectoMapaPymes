@@ -6,7 +6,7 @@ use Mapper;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Mail;
-
+use Illuminate\Support\Facades\Storage;
 
 class MapaController extends Controller {
 
@@ -72,6 +72,7 @@ class MapaController extends Controller {
             $descripcion = $data->descripcion;
             $latitud = $data->latitud;
             $longitud = $data->longitud;
+            $imagen = $data->imagen;
             $datosMapa ='<b>Nombre Empresa: </b>'.$nombreEmpresa.
                         '<br><b>Descripción: </b>'.$descripcion.
                         '<br><b>¿Qué ofrece? </b>'.$queOfrece.
@@ -87,7 +88,8 @@ class MapaController extends Controller {
                          <a href="'.$instagram.'"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/600px-Instagram-Icon.png"
                          width="25" height="25"></a>
                          <a href="'.$url.'"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/600px-Instagram-Icon.png"
-                         width="25" height="25"></a>';
+                         width="25" height="25"></a>
+                         <br><img src="'.Storage::url($imagen).'" style="max-width:150px;">';
             if($facebook == null){
                 $datosMapa = str_replace("<a href=\"\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/1024px-Facebook_icon_2013.svg.png\"
                          width=\"25\" height=\"25\">", "", $datosMapa);

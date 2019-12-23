@@ -72,6 +72,7 @@ class FormularioController extends Controller
         $latitud = request()->latitud;
         $longitud = request()->longitud;
         $rutaImagen = $request->file('archivo')->store('public');
+        $rutaImagen = str_replace("public/", "", $rutaImagen);
 
         /*$key = 'AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4';
         $url = urlencode("https://maps.googleapis.com/maps/api/geocode/json?address=".$calle.", ".$comuna."&key=".$key);
