@@ -24,8 +24,17 @@ class AdministradorController extends Controller
             $email = $formulario->mail;
             $to_name = 'JC';
             $to_email = $email;
-            $data = array('name'=>"Administrador de Mapas PYMES",
-                "body" => "Estimado, le informamos que su solicitud ha sido rechazada");
+            $data = array('name'=>"Lamentamos informar que su solicitud a Mapas PYMES ha sido rechazada",
+                "body" => "Estimado, junto con saludar, le informamos que su Empresa no cumple con los requisitos
+                           para ser figurar en el Mapa, estos pueden ser:
+                           \n
+                           a) Uso inapropiado u ofensivo del lenguaje.
+                           \n
+                           b) La Empresa ya se encuentra registrada.
+                           \n
+                           c) Los datos ingresados son falsos.
+                           \n
+                           Saludos cordiales.");
 
             \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                 $message->to($to_email, $to_name)
@@ -86,8 +95,11 @@ class AdministradorController extends Controller
 
             $to_name = 'JC';
             $to_email = $email;
-            $data = array('name'=>"Administrador de Mapas PYMES",
-                "body" => "Estimado, le informamos que su solicitud ha sido aceptada");
+            $data = array('name'=>"¡Felicitaciones! Su Solicitud de ingresar a Mapa PYMES ha sido aceptada",
+                "body" => "Estimado, 
+                           le informamos que su solicitud ha sido aceptada, ahora podrá visualizar su Empresa
+                           en http://proyectomapapymes.test/ con todos los datos ingresados.
+                           Saludos cordiales.");
 
             \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                 $message->to($to_email, $to_name)
