@@ -12,9 +12,10 @@ use PhpParser\Node\Expr\Cast\Object_;
 class FormularioController extends Controller
 {
     public function validar(Request $request){
+        $formalizado = $request->get('formalizado');
         $reglas = [
             'nombreEmpresa' => 'required',
-            'rutEmpresa' => 'required_if:formalizado,==,Si',
+            'rutEmpresa' => 'nullable',
             'queOfrece' => 'required',
             'calle' => 'required',
             'horario' => 'required',
@@ -27,9 +28,13 @@ class FormularioController extends Controller
             'email' => 'required|email',
             'descripcion' => 'required|max:500'
         ];
+        if($formalizado == "Si"){
+            $reglas['rutEmpresa'] = 'required|cl_rut';
+        }
         $mensajes=[
             'nombreEmpresa.required' => 'El nombre de la empresa es obligatorio.',
-            'rutEmpresa.required_if' => 'El rut es obligatorio si está formalizado.',
+            'rutEmpresa.required' => 'El rut es obligatorio si está formalizado.',
+            'rutEmpresa.cl_rut' => 'Rut invalido.',
             'queOfrece.required' => 'La categoría de la empresa es obligatoria.',
             'calle.required' => 'Se necesita una dirección.',
             'horario.required' => 'Es importante saber las horas que atiende.',
@@ -38,8 +43,8 @@ class FormularioController extends Controller
             'url.url' => 'Debe ser una dirección de sitio web u otro',
             'comuna.required' => 'Indique la comuna que se encuentra la empresa.',
             'contacto.required' => 'Indique el nombre del representante de la empresa.',
-            'telefono.required' => 'El telefono de la empresa es importante para comunicarse con usted.',
-            'email.required' => 'El correo electronico es importante para comunicarse.',
+            'telefono.required' => 'El telefono de contacto es obligatorio.',
+            'email.required' => 'El correo electronico es obligatorio.',
             'email.email' => 'Debe ser un correo electronico.',
             'descripcion.required' => 'Debe incluir una descripción de la empresa.',
             'descripcion.max' => 'La descripción debe ser de unos 500 carácteres.',
