@@ -1,25 +1,25 @@
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+<!--<meta name="csrf-token" content="{ csrf_token() }}">-->
 <link rel="stylesheet" href="{{asset('/css/index.css')}}">
 @include('navbar.navbar')
 <div>
     <br>
 </div>
-<form method="POST" action="{{ route('ingresarFormulario') }}" enctype="multipart/form-data" >
+<form method="POST" action="{{ route('ingresarFormulario') }}" enctype="multipart/form-data" id="form-id">
     {{ csrf_field() }}
     <div class="form-row justify-content-center">
         <div class="col-md-3">
             <div class="form-group">
-                <p align="left">Nombre Empresa <input type="search"
+                <p align="left">Nombre Empresa <input type="text"
                                                       name="nombreEmpresa"
                                                       class="form-control"
                                                       id="nombreEmpresa"
                                                       placeholder="Ingrese Nombre Empresa">
                 </p>
-                <small class="text-danger">{{ $errors->first('nombreEmpresa') }}</small>
+                <small class="nombre text-danger">{{ $errors->first('nombreEmpresa') }}</small>
             </div>
             <div class="form-group">
                 <p align="left">Rut Empresa <input type="search"
@@ -28,7 +28,7 @@
                                                    id="rutEmpresa"
                                                    placeholder="Ingrese Rut Empresa">
                 </p>
-                <small class="text-danger">{{ $errors->first('rutEmpresa') }}</small>
+                <small class="rut text-danger">{{ $errors->first('rutEmpresa') }}</small>
             </div>
             <div class="form-group">
                 <p align="left">Giro <input type="search"
@@ -37,7 +37,7 @@
                                             id="queOfrece"
                                             placeholder="Ejemplo: Educación">
                 </p>
-                <small class="text-danger">{{ $errors->first('queOfrece') }}</small>
+                <small class="categoria text-danger">{{ $errors->first('queOfrece') }}</small>
             </div>
             <div class="form-group">
                 <p align="left">(Opcional) Página de Facebook <input type="search"
@@ -208,4 +208,29 @@
             $('#textarea_feedback').html(text_remaining+'/'+text_max);
         });
     });
+    /*$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(".btn-primary").click(function(e){
+        e.preventDefault();
+        let myForm = document.getElementById('form-id');
+        let formData = new FormData(myForm);
+        $.ajax({
+            type:'POST',
+            url:'Formulario',
+            data: formData,
+            success:function(data){
+                alert(data.success);
+            },
+            error: function(data){
+                $('.nombre').text(data.responseJSON.errors.nombreEmpresa[0]);
+                $('.rut').text(data.responseJSON.errors.nombreEmpresa[0]);
+                $('.categoria').text(data.responseJSON.errors.nombreEmpresa[0]);
+            },
+            processData: false,
+            contentType: false,
+        });
+    });*/
 </script>
