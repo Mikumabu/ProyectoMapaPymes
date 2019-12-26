@@ -79,6 +79,20 @@ class FormularioController extends Controller
         $rutaImagen = $request->file('archivo')->store('public');
         $rutaImagen = str_replace("public/", "", $rutaImagen);
 
+
+        $insultos = DB::select('select insulto from palabras_prohibidas');
+        foreach($insultos as $insulto) {
+
+            $palabraProhibida = $insulto->insulto;
+            $encontrado = strpos($descripcion, $palabraProhibida);
+
+            if($encontrado == true){
+                return back()->with('error2','Erros: Se encontró un Insulto en la Descripción');
+            }
+
+        }
+
+
         /*$key = 'AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4';
         $url = urlencode("https://maps.googleapis.com/maps/api/geocode/json?address=".$calle.", ".$comuna."&key=".$key);
         $url = str_replace("%3A", ":", $url);
