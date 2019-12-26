@@ -24,6 +24,9 @@
                             <a href="/Administrador/Aprobados" class="btn btn-primary">
                                 Editar Formularios Aprobados
                             </a>
+                            <a href="/Administrador/PalabrasProhibidas" class="btn btn-primary">
+                                Agregar Palabras Prohibidas
+                            </a>
                         </td>
                     </h2>
                 </div>

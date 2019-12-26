@@ -127,5 +127,23 @@ class AdministradorController extends Controller
 
         return back()->with('exito2','Formulario eliminado correctamente');
     }
+
+    public function palabrasProhibidas(){
+
+        $palabras_prohibidas = DB::select('select insulto from palabras_prohibidas');
+        return view('Administrador/AdministradorInsultos',compact('palabras_prohibidas', 'request'));
+    }
+
+    public function ingresarInsulto(Request $request){
+
+        $insulto = request()->insulto;
+
+        DB::table('palabras_prohibidas')->insert([
+            'insulto' => $insulto
+        ]);
+
+        return back()->with('exito1','Insulto agregado correctamente');
+
+    }
 }
 

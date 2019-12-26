@@ -61,6 +61,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('Administrador/editarAprobado/{id}','MapaController@editarMapaAdmin');
     Route::get('Administrador/eliminar/{id}','AdministradorController@eliminar');
 
+    Route::get('Administrador/PalabrasProhibidas','AdministradorController@palabrasProhibidas');
+    Route::post('Administrador/PalabrasProhibidas', 'AdministradorController@ingresarInsulto')->name('ingresarInsulto');
+
     Route::get('formularios/export/', 'ExcelController@exportarAprobados')->name('exportarFormulario');
 
 });
