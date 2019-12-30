@@ -28,15 +28,40 @@
                 </p>
                 <small class="text-danger">{{ $errors->first('rutEmpresa') }}</small>
             </div>
+
             <div class="form-group">
-                <p align="left">Giro <input type="search"
-                                            name="queOfrece"
-                                            class="form-control"
-                                            id="queOfrece"
-                                            value="{{$formularios->categoria}}">
-                </p>
+                <p align="left">Giro <select
+                        id="queOfrece"
+                        name="queOfrece"
+                        class="form-control"
+                        required>
+
+                        <option value="Agricultura, ganadería, silvicultura y pesca">Agricultura, ganadería, silvicultura y pesca</option>
+                        <option value="Explotación de minas y canteras">Explotación de minas y canteras</option>
+                        <option value="Industria manufacturera">Industria manufacturera</option>
+                        <option value="Suministro de electricidad, gas, vapor y aire acondicionado">Suministro de electricidad, gas, vapor y aire acondicionado</option>
+                        <option value="Suministro de agua; evacuación de aguas residuales, gestión de desechos y descontaminación">Suministro de agua; evacuación de aguas residuales, gestión de desechos y descontaminación</option>
+                        <option value="Construcción">Construcción</option>
+                        <option value="Comercio al por mayor y al por menor; reparación de vehiculos automotores y motocicletas">Comercio al por mayor y al por menor; reparación de vehiculos automotores y motocicletas</option>
+                        <option value="Transporte y almacenamiento">Transporte y almacenamiento</option>
+                        <option value="Actividades de alojamiento y de servicio de comidas">Actividades de alojamiento y de servicio de comidas</option>
+                        <option value="Información y comunicaciones">Información y comunicaciones</option>
+                        <option value="Actividades financieras y de seguros">Actividades financieras y de seguros</option>
+                        <option value="Actividades inmobiliarias">Actividades inmobiliarias</option>
+                        <option value="Actividades profesionales, cientificas y técnicas">Actividades profesionales, cientificas y técnicas</option>
+                        <option value="Actividades de servicios administrativos y de apoyo">Actividades de servicios administrativos y de apoyo</option>
+                        <option value="Administración pública y defensa; planes de seguridad social de afiliación obligatoria">Administración pública y defensa; planes de seguridad social de afiliación obligatoria</option>
+                        <option value="Enseñanza">Enseñanza</option>
+                        <option value="Actividades de atención de la salud humana y de asistencia social">Actividades de atención de la salud humana y de asistencia social</option>
+                        <option value="Actividades artísticas, de entretenimiento y recreativas">Actividades artísticas, de entretenimiento y recreativas</option>
+                        <option value="Otras actividades de servicios">Otras actividades de servicios</option>
+
+
+                    </select></p>
                 <small class="text-danger">{{ $errors->first('queOfrece') }}</small>
             </div>
+
+
             <div class="form-group">
                 <p align="left">(Opcional) Página de Facebook <input type="search"
                                                                      name="facebook"

@@ -113,7 +113,7 @@
                 <small class="instagram text-danger"></small>
             </div>
             <div class="form-group">
-                <p align="left">¿Formalizado? <select
+                <p align="left">¿Factura? <select
                             id="formalizado"
                             name="formalizado"
                             class="form-control"
