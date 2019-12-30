@@ -72,6 +72,7 @@ class MapaController extends Controller {
             $descripcion = $data->descripcion;
             $latitud = $data->latitud;
             $longitud = $data->longitud;
+            $icono = $data->icono;
             $imagen = $data->imagen;
             $datosMapa ='<b>Nombre Empresa: </b>'.$nombreEmpresa.
                         '<br><b>Descripción: </b>'.$descripcion.
@@ -103,7 +104,7 @@ class MapaController extends Controller {
                          width=\"25\" height=\"25\"></a>", "", $datosMapa);
             }
             Mapper::informationWindow($latitud, $longitud, $datosMapa,
-                ['maxWidth' => 300, 'marker' => true/*, 'icon' => 'http://icons.iconarchive.com/icons/icons-land/points-of-interest/128/Golf-Club-Green-2-icon.png'*/]);
+                ['maxWidth' => 300, 'marker' => true, 'icon' => $icono]);
         }
     }
 }

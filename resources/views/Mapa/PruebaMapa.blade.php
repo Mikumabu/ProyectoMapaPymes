@@ -17,6 +17,7 @@
         <div>
             <br>
         </div>
+        <div class="flash-message"></div>
         <div id="presentacion">
             Este mapa contiene las PYMES (Pequeñas y medianas empresas) del país <a href="{{ route('formulario') }}">Ingrese su PYME</a>
         </div>

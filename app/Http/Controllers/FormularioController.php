@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use DB;
 use PhpParser\Node\Expr\Cast\Object_;
+use Session;
+use View;
 
 class FormularioController extends Controller
 {
@@ -58,11 +60,7 @@ class FormularioController extends Controller
 
         $nombreEmpresa = request()->nombreEmpresa;
         $rutEmpresa = request()->rutEmpresa;
-
         $queOfrece = request()->queOfrece;
-        $queOfrece = strtolower($queOfrece);
-        $queOfrece = ucfirst($queOfrece);
-
         $calle = request()->calle;
         $horario = request()->horario;
         $facebook = request()->facebook;
@@ -74,11 +72,26 @@ class FormularioController extends Controller
         $telefono = request()->telefono;
         $email = request()->email;
         $descripcion = request()->descripcion;
+        $icono = request()->icono;
         $latitud = request()->latitud;
         $longitud = request()->longitud;
         $rutaImagen = $request->file('archivo')->store('public');
         $rutaImagen = str_replace("public/", "", $rutaImagen);
 
+        //http://kml4earth.appspot.com/icons.html
+
+        if($queOfrece == "Educacion"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon14.png";
+        }
+        if($queOfrece == "Comida"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon40.png";
+        }
+        if($queOfrece == "Asesorias"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal4/icon8.png";
+        }
+        if($queOfrece == "Fotografia"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal4/icon46.png";
+        }
 
         $insultos = DB::select('select insulto from palabras_prohibidas');
         foreach($insultos as $insulto) {
@@ -87,11 +100,11 @@ class FormularioController extends Controller
             $encontrado = strpos($descripcion, $palabraProhibida);
 
             if($encontrado == true){
-                return back()->with('error2','Erros: Se encontró un Insulto en la Descripción');
+                Session::flash('error2', 'Se encontró un insulto en la descripción');
+                return View::make('Mensajes');
             }
 
         }
-
 
         /*$key = 'AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4';
         $url = urlencode("https://maps.googleapis.com/maps/api/geocode/json?address=".$calle.", ".$comuna."&key=".$key);
@@ -132,10 +145,11 @@ class FormularioController extends Controller
             'telefono' => $telefono,
             'mail' => $email,
             'descripcion' => $descripcion,
+            'icono' => $icono,
             'imagen' => $rutaImagen
         ]);
-
-        return back()->with('exito1','Petición ingresada correctamente. Se debe esperar a la aprobación de un Administrador');
+        Session::flash('exito1', 'Petición ingresada correctamente. Se debe esperar a la aprobación de un Administrador');
+        return View::make('Mensajes');
 
     }
 
@@ -208,6 +222,15 @@ class FormularioController extends Controller
 
         return back()->with('exito1','Formulario Actualizado con Éxito');
 
+    }
+
+    function agregarIcono($queOfrece){
+
+        $icono = "Hola";
+
+
+
+        return $icono;
     }
 
 

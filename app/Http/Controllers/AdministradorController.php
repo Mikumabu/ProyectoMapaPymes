@@ -51,7 +51,7 @@ class AdministradorController extends Controller
     public function aceptar($id){
 
         $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
-        instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, latitud, longitud, imagen
+        instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, icono, latitud, longitud, imagen
         from formularios where id = :id', ['id' => $id]);
 
         foreach($formularios as $formulario){
@@ -69,6 +69,7 @@ class AdministradorController extends Controller
             $telefono = $formulario->telefono;
             $email = $formulario->mail;
             $descripcion = $formulario->descripcion;
+            $icono = $formulario->icono;
             $latitud = $formulario->latitud;
             $longitud = $formulario->longitud;
             $rutaImagen = $formulario->imagen;
@@ -90,6 +91,7 @@ class AdministradorController extends Controller
                 'telefono' => $telefono,
                 'mail' => $email,
                 'descripcion' => $descripcion,
+                'icono' => $icono,
                 'imagen' => $rutaImagen
             ]);
 
