@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class MapaController extends Controller {
 
     public function maps() {
-        Mapper::map(-23.6, -70.4, ['zoom' => 14, 'marker' => false]);
+        Mapper::map(-23.6, -70.4, ['locate' => true, 'zoom' => 14, 'marker' => false]);
         $users = DB::table('formularios_aprobados')->get();
         $this->generateInfoWindow($users);
         return view('Mapa/PruebaMapa');
@@ -21,7 +21,7 @@ class MapaController extends Controller {
         Mapper::map(-23.6, -70.4, ['zoom' => 14, 'marker' => false]);
         $newlat = -23.6;
         $newlong = -70.4;
-        Mapper::marker(-23.6, -70.4, ['draggable' => true, 'eventDragEnd' => '$newlat = event.latLng.lat(); $newlong = event.latLng.lng(); document.getElementById("latitud").value = $newlat; document.getElementById("longitud").value = $newlong']);
+        Mapper::marker(-23.6, -70.4, ['locate' => true, 'draggable' => true, 'eventDragEnd' => '$newlat = event.latLng.lat(); $newlong = event.latLng.lng(); document.getElementById("latitud").value = $newlat; document.getElementById("longitud").value = $newlong']);
         return view('Formulario/Formulario');
     }
 
@@ -50,7 +50,7 @@ class MapaController extends Controller {
         instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, latitud, longitud
         from formularios_aprobados where categoria = :categoria', ['categoria' => $request->categoria]);*/
 
-        Mapper::map(-23.6, -70.4, ['zoom' => 14, 'marker' => false]);
+        Mapper::map(-23.6, -70.4, ['locate' => true, 'zoom' => 14, 'marker' => false]);
         $this->generateInfoWindow($datos);
         return view('Mapa/PruebaMapa');
     }
