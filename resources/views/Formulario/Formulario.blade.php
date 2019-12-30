@@ -243,7 +243,6 @@
                 $('html, body').animate({ scrollTop: 0 }, 0);
                 $('.nombre').text(data.responseJSON.errors.nombreEmpresa[0]);
                 $('.rut').text(data.responseJSON.errors.rutEmpresa[0]);
-                $('.queOfrece').text(data.responseJSON.errors.queOfrece[0]);
                 $('.calle').text(data.responseJSON.errors.calle[0]);
                 $('.comuna').text(data.responseJSON.errors.comuna[0]);
                 $('.horario').text(data.responseJSON.errors.horario[0]);
