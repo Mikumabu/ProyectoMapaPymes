@@ -8,6 +8,7 @@
 <div>
     <br>
 </div>
+<div class="flash-message"></div>
 <form method="POST" action="{{ route('ingresarFormulario') }}" enctype="multipart/form-data" id="form-id">
     {{ csrf_field() }}
     <div class="form-row justify-content-center">
@@ -19,7 +20,7 @@
                                                       id="nombreEmpresa"
                                                       placeholder="Ingrese Nombre Empresa">
                 </p>
-                <small class="nombre text-danger">{{ $errors->first('nombreEmpresa') }}</small>
+                <small class="nombre text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Rut Empresa <input type="search"
@@ -28,7 +29,7 @@
                                                    id="rutEmpresa"
                                                    placeholder="Ingrese Rut Empresa">
                 </p>
-                <small class="rut text-danger">{{ $errors->first('rutEmpresa') }}</small>
+                <small class="rut text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Giro <input type="search"
@@ -37,7 +38,7 @@
                                             id="queOfrece"
                                             placeholder="Ejemplo: Educación">
                 </p>
-                <small class="categoria text-danger">{{ $errors->first('queOfrece') }}</small>
+                <small class="queOfrece text-danger">{{ $errors->first('queOfrece') }}</small>
             </div>
             <div class="form-group">
                 <p align="left">(Opcional) Página de Facebook <input type="search"
@@ -46,7 +47,7 @@
                                                                      id="facebook"
                                                                      placeholder="Ingrese Link de Facebook Oficial">
                 </p>
-                <small class="text-danger">{{ $errors->first('facebook') }}</small>
+                <small class="facebook text-danger"></small>
             </div>
         </div>
         <div class="col-md-3">
@@ -57,7 +58,7 @@
                                                  id="calle"
                                                  placeholder="Ejemplo: Blumel 1552">
                 </p>
-                <small class="text-danger">{{ $errors->first('calle') }}</small>
+                <small class="calle text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Comuna <input type="search"
@@ -66,7 +67,7 @@
                                               id="comuna"
                                               placeholder="Ejemplo: Antofagasta">
                 </p>
-                <small class="text-danger">{{ $errors->first('comuna') }}</small>
+                <small class="comuna text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Horario de Atención <input type="search"
@@ -75,7 +76,7 @@
                                                           id="horario"
                                                           placeholder="Ejemplo: 9:00 a 15:00">
                 </p>
-                <small class="text-danger">{{ $errors->first('horario') }}</small>
+                <small class="horario text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">(Opcional) Página de Instagram <input type="search"
@@ -84,7 +85,7 @@
                                                                       id="instagram"
                                                                       placeholder="Ingrese Link de Instagram Oficial"
                     ></p>
-                <small class="text-danger">{{ $errors->first('instagram') }}</small>
+                <small class="instagram text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">¿Formalizado? <select
@@ -96,7 +97,7 @@
                         <option value="Si">Si</option>
                         <option value="No">No</option>
                     </select></p>
-                <small class="text-danger">{{ $errors->first('formalizado') }}</small>
+                <small class="formalizado text-danger"></small>
             </div>
         </div>
         <div class="col-md-3">
@@ -107,7 +108,7 @@
                                                      id="contacto"
                                                      placeholder="Ingrese un Contacto. Por Ejemplo: Juan Pérez">
                 </p>
-                <small class="text-danger">{{ $errors->first('contacto') }}</small>
+                <small class="contacto text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Teléfono <input type="search"
@@ -116,7 +117,7 @@
                                                 id="telefono"
                                                 placeholder="Ingrese un Teléfono">
                 </p>
-                <small class="text-danger">{{ $errors->first('telefono') }}</small>
+                <small class="telefono text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Email <input type="search"
@@ -125,7 +126,7 @@
                                              id="email"
                                              placeholder="Ingrese un Email">
                 </p>
-                <small class="text-danger">{{ $errors->first('email') }}</small>
+                <small class="email text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">(Opcional) Otro sitio web <input type="search"
@@ -134,7 +135,7 @@
                                                                       id="url"
                                                                       placeholder="Ingrese Link de web u otra red social"
                     ></p>
-                <small class="text-danger">{{ $errors->first('url') }}</small>
+                <small class="url text-danger"></small>
             </div>
         </div>
     </div>
@@ -150,7 +151,7 @@
                                                    style="width:100%; height:200px;"
                     ></textarea></p>
                 <div id="textarea_feedback"></div>
-                <small class="text-danger">{{ $errors->first('descripcion') }}</small>
+                <small class="descripcion text-danger"></small>
             </div>
         </div>
     </div>
@@ -182,26 +183,6 @@
         </div>
     </div>
 </form>
-    @if ($message = Session::get('exito1'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
-
-    @if ($message = Session::get('error1'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
-
-    @if ($message = Session::get('error2'))
-        <div class="alert alert-danger alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
-        </div>
-    @endif
 
 <script>
     $(document).ready(function() {
@@ -215,7 +196,7 @@
             $('#textarea_feedback').html(text_remaining+'/'+text_max);
         });
     });
-    /*$.ajaxSetup({
+    $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
@@ -228,16 +209,34 @@
             type:'POST',
             url:'Formulario',
             data: formData,
-            success:function(data){
-                alert(data.success);
+            success:function(data) {
+                $('html, body').animate({ scrollTop: 0 }, 0);
+                $('div.flash-message').html(data);
+                document.getElementById("form-id").reset();
             },
             error: function(data){
+                $('html, body').animate({ scrollTop: 0 }, 0);
                 $('.nombre').text(data.responseJSON.errors.nombreEmpresa[0]);
-                $('.rut').text(data.responseJSON.errors.nombreEmpresa[0]);
-                $('.categoria').text(data.responseJSON.errors.nombreEmpresa[0]);
+                $('.rut').text(data.responseJSON.errors.rutEmpresa[0]);
+                $('.queOfrece').text(data.responseJSON.errors.queOfrece[0]);
+                $('.calle').text(data.responseJSON.errors.calle[0]);
+                $('.comuna').text(data.responseJSON.errors.comuna[0]);
+                $('.horario').text(data.responseJSON.errors.horario[0]);
+                $('.contacto').text(data.responseJSON.errors.contacto[0]);
+                $('.telefono').text(data.responseJSON.errors.telefono[0]);
+                $('.email').text(data.responseJSON.errors.email[0]);
+                if(data.responseJSON.errors.facebook[0] != null){
+                    $('.facebook').text(data.responseJSON.errors.facebook[0]);
+                }
+                if(data.responseJSON.errors.instagram[0] != null){
+                    $('.instagram').text(data.responseJSON.errors.instagram[0]);
+                }
+                if(data.responseJSON.errors.instagram[0] != null){
+                    $('.url').text(data.responseJSON.errors.url[0]);
+                }
             },
             processData: false,
             contentType: false,
         });
-    });*/
+    });
 </script>

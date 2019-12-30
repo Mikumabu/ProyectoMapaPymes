@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use DB;
 use PhpParser\Node\Expr\Cast\Object_;
+use Session;
+use View;
 
 class FormularioController extends Controller
 {
@@ -87,11 +89,11 @@ class FormularioController extends Controller
             $encontrado = strpos($descripcion, $palabraProhibida);
 
             if($encontrado == true){
-                return back()->with('error2','Erros: Se encontró un Insulto en la Descripción');
+                Session::flash('error2', 'Se encontró un insulto en la descripción');
+                return View::make('Mensajes');
             }
 
         }
-
 
         /*$key = 'AIzaSyAIuJCrwX-2-hqArtpPyTEn340ezoucpS4';
         $url = urlencode("https://maps.googleapis.com/maps/api/geocode/json?address=".$calle.", ".$comuna."&key=".$key);
@@ -134,8 +136,8 @@ class FormularioController extends Controller
             'descripcion' => $descripcion,
             'imagen' => $rutaImagen
         ]);
-
-        return back()->with('exito1','Petición ingresada correctamente. Se debe esperar a la aprobación de un Administrador');
+        Session::flash('exito1', 'Petición ingresada correctamente. Se debe esperar a la aprobación de un Administrador');
+        return View::make('Mensajes');
 
     }
 
