@@ -80,18 +80,64 @@ class FormularioController extends Controller
 
         //http://kml4earth.appspot.com/icons.html
 
-        if($queOfrece == "Educacion"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon14.png";
+        if($queOfrece == "Agricultura, ganadería, silvicultura y pesca"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon12.png";
         }
-        if($queOfrece == "Comida"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon40.png";
+        if($queOfrece == "Explotación de minas y canteras"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon58.png";
         }
-        if($queOfrece == "Asesorias"){
+        if($queOfrece == "Industria manufacturera"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon29.png";
+        }
+        if($queOfrece == "Suministro de electricidad, gas, vapor y aire acondicionado"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal4/icon30.png";
+        }
+        if($queOfrece == "Suministro de agua; evacuación de aguas residuales, gestión de desechos y descontaminación"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon47.png";
+        }
+        if($queOfrece == "Construcción"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon21.png";
+        }
+        if($queOfrece == "Comercio al por mayor y al por menor; reparación de vehiculos automotores y motocicletas"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon58.png";
+        }
+        if($queOfrece == "Transporte y almacenamiento"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon47.png";
+        }
+        if($queOfrece == "Actividades de alojamiento y de servicio de comidas"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon63.png";
+        }
+        if($queOfrece == "Información y comunicaciones"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon30.png";
+        }
+        if($queOfrece == "Actividades financieras y de seguros"){
             $icono = "http://maps.google.com/mapfiles/kml/pal4/icon8.png";
         }
-        if($queOfrece == "Fotografia"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal4/icon46.png";
+        if($queOfrece == "Actividades inmobiliarias"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal5/icon12.png";
         }
+        if($queOfrece == "Actividades profesionales, cientificas y técnicas"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal4/icon37.png";
+        }
+        if($queOfrece == "Actividades de servicios administrativos y de apoyo"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal5/icon5.png";
+        }
+        if($queOfrece == "Administración pública y defensa; planes de seguridad social de afiliación obligatoria"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon25.png";
+        }
+        if($queOfrece == "Enseñanza"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon14.png";
+        }
+        if($queOfrece == "Actividades de atención de la salud humana y de asistencia social"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon46.png";
+        }
+        if($queOfrece == "Actividades artísticas, de entretenimiento y recreativas"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon57.png";
+        }
+        if($queOfrece == "Otras actividades de servicios"){
+            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon44.png";
+        }
+
 
         $insultos = DB::select('select insulto from palabras_prohibidas');
         foreach($insultos as $insulto) {
