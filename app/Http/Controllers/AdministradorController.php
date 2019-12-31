@@ -44,6 +44,55 @@ class AdministradorController extends Controller
 
         }
 
+
+        $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
+        instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, icono, latitud, longitud, imagen
+        from formularios where id = :id', ['id' => $id]);
+
+        foreach($formularios as $formulario){
+            $nombreEmpresa = $formulario->nombre_empresa;
+            $rutEmpresa = $formulario->rut_empresa;
+            $queOfrece = $formulario->categoria;
+            $calle = $formulario->ubicacion;
+            $horario = $formulario->horario;
+            $facebook = $formulario->facebook;
+            $instagram = $formulario->instagram;
+            $url = $formulario->url;
+            $formalizado = $formulario->formalizado;
+            $comuna = $formulario->comuna;
+            $contacto = $formulario->contacto;
+            $telefono = $formulario->telefono;
+            $email = $formulario->mail;
+            $descripcion = $formulario->descripcion;
+            $icono = $formulario->icono;
+            $latitud = $formulario->latitud;
+            $longitud = $formulario->longitud;
+            $rutaImagen = $formulario->imagen;
+
+            DB::table('historial_rechazados')->insert([
+                'nombre_empresa' => $nombreEmpresa,
+                'rut_empresa' => $rutEmpresa,
+                'categoria' => $queOfrece,
+                'longitud' => $longitud,
+                'latitud' => $latitud,
+                'ubicacion' => $calle,
+                'horario' => $horario,
+                'facebook' => $facebook,
+                'instagram' => $instagram,
+                'url' => $url,
+                'formalizado' => $formalizado,
+                'comuna' => $comuna,
+                'contacto' => $contacto,
+                'telefono' => $telefono,
+                'mail' => $email,
+                'descripcion' => $descripcion,
+                'icono' => $icono,
+                'imagen' => $rutaImagen
+            ]);
+
+        }
+
+
         DB::table('formularios')->where('id', '=', $id)->delete();
         return back()->with('exito2','Formulario rechazado correctamente');
     }
@@ -125,6 +174,7 @@ class AdministradorController extends Controller
 
     public function eliminar($id){
 
+
         DB::table('formularios_aprobados')->where('id', '=', $id)->delete();
 
         return back()->with('exito2','Formulario eliminado correctamente');
@@ -145,6 +195,79 @@ class AdministradorController extends Controller
         ]);
 
         return back()->with('exito1','Insulto agregado correctamente');
+
+    }
+
+    public function historialRechazados(){
+
+        $historial_rechazados = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
+        instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, icono, latitud, longitud, imagen
+        from historial_rechazados');
+
+        return view('Administrador/AdministradorHistorial',compact('historial_rechazados', 'request'));
+    }
+
+    public function recuperarRechazado($id){
+
+        $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
+        instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, icono, latitud, longitud, imagen
+        from historial_rechazados where id = :id', ['id' => $id]);
+
+        foreach($formularios as $formulario){
+            $nombreEmpresa = $formulario->nombre_empresa;
+            $rutEmpresa = $formulario->rut_empresa;
+            $queOfrece = $formulario->categoria;
+            $calle = $formulario->ubicacion;
+            $horario = $formulario->horario;
+            $facebook = $formulario->facebook;
+            $instagram = $formulario->instagram;
+            $url = $formulario->url;
+            $formalizado = $formulario->formalizado;
+            $comuna = $formulario->comuna;
+            $contacto = $formulario->contacto;
+            $telefono = $formulario->telefono;
+            $email = $formulario->mail;
+            $descripcion = $formulario->descripcion;
+            $icono = $formulario->icono;
+            $latitud = $formulario->latitud;
+            $longitud = $formulario->longitud;
+            $rutaImagen = $formulario->imagen;
+
+            DB::table('formularios')->insert([
+                'nombre_empresa' => $nombreEmpresa,
+                'rut_empresa' => $rutEmpresa,
+                'categoria' => $queOfrece,
+                'longitud' => $longitud,
+                'latitud' => $latitud,
+                'ubicacion' => $calle,
+                'horario' => $horario,
+                'facebook' => $facebook,
+                'instagram' => $instagram,
+                'url' => $url,
+                'formalizado' => $formalizado,
+                'comuna' => $comuna,
+                'contacto' => $contacto,
+                'telefono' => $telefono,
+                'mail' => $email,
+                'descripcion' => $descripcion,
+                'icono' => $icono,
+                'imagen' => $rutaImagen
+            ]);
+
+
+        }
+
+        DB::table('historial_rechazados')->where('id', '=', $id)->delete();
+
+        return back()->with('exito2','Formulario recuperado correctamente');
+
+    }
+
+    public function borrarHistorial(){
+
+        DB::table('historial_rechazados')->delete();
+
+        return back()->with('exito1','Historial eliminado');
 
     }
 }

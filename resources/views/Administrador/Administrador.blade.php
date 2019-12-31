@@ -20,15 +20,20 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2>Solicitudes Pendientes
-                        <td>
-                            <a href="/Administrador/Aprobados" class="btn btn-primary">
-                                Editar Formularios Aprobados
-                            </a>
-                            <a href="/Administrador/PalabrasProhibidas" class="btn btn-primary">
-                                Agregar Palabras Prohibidas
-                            </a>
-                        </td>
                     </h2>
+
+                    <td>
+                        <a href="/Administrador/Aprobados" class="btn btn-primary">
+                            Editar Formularios Aprobados
+                        </a>
+                        <a href="/Administrador/PalabrasProhibidas" class="btn btn-primary">
+                            Agregar Palabras Prohibidas
+                        </a>
+                        <a href="/Administrador/HistorialRechazados" class="btn btn-primary">
+                            Historial Rechazados
+                        </a>
+                    </td>
+
                 </div>
                 <div>
                     <br>
