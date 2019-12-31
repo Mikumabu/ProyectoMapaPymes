@@ -25,9 +25,7 @@ Route::get('/Formulario', function () {
 });
 
 Route::post('buscar', 'MapaController@buscador')->name('filtrar');
-Route::get('/BuscarDatos', function () {
-    return view('Mapa/MapaFiltrado', compact('categoria'));
-});
+Route::post('buscador', 'MapaController@buscarDescripcion')->name('filtrarDescripcion');
 
 // FORMULARIO
 

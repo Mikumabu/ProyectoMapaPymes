@@ -16,16 +16,16 @@
         <div>
             <br>
         </div>
+        <div class="flash-message"></div>
         <div id="presentacion">
             Este mapa contiene las PYMES (Pequeñas y medianas empresas) del país <a href="{{ route('formulario') }}">Ingrese su PYME</a>
         </div>
-
-        <form method="POST" action="{{ route('filtrar') }}" id="form-id">
+        <form method="POST" action="{{ route('filtrar') }}" id="form-id" class="d-inline-block">
             {{ csrf_field() }}
             <?php
                 $datos = DB::table('formularios_aprobados')->select('categoria')->distinct()->get();
             ?>
-            <div class="col-md-4 mb-3">
+            <div class="d-inline-block col-md-5">
                 <p align="left">Filtrar por Categoría
                     <select
                         id="categoria"
@@ -41,7 +41,22 @@
                     </select>
                 </p>
             </div>
-            <div class="form-group mt-4">
+            <div class="d-inline-block form-group md-4">
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Buscar') }}
+                </button>
+            </div>
+        </form>
+        <form method="POST" action="{{ route('filtrarDescripcion') }}" id="form-escrito" class="d-inline-block">
+            {{ csrf_field() }}
+            <div class="d-inline-block col-md-8">
+                <p align="left">Búsqueda emprendimiento</p>
+                    <input type="text"
+                           name="descripcion"
+                           id="descripcion"
+                           placeholder="¿Qué tipo de emprendimiento busca?">
+            </div>
+            <div class="d-inline-block form-group">
                 <button type="submit" class="btn btn-primary">
                     {{ __('Buscar') }}
                 </button>

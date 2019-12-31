@@ -44,12 +44,19 @@ class MapaController extends Controller {
     }
 
     public function buscador(Request $request) {
-
         $datos = DB::table('formularios_aprobados')->where('categoria', $request->categoria)->get();
-            /*DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
-        instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, latitud, longitud
-        from formularios_aprobados where categoria = :categoria', ['categoria' => $request->categoria]);*/
+        Mapper::map(-23.6, -70.4, ['locate' => true, 'zoom' => 14, 'marker' => false]);
+        $this->generateInfoWindow($datos);
+        return view('Mapa/PruebaMapa');
+    }
 
+    public function buscarDescripcion(Request $request){
+        $datos = DB::table('formularios_aprobados')->where('descripcion', 'LIKE', '%'.$request->descripcion.'%')->get();
+        if($datos == ""){
+            dd("holi");
+            Session::flash('notFound', 'No se encontró una empresa con esa descripción');
+            return View::make('Mensajes');
+        }
         Mapper::map(-23.6, -70.4, ['locate' => true, 'zoom' => 14, 'marker' => false]);
         $this->generateInfoWindow($datos);
         return view('Mapa/PruebaMapa');
