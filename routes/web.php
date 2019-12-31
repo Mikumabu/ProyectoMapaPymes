@@ -62,7 +62,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('Administrador/PalabrasProhibidas','AdministradorController@palabrasProhibidas');
     Route::post('Administrador/PalabrasProhibidas', 'AdministradorController@ingresarInsulto')->name('ingresarInsulto');
 
+    Route::get('Administrador/HistorialRechazados','AdministradorController@historialRechazados');
+
     Route::get('formularios/export/', 'ExcelController@exportarAprobados')->name('exportarFormulario');
+
+    Route::get('Administrador/recuperar/{id}','AdministradorController@recuperarRechazado');
+    Route::get('formularios/borrar/', 'AdministradorController@borrarHistorial')->name('borrarHistorial');
 
 });
 
