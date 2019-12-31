@@ -25,7 +25,7 @@
             <?php
                 $datos = DB::table('formularios_aprobados')->select('categoria')->distinct()->get();
             ?>
-            <div class="d-inline-block col-md-5">
+            <div class="d-inline-block col-xs-12">
                 <p align="left">Filtrar por Categoría
                     <select
                         id="categoria"
@@ -49,12 +49,14 @@
         </form>
         <form method="POST" action="{{ route('filtrarDescripcion') }}" id="form-escrito" class="d-inline-block">
             {{ csrf_field() }}
-            <div class="d-inline-block col-md-8">
-                <p align="left">Búsqueda emprendimiento</p>
+            <div class="d-inline-block col-xs-5">
+                <p align="left">Búsqueda emprendimiento
                     <input type="text"
                            name="descripcion"
                            id="descripcion"
                            placeholder="¿Qué tipo de emprendimiento busca?">
+
+                </p>
             </div>
             <div class="d-inline-block form-group">
                 <button type="submit" class="btn btn-primary">
