@@ -52,12 +52,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('Administrador', 'AdministradorController@mostrarDatos');
 
     Route::get('Administrador/aceptar/{id}','AdministradorController@aceptar');
-    Route::get('Administrador/rechazar/{id}','AdministradorController@rechazar');
+    Route::delete('Administrador/rechazar/{id}','AdministradorController@rechazar')->name('administradorRechazar');
     Route::get('Administrador/editar/{id}','MapaController@editarMapa');
 
     Route::get('Administrador/Aprobados','AdministradorController@aprobados');
     Route::get('Administrador/editarAprobado/{id}','MapaController@editarMapaAdmin');
-    Route::get('Administrador/eliminar/{id}','AdministradorController@eliminar');
+    Route::delete('Administrador/eliminar/{id}','AdministradorController@eliminar')->name('administradorEliminar');
 
     Route::get('Administrador/PalabrasProhibidas','AdministradorController@palabrasProhibidas');
     Route::post('Administrador/PalabrasProhibidas', 'AdministradorController@ingresarInsulto')->name('ingresarInsulto');
