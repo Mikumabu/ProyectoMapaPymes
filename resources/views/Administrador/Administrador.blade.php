@@ -31,8 +31,7 @@
         <div class="container col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2>Solicitudes Pendientes
-                    </h2>
+                    <h2>Solicitudes Pendientes</h2>
 
                     <td>
                         <a href="/Administrador/Aprobados" class="btn btn-primary">
@@ -82,15 +81,41 @@
                                         Aceptar
                                     </a>
 
-                                    <button class="btn btn-danger" data-catid={{$formulario->id}} data-toggle="modal" data-target="#delete">
+                                    <a class="btn btn-danger" href="#rechazar{{$formulario->id}}"data-toggle="modal">
                                         Rechazar
-                                    </button>
+                                    </a>
 
                                     <a href="/Administrador/editar/{{$formulario->id}}" class="btn btn-primary">
                                         Detalles/Editar
                                     </a>
                                 </td>
                             </tr>
+                            <div class="modal modal-danger fade" id="rechazar{{$formulario->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title text-center" id="myModalLabel">Confirmación</h4>
+                                        </div>
+
+                                        <form action="{{route('administradorRechazar', ['id'=> $formulario->id])}}" method="post">
+                                            {{method_field('delete')}}
+                                            {{csrf_field()}}
+                                            <div class="modal-body">
+                                                <p class="text-center">
+                                                    ¿Está seguro de rechazar esta solicitud?
+                                                </p>
+                                                <input type="hidden" name="category_id" id="cat_id" value="">
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                                                <button type="submit" class="btn btn-warning">Sí</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     </tbody>
                 </table>
@@ -151,33 +176,6 @@
     </script>
 </html>
 
-<div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title text-center" id="myModalLabel">Confirmación</h4>
-            </div>
-
-                <form action="{{route('administradorRechazar','test')}}" method="post">
-                    {{method_field('delete')}}
-                    {{csrf_field()}}
-                    <div class="modal-body">
-                        <p class="text-center">
-                            ¿Está seguro de rechazar esta solicitud?
-                        </p>
-                        <input type="hidden" name="category_id" id="cat_id" value="">
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-warning">Sí</button>
-                    </div>
-                </form>
-
-        </div>
-    </div>
-</div>
 
 
 
