@@ -7,25 +7,13 @@ use DB;
 
 class AdministradorController extends Controller
 {
-    public function mostrarDatos(Request $request){
-
-        $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, formalizado, comuna, contacto, telefono, mail, descripcion  from formularios');
-
-        return view('Administrador/Administrador',compact('formularios', 'request'));
-
-    }
-
-    public function rechazar($id){
-
-        $formularios = DB::select('select mail from formularios where id = :id', ['id' => $id]);
-
-        foreach($formularios as $formulario){
-
-            $email = $formulario->mail;
-            $to_name = 'JC';
-            $to_email = $email;
-            $data = array('name'=>"Lamentamos informar que su solicitud a Mapas PYMES ha sido rechazada",
-                "body" => "Estimado, junto con saludar, le informamos que su Empresa no cumple con los requisitos
+    public function enviarCorreo($datos, $estado){
+        foreach($datos as $dato){
+            if($estado == 'rechazado'){
+                $to_name = 'JC';
+                $to_email = $dato->mail;
+                $data = array('name'=>"Lamentamos informar que su solicitud a Mapas PYMES ha sido rechazada",
+                    "body" => "Estimado, junto con saludar, le informamos que su Empresa no cumple con los requisitos
                            para ser figurar en el Mapa, estos pueden ser:
                            \n
                            a) Uso inapropiado u ofensivo del lenguaje.
@@ -36,19 +24,97 @@ class AdministradorController extends Controller
                            \n
                            Saludos cordiales.");
 
-            \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
-                $message->to($to_email, $to_name)
-                    ->subject('Solicitud Rechazada');
-                $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
-            });
+                \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)
+                        ->subject('Solicitud Rechazada');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                });
+                return;
+            }
+            if($estado == 'aceptado'){
+                $to_name = 'JC';
+                $to_email = $dato->mail;
+                $data = array('name'=>"¡Felicitaciones! Su Solicitud de ingresar a Mapa PYMES ha sido aceptada",
+                    "body" => "Estimado, 
+                           le informamos que su solicitud ha sido aceptada, ahora podrá visualizar su Empresa
+                           en http://proyectomapapymes.test/ con todos los datos ingresados.
+                           Saludos cordiales.");
 
+                \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)
+                        ->subject('Solicitud Aceptada');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                });
+            }
         }
+    }
+
+    public function mostrarDatos(Request $request){
+
+        $formularios = DB::table('formularios')->get();
+
+        return view('Administrador/Administrador',compact('formularios', 'request'));
+
+    }
+
+    public function rechazar($id){
+
+        $formularios = DB::select('select mail from formularios where id = :id', ['id' => $id]);
+        $this->enviarCorreo($formularios, 'rechazado');
+
+        $formulario = DB::table('formularios')->where('id', '=', $id)->first();
+
+        $nombreEmpresa = $formulario->nombre_empresa;
+        $rutEmpresa = $formulario->rut_empresa;
+        $queOfrece = $formulario->categoria;
+        $calle = $formulario->ubicacion;
+        $horario = $formulario->horario;
+        $facebook = $formulario->facebook;
+        $instagram = $formulario->instagram;
+        $url = $formulario->url;
+        $formalizado = $formulario->formalizado;
+        $comuna = $formulario->comuna;
+        $contacto = $formulario->contacto;
+        $telefono = $formulario->telefono;
+        $email = $formulario->mail;
+        $descripcion = $formulario->descripcion;
+        $icono = $formulario->icono;
+        $latitud = $formulario->latitud;
+        $longitud = $formulario->longitud;
+        $rutaImagen = $formulario->imagen;
+
+        DB::table('historial_rechazados')->insert([
+            'nombre_empresa' => $nombreEmpresa,
+            'rut_empresa' => $rutEmpresa,
+            'categoria' => $queOfrece,
+            'longitud' => $longitud,
+            'latitud' => $latitud,
+            'ubicacion' => $calle,
+            'horario' => $horario,
+            'facebook' => $facebook,
+            'instagram' => $instagram,
+            'url' => $url,
+            'formalizado' => $formalizado,
+            'comuna' => $comuna,
+            'contacto' => $contacto,
+            'telefono' => $telefono,
+            'mail' => $email,
+            'descripcion' => $descripcion,
+            'icono' => $icono,
+            'imagen' => $rutaImagen
+        ]);
 
 
-        $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
-        instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, icono, latitud, longitud, imagen
-        from formularios where id = :id', ['id' => $id]);
+        DB::table('formularios')->where('id', '=', $id)->delete();
+        return back()->with('exito2','Formulario rechazado correctamente');
+    }
 
+    public function rechazarMasa(Request $request){
+        $idArray = $request->input('id');
+        $emprendedor = DB::table("formularios")->whereIn('id', $idArray)->get();
+        $this->enviarCorreo($emprendedor, 'rechazado');
+
+        $formularios = DB::table('formularios')->whereIn('id', $idArray)->get();
         foreach($formularios as $formulario){
             $nombreEmpresa = $formulario->nombre_empresa;
             $rutEmpresa = $formulario->rut_empresa;
@@ -89,12 +155,8 @@ class AdministradorController extends Controller
                 'icono' => $icono,
                 'imagen' => $rutaImagen
             ]);
-
         }
-
-
-        DB::table('formularios')->where('id', '=', $id)->delete();
-        return back()->with('exito2','Formulario rechazado correctamente');
+        DB::table("formularios")->whereIn('id', $idArray)->delete();
     }
 
     public function aceptar($id){
@@ -102,7 +164,7 @@ class AdministradorController extends Controller
         $formularios = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
         instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, icono, latitud, longitud, imagen
         from formularios where id = :id', ['id' => $id]);
-
+        $this->enviarCorreo($formularios, 'aceptado');
         foreach($formularios as $formulario){
             $nombreEmpresa = $formulario->nombre_empresa;
             $rutEmpresa = $formulario->rut_empresa;
@@ -143,27 +205,62 @@ class AdministradorController extends Controller
                 'icono' => $icono,
                 'imagen' => $rutaImagen
             ]);
-
-            $to_name = 'JC';
-            $to_email = $email;
-            $data = array('name'=>"¡Felicitaciones! Su Solicitud de ingresar a Mapa PYMES ha sido aceptada",
-                "body" => "Estimado, 
-                           le informamos que su solicitud ha sido aceptada, ahora podrá visualizar su Empresa
-                           en http://proyectomapapymes.test/ con todos los datos ingresados.
-                           Saludos cordiales.");
-
-            \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
-                $message->to($to_email, $to_name)
-                    ->subject('Solicitud Aceptada');
-                $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
-            });
-
         }
 
         DB::table('formularios')->where('id', '=', $id)->delete();
 
         return back()->with('exito3','Formulario ingresado correctamente');
 
+    }
+
+    public function aceptarMasa(Request $request){
+        $idArray = $request->input('id');
+        $emprendedor = DB::table("formularios")->whereIn('id', $idArray)->get();
+        $this->enviarCorreo($emprendedor, 'aceptado');
+
+        $formularios = DB::table('formularios')->whereIn('id', $idArray)->get();
+        foreach($formularios as $formulario){
+            $nombreEmpresa = $formulario->nombre_empresa;
+            $rutEmpresa = $formulario->rut_empresa;
+            $queOfrece = $formulario->categoria;
+            $calle = $formulario->ubicacion;
+            $horario = $formulario->horario;
+            $facebook = $formulario->facebook;
+            $instagram = $formulario->instagram;
+            $url = $formulario->url;
+            $formalizado = $formulario->formalizado;
+            $comuna = $formulario->comuna;
+            $contacto = $formulario->contacto;
+            $telefono = $formulario->telefono;
+            $email = $formulario->mail;
+            $descripcion = $formulario->descripcion;
+            $icono = $formulario->icono;
+            $latitud = $formulario->latitud;
+            $longitud = $formulario->longitud;
+            $rutaImagen = $formulario->imagen;
+
+            DB::table('formularios_aprobados')->insert([
+                'nombre_empresa' => $nombreEmpresa,
+                'rut_empresa' => $rutEmpresa,
+                'categoria' => $queOfrece,
+                'longitud' => $longitud,
+                'latitud' => $latitud,
+                'ubicacion' => $calle,
+                'horario' => $horario,
+                'facebook' => $facebook,
+                'instagram' => $instagram,
+                'url' => $url,
+                'formalizado' => $formalizado,
+                'comuna' => $comuna,
+                'contacto' => $contacto,
+                'telefono' => $telefono,
+                'mail' => $email,
+                'descripcion' => $descripcion,
+                'icono' => $icono,
+                'imagen' => $rutaImagen
+            ]);
+        }
+        DB::table("formularios")->whereIn('id', $idArray)->delete();
     }
 
     public function aprobados(){
@@ -200,9 +297,7 @@ class AdministradorController extends Controller
 
     public function historialRechazados(){
 
-        $historial_rechazados = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook,
-        instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion, icono, latitud, longitud, imagen
-        from historial_rechazados');
+        $historial_rechazados = DB::table('historial_rechazados')->get();
 
         return view('Administrador/AdministradorHistorial',compact('historial_rechazados', 'request'));
     }

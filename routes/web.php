@@ -46,13 +46,14 @@ Route::post('/subir','FormularioController@subirArchivo')->name('subir');
 
 Route::group(['middleware' => 'auth'], function(){
 
-
 // ADMINISTRADOR
 
     Route::get('Administrador', 'AdministradorController@mostrarDatos');
 
     Route::get('Administrador/aceptar/{id}','AdministradorController@aceptar');
+    Route::get('Administrador/aceptarMasa','AdministradorController@aceptarMasa');
     Route::get('Administrador/rechazar/{id}','AdministradorController@rechazar');
+    Route::get('Administrador/rechazarMasa','AdministradorController@rechazarMasa');
     Route::get('Administrador/editar/{id}','MapaController@editarMapa');
 
     Route::get('Administrador/Aprobados','AdministradorController@aprobados');
