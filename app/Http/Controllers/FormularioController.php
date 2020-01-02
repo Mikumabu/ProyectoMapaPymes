@@ -90,6 +90,11 @@ class FormularioController extends Controller
             if($encontrado == true){
                 Session::flash('error2', 'Se encontró un insulto en la descripción');
                 return View::make('Mensajes');
+            }else{
+                if($palabraProhibida == $descripcion){
+                    Session::flash('error2', 'Se encontró un insulto en la descripción');
+                    return View::make('Mensajes');
+                }
             }
 
         }
