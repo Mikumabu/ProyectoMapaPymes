@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('Administrador/aceptar/{id}','AdministradorController@aceptar');
     Route::get('Administrador/aceptarMasa','AdministradorController@aceptarMasa');
-    Route::get('Administrador/rechazar/{id}','AdministradorController@rechazar')->name('administradorRechazar');
+    Route::delete('Administrador/rechazar/{id}','AdministradorController@rechazar')->name('administradorRechazar');
     Route::get('Administrador/rechazarMasa','AdministradorController@rechazarMasa');
     Route::get('Administrador/editar/{id}','MapaController@editarMapa');
 
