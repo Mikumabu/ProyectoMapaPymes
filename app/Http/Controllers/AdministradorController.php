@@ -287,11 +287,17 @@ class AdministradorController extends Controller
 
         $insulto = request()->insulto;
 
-        DB::table('palabras_prohibidas')->insert([
-            'insulto' => $insulto
-        ]);
+        if($insulto == null){
+            return back();
+        }else{
 
-        return back()->with('exito1','Insulto agregado correctamente');
+            DB::table('palabras_prohibidas')->insert([
+                'insulto' => $insulto
+            ]);
+
+            return back()->with('exito1','Insulto agregado correctamente');
+
+        }
 
     }
 
