@@ -20,7 +20,7 @@
                                                       id="nombreEmpresa"
                                                       placeholder="Ingrese Nombre Empresa">
                 </p>
-                <small class="nombre text-danger"></small>
+                <small id="error" class="nombre text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Rut Empresa <input type="search"
@@ -29,7 +29,7 @@
                                                    id="rutEmpresa"
                                                    placeholder="Ingrese Rut Empresa">
                 </p>
-                <small class="rut text-danger"></small>
+                <small id="error" class="rut text-danger"></small>
             </div>
 
             <div class="form-group">
@@ -60,8 +60,8 @@
                         <option value="Otras actividades de servicios">Otras actividades de servicios</option>
 
 
-                    </select></p>
-                <small class="text-danger">{{ $errors->first('queOfrece') }}</small>
+                    </select>
+                </p>
             </div>
 
 
@@ -72,7 +72,7 @@
                                                                      id="facebook"
                                                                      placeholder="Ingrese Link de Facebook Oficial">
                 </p>
-                <small class="facebook text-danger"></small>
+                <small id="error" class="facebook text-danger"></small>
             </div>
         </div>
         <div class="col-md-3">
@@ -83,7 +83,7 @@
                                                  id="calle"
                                                  placeholder="Ejemplo: Blumel 1552">
                 </p>
-                <small class="calle text-danger"></small>
+                <small id="error" class="calle text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Comuna <input type="search"
@@ -92,7 +92,7 @@
                                               id="comuna"
                                               placeholder="Ejemplo: Antofagasta">
                 </p>
-                <small class="comuna text-danger"></small>
+                <small id="error" class="comuna text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Horario de Atención <input type="search"
@@ -101,7 +101,7 @@
                                                           id="horario"
                                                           placeholder="Ejemplo: 9:00 a 15:00">
                 </p>
-                <small class="horario text-danger"></small>
+                <small id="error" class="horario text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">(Opcional) Página de Instagram <input type="search"
@@ -122,7 +122,7 @@
                         <option value="Si">Si</option>
                         <option value="No">No</option>
                     </select></p>
-                <small class="formalizado text-danger"></small>
+                <small id="error" class="formalizado text-danger"></small>
             </div>
         </div>
         <div class="col-md-3">
@@ -133,7 +133,7 @@
                                                      id="contacto"
                                                      placeholder="Ingrese un Contacto. Por Ejemplo: Juan Pérez">
                 </p>
-                <small class="contacto text-danger"></small>
+                <small id="error" class="contacto text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Teléfono <input type="search"
@@ -142,7 +142,7 @@
                                                 id="telefono"
                                                 placeholder="Ingrese un Teléfono">
                 </p>
-                <small class="telefono text-danger"></small>
+                <small id="error" class="telefono text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">Email <input type="search"
@@ -151,7 +151,7 @@
                                              id="email"
                                              placeholder="Ingrese un Email">
                 </p>
-                <small class="email text-danger"></small>
+                <small id="error" class="email text-danger"></small>
             </div>
             <div class="form-group">
                 <p align="left">(Opcional) Otro sitio web <input type="search"
@@ -160,7 +160,7 @@
                                                                       id="url"
                                                                       placeholder="Ingrese Link de web u otra red social"
                     ></p>
-                <small class="url text-danger"></small>
+                <small id="error" class="url text-danger"></small>
             </div>
         </div>
     </div>
@@ -176,7 +176,7 @@
                                                    style="width:100%; height:200px;"
                     ></textarea></p>
                 <div id="textarea_feedback"></div>
-                <small class="descripcion text-danger"></small>
+                <small id="error" class="descripcion text-danger"></small>
             </div>
         </div>
     </div>
@@ -235,27 +235,48 @@
             url:'Formulario',
             data: formData,
             success:function(data) {
+                $('#error').html("");
                 $('html, body').animate({ scrollTop: 0 }, 0);
                 $('div.flash-message').html(data);
                 document.getElementById("form-id").reset();
             },
             error: function(data){
                 $('html, body').animate({ scrollTop: 0 }, 0);
-                $('.nombre').text(data.responseJSON.errors.nombreEmpresa[0]);
-                $('.rut').text(data.responseJSON.errors.rutEmpresa[0]);
-                $('.calle').text(data.responseJSON.errors.calle[0]);
-                $('.comuna').text(data.responseJSON.errors.comuna[0]);
-                $('.horario').text(data.responseJSON.errors.horario[0]);
-                $('.contacto').text(data.responseJSON.errors.contacto[0]);
-                $('.telefono').text(data.responseJSON.errors.telefono[0]);
-                $('.email').text(data.responseJSON.errors.email[0]);
-                if(data.responseJSON.errors.facebook[0] != null){
+                $('#error').html("");
+                if(data.responseJSON.errors.nombreEmpresa != null){
+                    $('.nombre').text(data.responseJSON.errors.nombreEmpresa[0]);
+                }
+                if(data.responseJSON.errors.rutEmpresa != null){
+                    $('.rut').text(data.responseJSON.errors.rutEmpresa[0]);
+                }
+                if(data.responseJSON.errors.calle != null){
+                    $('.calle').text(data.responseJSON.errors.calle[0]);
+                }
+                if(data.responseJSON.errors.comuna != null){
+                    $('.comuna').text(data.responseJSON.errors.comuna[0]);
+                }
+                if(data.responseJSON.errors.horario != null){
+                    $('.horario').text(data.responseJSON.errors.horario[0]);
+                }
+                if(data.responseJSON.errors.contacto != null){
+                    $('.contacto').text(data.responseJSON.errors.contacto[0]);
+                }
+                if(data.responseJSON.errors.telefono != null){
+                    $('.telefono').text(data.responseJSON.errors.telefono[0]);
+                }
+                if(data.responseJSON.errors.email != null){
+                    $('.email').text(data.responseJSON.errors.email[0]);
+                }
+                if(data.responseJSON.errors.descripcion != null){
+                    $('.descripcion').text(data.responseJSON.errors.descripcion[0]);
+                }
+                if(data.responseJSON.errors.facebook != null){
                     $('.facebook').text(data.responseJSON.errors.facebook[0]);
                 }
-                if(data.responseJSON.errors.instagram[0] != null){
+                if(data.responseJSON.errors.instagram != null){
                     $('.instagram').text(data.responseJSON.errors.instagram[0]);
                 }
-                if(data.responseJSON.errors.instagram[0] != null){
+                if(data.responseJSON.errors.url != null){
                     $('.url').text(data.responseJSON.errors.url[0]);
                 }
             },
