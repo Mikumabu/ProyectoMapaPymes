@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 // ADMINISTRADOR
 
-    Route::get('Administrador', 'AdministradorController@mostrarDatos');
+    Route::get('Administrador', 'AdministradorController@mostrarDatos')->name('Administrador');
 
     Route::get('Administrador/aceptar/{id}','AdministradorController@aceptar');
     Route::get('Administrador/aceptarMasa','AdministradorController@aceptarMasa');

@@ -209,7 +209,7 @@ class AdministradorController extends Controller
 
         DB::table('formularios')->where('id', '=', $id)->delete();
 
-        return back()->with('exito3','Formulario ingresado correctamente');
+        return redirect()->route('Administrador')->with('exito3','Formulario ingresado correctamente');
 
     }
 

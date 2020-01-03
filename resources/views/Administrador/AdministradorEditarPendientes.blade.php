@@ -196,9 +196,15 @@
     <div class="form-row justify-content-center">
         <div class="col-md-3">
             <div class="form-group">
+                <a href="/Administrador/aceptar/{{$formularios->id}}" class="btn btn-success">
+                    Aceptar
+                </a>
                 <button type="submit" class="btn btn-primary">
                     {{ __('Actualizar Datos', compact($formularios->id)) }}
                 </button>
+                <a href="{{route('Administrador')}}" class="btn btn-danger">
+                    Regresar
+                </a>
             </div>
         </div>
     </div>
