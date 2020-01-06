@@ -44,6 +44,9 @@
                         <a href="/Administrador/HistorialRechazados" class="btn btn-primary">
                             Historial Rechazados
                         </a>
+                        <a href="/Administrador/AgregarAdministrador" class="btn btn-primary">
+                            Agregar Administrador
+                        </a>
                     </td>
 
                 </div>

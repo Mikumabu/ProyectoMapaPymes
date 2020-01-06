@@ -65,6 +65,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('Administrador/HistorialRechazados','AdministradorController@historialRechazados');
 
+    Route::get('Administrador/AgregarAdministrador','AdministradorController@ingresarDatosAdministrador');
+    Route::post('/NuevoAdministrador', 'AdministradorController@agregarAdministrador')->name('nuevoAdministrador');
+
     Route::get('formularios/export/', 'ExcelController@exportarAprobados')->name('exportarFormulario');
 
     Route::get('Administrador/recuperar/{id}','AdministradorController@recuperarRechazado');

@@ -271,7 +271,6 @@ class AdministradorController extends Controller
 
     public function eliminar($id){
 
-
         DB::table('formularios_aprobados')->where('id', '=', $id)->delete();
 
         return back()->with('exito2','Formulario eliminado correctamente');
@@ -370,6 +369,16 @@ class AdministradorController extends Controller
 
         return back()->with('exito1','Historial eliminado');
 
+    }
+
+    public function ingresarDatosAdministrador(){
+
+        return view('Administrador/AgregarAdministrador');
+    }
+
+    public function agregarAdministrador(Request $request){
+
+        dd("Hola JC");
     }
 }
 
