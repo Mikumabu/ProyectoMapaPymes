@@ -1,3 +1,35 @@
+/* Pantallas de PC */
+
+@media only screen and (max-width:1366px){
+    .barranav .barra{
+        display:inline;
+    }
+
+    .barranav a{
+        float: right;
+        text-decoration: none;
+        font-size: 15px;
+        padding: 8px 10px;
+        background-color:white;
+        color:blue;
+    }
+}
+
+/* Pantallas de smartphone */
+
+@media only screen and (max-width:550px){
+    .barranav a{
+        visibility: hidden;
+    }
+    .barranav:hover a{
+        visibility: visible;
+    }
+    .barra::before{
+        content: "\f0c9";
+        font-family: "Font Awesome 5 Free";
+    }
+}
+
 .barranav{
     color: white;
     background-color:blue;
@@ -6,14 +38,7 @@
     height:38px;
     width:100%;
 }
-.barranav a{
-    float: right;
-    text-decoration: none;
-    font-size: 15px;
-    padding: 8px 10px;
-    background-color:white;
-    color:blue;
-}
+
 
 .barranav a:hover{
     background-color:blue;
