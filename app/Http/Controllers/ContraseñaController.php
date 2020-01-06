@@ -31,7 +31,7 @@ class ContraseñaController extends Controller
                 $to_name = 'JC';
                 $to_email = $request->correo;
                 $data = array('name'=>"Código Verificador",
-                    "body" => "Su Código es xyzUSQAI");
+                    "body" => "Su Código es as125de2sUSQAI");
 
                 \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                     $message->to($to_email, $to_name)
@@ -44,7 +44,7 @@ class ContraseñaController extends Controller
                 $to_name = 'JC';
                 $to_email = $request->correo;
                 $data = array('name'=>"Código Verificador",
-                    "body" => "Su Código es asdUSQAI");
+                    "body" => "Su Código es as4s1e796dUSQAI");
 
                 \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                     $message->to($to_email, $to_name)
@@ -57,7 +57,7 @@ class ContraseñaController extends Controller
                 $to_name = 'JC';
                 $to_email = $request->correo;
                 $data = array('name'=>"Código Verificador",
-                    "body" => "Su Código es qweUSQAI");
+                    "body" => "Su Código es qw1e54np74aeUSQAI");
 
                 \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                     $message->to($to_email, $to_name)
@@ -70,7 +70,7 @@ class ContraseñaController extends Controller
                 $to_name = 'JC';
                 $to_email = $request->correo;
                 $data = array('name'=>"Código Verificador",
-                    "body" => "Su Código es jklUSQAI");
+                    "body" => "Su Código es 2asd4jk96lUSQAI");
 
                 \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                     $message->to($to_email, $to_name)
@@ -83,7 +83,7 @@ class ContraseñaController extends Controller
                 $to_name = 'JC';
                 $to_email = $request->correo;
                 $data = array('name'=>"Código Verificador",
-                    "body" => "Su Código es bnmUSQAI");
+                    "body" => "Su Código es b79n54fk2mUSQAI");
 
                 \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                     $message->to($to_email, $to_name)
@@ -108,7 +108,7 @@ class ContraseñaController extends Controller
 
         if($existeCorreo != null){
 
-            if($request->codigo == "xyzUSQAI" | $request->codigo == "asdUSQAI"| $request->codigo == "qweUSQAI"| $request->codigo == "jklUSQAI"| $request->codigo == "bnmUSQAI"){
+            if($request->codigo == "as125de2sUSQAI" | $request->codigo == "as4s1e796dUSQAI"| $request->codigo == "qw1e54np74aeUSQAI"| $request->codigo == "2asd4jk96lUSQAI"| $request->codigo == "b79n54fk2mUSQAI"){
 
                 if($request->contraseña == $request->contraseñaConfirmar){
 
