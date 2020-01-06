@@ -1,5 +1,13 @@
-body{
-    max-width:1340px;
+/* Pantallas de PC */
+
+@media only screen and (max-width:1366px){
+
+}
+
+/* Pantallas de smartphone */
+
+@media only screen and (max-width:550px){
+
 }
 
 #presentacion{
@@ -7,9 +15,9 @@ body{
 }
 
 #map{
-    width:1000px;
-    height:500px;
-    margin-left: 13%;
+    width: 70%;
+    height: 65%;
+    margin: 0 auto;
 }
 
 textarea {
