@@ -9,6 +9,8 @@
     <br>
 </div>
 
+<h4> * Se ha enviado un Código Verificador a su Correo </h4>
+
 <form method="POST" action="{{ route('nuevaContraseña') }}" enctype="multipart/form-data" id="form-id">
     {{ csrf_field() }}
     <div class="form-row justify-content-center">

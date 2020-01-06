@@ -17,7 +17,6 @@ class ContraseñaController extends Controller
 
     public function generarCodigo(Request $request){
 
-        //VALIDAR QUE EL CORREO EXISTA
 
         $validarCorreo = $request->correo;
 
@@ -26,17 +25,73 @@ class ContraseñaController extends Controller
 
         if($existeCorreo != null){
 
-            $to_name = 'JC';
-            $to_email = $request->correo;
-            $data = array('name'=>"Código Verificador",
-                "body" => "Su Código es xyzUSQAI");
+            $numero = rand(1,5);
 
-            \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
-                $message->to($to_email, $to_name)
-                    ->subject('Cambiar Contraseña');
-                $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
-            });
-            return view('Contraseña/CambiarContraseña');
+            if($numero == 1){
+                $to_name = 'JC';
+                $to_email = $request->correo;
+                $data = array('name'=>"Código Verificador",
+                    "body" => "Su Código es xyzUSQAI");
+
+                \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)
+                        ->subject('Cambiar Contraseña');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                });
+                return view('Contraseña/CambiarContraseña');
+            }
+            if($numero == 2){
+                $to_name = 'JC';
+                $to_email = $request->correo;
+                $data = array('name'=>"Código Verificador",
+                    "body" => "Su Código es asdUSQAI");
+
+                \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)
+                        ->subject('Cambiar Contraseña');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                });
+                return view('Contraseña/CambiarContraseña');
+            }
+            if($numero == 3){
+                $to_name = 'JC';
+                $to_email = $request->correo;
+                $data = array('name'=>"Código Verificador",
+                    "body" => "Su Código es qweUSQAI");
+
+                \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)
+                        ->subject('Cambiar Contraseña');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                });
+                return view('Contraseña/CambiarContraseña');
+            }
+            if($numero == 4){
+                $to_name = 'JC';
+                $to_email = $request->correo;
+                $data = array('name'=>"Código Verificador",
+                    "body" => "Su Código es jklUSQAI");
+
+                \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)
+                        ->subject('Cambiar Contraseña');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                });
+                return view('Contraseña/CambiarContraseña');
+            }
+            if($numero == 5){
+                $to_name = 'JC';
+                $to_email = $request->correo;
+                $data = array('name'=>"Código Verificador",
+                    "body" => "Su Código es bnmUSQAI");
+
+                \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)
+                        ->subject('Cambiar Contraseña');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                });
+                return view('Contraseña/CambiarContraseña');
+            }
 
         }
 
@@ -53,26 +108,26 @@ class ContraseñaController extends Controller
 
         if($existeCorreo != null){
 
-            if($request->codigo == "xyzUSQAI" | $request->codigo == "asdUSQAI"| $request->codigo == "qweUSQAI"){
+            if($request->codigo == "xyzUSQAI" | $request->codigo == "asdUSQAI"| $request->codigo == "qweUSQAI"| $request->codigo == "jklUSQAI"| $request->codigo == "bnmUSQAI"){
 
                 if($request->contraseña == $request->contraseñaConfirmar){
 
                     $contraseña = \Hash::make($request->contraseña);
                     DB::table('users')->where('email', $request->correo)->update(['password' => $contraseña]);
 
-                    dd("Contraseña Actualizada");
+                    return back()->with('exito1','Contraseña Actualizada');
 
                 }
 
-                dd('ERROR: Contraseñas Distintas');
+                return back()->with('error3','ERROR: Confirme bien la Contraseña');
 
             }
 
-            dd("ERROR: Código Incorrecto");
+            return back()->with('error2','ERROR: Código Incorrecto');
 
         }
 
-        dd("ERROR: El Correo no Existe");
+        return back()->with('error1','ERROR: El Correo no Existe');
 
     }
 
