@@ -75,6 +75,12 @@ Route::group(['middleware' => 'auth'], function(){
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
+// CAMBIAR CONTRASEÑA
+
+Route::get('/recuperarContraseña', 'ContraseñaController@menuRecuperar')->name('recuperarContraseña');
+Route::post('Contraseña', 'ContraseñaController@generarCodigo')->name('codigoContraseña');
+Route::post('NuevaContraseña', 'ContraseñaController@nuevaContraseña')->name('nuevaContraseña');
+
 
 
 
