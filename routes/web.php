@@ -77,9 +77,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // CAMBIAR CONTRASEÑA
 
-Route::get('/recuperarContraseña', 'ContraseñaController@menuRecuperar')->name('recuperarContraseña');
-Route::post('Contraseña', 'ContraseñaController@generarCodigo')->name('codigoContraseña');
-Route::post('NuevaContraseña', 'ContraseñaController@nuevaContraseña')->name('nuevaContraseña');
+Route::get('/RecuperarContraseña', 'ContraseñaController@menuRecuperar')->name('recuperarContraseña');
+Route::post('/Contraseña', 'ContraseñaController@generarCodigo')->name('codigoContraseña');
+
+Route::get('/Contraseña', function () {
+    return view('Contraseña/CambiarContraseña');
+});
+
+Route::post('/NuevaContraseña', 'ContraseñaController@nuevaContraseña')->name('nuevaContraseña');
+
+
 
 
 
