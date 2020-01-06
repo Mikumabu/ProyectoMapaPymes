@@ -57,8 +57,8 @@ class ContraseñaController extends Controller
 
                 if($request->contraseña == $request->contraseñaConfirmar){
 
-                    $request->contraseña = \Hash::make($request->input('password'));
-                    DB::table('users')->where('email', $request->correo)->update(['password' => $request->contraseña]);
+                    $contraseña = \Hash::make($request->contraseña);
+                    DB::table('users')->where('email', $request->correo)->update(['password' => $contraseña]);
 
                     dd("Contraseña Actualizada");
 
