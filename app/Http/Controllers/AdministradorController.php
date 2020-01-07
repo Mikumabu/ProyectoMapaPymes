@@ -378,7 +378,41 @@ class AdministradorController extends Controller
 
     public function agregarAdministrador(Request $request){
 
-        dd("Hola JC");
+        if($request->nombre != null && $request->correo != null && $request->correo != null && $request->contraseñaConfirmar != null){
+
+            if($request->contraseña == $request->contraseñaConfirmar){
+
+                $contraseña = \Hash::make($request->contraseña);
+
+                DB::table('users')->insert([
+                    'name' => $request->nombre,
+                    'email' => $request->correo,
+                    'password' => $contraseña
+                ]);
+
+                $to_name = 'JC';
+                $to_email = $request->correo;
+                $data = array('name'=>"¡Felicitaciones! Ha sido ingresado como Administrador",
+                    "body" => "Estimado, 
+                           le informamos que ha sido registrado como Administrador de Mapas Pymes, ahora tendrá
+                           acceso a toda la configuración del Sitio Web.");
+
+                \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)
+                        ->subject('Administrador Registrado');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                });
+
+                return back()->with('exito1','Administrador ingresado correctamente');
+
+            }
+
+            return back()->with('error2','ERROR: Las Contraseñas deben ser iguales');
+
+        }
+
+        return back()->with('error1','ERROR: Debe completar todos los campos');
+
     }
 }
 
