@@ -20,50 +20,53 @@
         <div id="presentacion">
             Este mapa contiene las PYMES (Pequeñas y medianas empresas) del país <a href="{{ route('formulario') }}">Ingrese su PYME</a>
         </div>
-        <form method="POST" action="{{ route('filtrar') }}" id="form-id" class="d-inline-block">
-            {{ csrf_field() }}
-            <?php
-                $datos = DB::table('formularios_aprobados')->select('categoria')->distinct()->get();
-            ?>
-            <div class="d-inline-block col-xs-12">
-                <p align="left">Filtrar por Categoría
-                    <select
-                        id="categoria"
-                        name="categoria"
-                        class="form-control"
-                        required>
-                        <option value="">Seleccione una Categoría</option>
-                        @foreach($datos as $dato)
-                            <option value="{{ $dato->categoria }}">
-                                {{ $dato->categoria }}
-                            </option>
-                        @endforeach
-                    </select>
-                </p>
+        <div class="row">
+            <div class="col-sm-3 m-auto">
+                <form method="POST" action="{{ route('filtrar') }}" id="form-id" class="d-inline">
+                    {{ csrf_field() }}
+                    <?php
+                        $datos = DB::table('formularios_aprobados')->select('categoria')->distinct()->get();
+                    ?>
+                    <p>Filtrar por Categoría
+                        <select
+                                id="categoria"
+                                name="categoria"
+                                class="form-control"
+                                required>
+                            <option value="">Seleccione una Categoría</option>
+                            @foreach($datos as $dato)
+                                <option value="{{ $dato->categoria }}">
+                                    {{ $dato->categoria }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </p>
+                    <div class="d-inline">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Buscar por categoría') }}
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="d-inline-block form-group md-4">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Buscar') }}
-                </button>
-            </div>
-        </form>
-        <form method="POST" action="{{ route('filtrarDescripcion') }}" id="form-escrito" class="d-inline-block">
-            {{ csrf_field() }}
-            <div class="d-inline-block col-xs-5">
-                <p align="left">Búsqueda emprendimiento
-                    <input type="text"
-                           name="descripcion"
-                           id="descripcion"
-                           placeholder="¿Qué tipo de emprendimiento busca?">
+            <div class ="col-sm-3 m-auto">
+                <form method="POST" action="{{ route('filtrarDescripcion') }}" id="form-escrito" class="d-inline">
+                    {{ csrf_field() }}
+                        <p>Búsqueda emprendimiento
+                            <input type="text"
+                                   class="form-control"
+                                   name="descripcion"
+                                   id="descripcion"
+                                   placeholder="¿Qué tipo de emprendimiento busca?">
 
-                </p>
+                        </p>
+                    <div class="d-inline">
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Buscar por descripción') }}
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="d-inline-block form-group">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Buscar') }}
-                </button>
-            </div>
-        </form>
+        </div>
         <div>
             <br>
         </div>

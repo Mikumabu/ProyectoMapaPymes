@@ -13,7 +13,7 @@
     {{ csrf_field() }}
     <div class="form-row justify-content-center">
         <div class="col-md-3">
-            <div class="form-group">
+            <div class="md-form">
                 <p align="left">Nombre Empresa <input type="text"
                                                       name="nombreEmpresa"
                                                       class="form-control"
@@ -23,7 +23,7 @@
                 <small id="error" class="nombre text-danger"></small>
             </div>
             <div class="form-group">
-                <p align="left">Rut Empresa <input type="search"
+                <p align="left">Rut Empresa <input type="text"
                                                    name="rutEmpresa"
                                                    class="form-control"
                                                    id="rutEmpresa"
@@ -66,7 +66,7 @@
 
 
             <div class="form-group">
-                <p align="left">(Opcional) Página de Facebook <input type="search"
+                <p align="left">(Opcional) Página de Facebook <input type="text"
                                                                      name="facebook"
                                                                      class="form-control"
                                                                      id="facebook"
@@ -77,7 +77,7 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <p align="left">Dirección <input type="search"
+                <p align="left">Dirección <input type="text"
                                                  name="calle"
                                                  class="form-control"
                                                  id="calle"
@@ -86,7 +86,7 @@
                 <small id="error" class="calle text-danger"></small>
             </div>
             <div class="form-group">
-                <p align="left">Comuna <input type="search"
+                <p align="left">Comuna <input type="text"
                                               name="comuna"
                                               class="form-control"
                                               id="comuna"
@@ -95,7 +95,7 @@
                 <small id="error" class="comuna text-danger"></small>
             </div>
             <div class="form-group">
-                <p align="left">Horario de Atención <input type="search"
+                <p align="left">Horario de Atención <input type="text"
                                                           name="horario"
                                                           class="form-control"
                                                           id="horario"
@@ -104,7 +104,7 @@
                 <small id="error" class="horario text-danger"></small>
             </div>
             <div class="form-group">
-                <p align="left">(Opcional) Página de Instagram <input type="search"
+                <p align="left">(Opcional) Página de Instagram <input type="text"
                                                                       name="instagram"
                                                                       class="form-control"
                                                                       id="instagram"
@@ -127,7 +127,7 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <p align="left">Representante <input type="search"
+                <p align="left">Representante <input type="text"
                                                      name="contacto"
                                                      class="form-control"
                                                      id="contacto"
@@ -136,7 +136,7 @@
                 <small id="error" class="contacto text-danger"></small>
             </div>
             <div class="form-group">
-                <p align="left">Teléfono <input type="search"
+                <p align="left">Teléfono <input type="text"
                                                 name="telefono"
                                                 class="form-control"
                                                 id="telefono"
@@ -145,7 +145,7 @@
                 <small id="error" class="telefono text-danger"></small>
             </div>
             <div class="form-group">
-                <p align="left">Email <input type="search"
+                <p align="left">Email <input type="text"
                                              name="email"
                                              class="form-control"
                                              id="email"
@@ -154,7 +154,7 @@
                 <small id="error" class="email text-danger"></small>
             </div>
             <div class="form-group">
-                <p align="left">(Opcional) Otro sitio web <input type="search"
+                <p align="left">(Opcional) Otro sitio web <input type="text"
                                                                       name="url"
                                                                       class="form-control"
                                                                       id="url"
@@ -185,8 +185,10 @@
             <label for="archivo"><b>Archivo: </b></label><br>
             <input type="file" name="archivo" required>
     </div>
-
-    <div class="form-group">
+    <div>
+        <br>
+    </div>
+    <div class="form-row justify-content-center">
         Por último, confirme la dirección de su empresa en el mapa
         <br>
     </div>
