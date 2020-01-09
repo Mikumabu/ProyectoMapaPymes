@@ -5,7 +5,7 @@
         display:inline;
     }
 
-    .barranav a{
+    .barra a{
         float: right;
         text-decoration: none;
         font-size: 15px;
@@ -13,20 +13,30 @@
         background-color:white;
         color:blue;
     }
+
+    .barDropdown{
+        display:none;
+    }
 }
 
 /* Pantallas de smartphone */
 
 @media only screen and (max-width:550px){
-    .barranav a{
-        visibility: hidden;
+    .barranav .barDropdown{
+        display: inline;
     }
-    .barranav:hover a{
-        visibility: visible;
+
+    .barra a{
+        display: none;
     }
-    .barra::before{
-        content: "\f0c9";
-        font-family: "Font Awesome 5 Free";
+
+    .barDropdown .opcion a{
+        float:right;
+        text-decoration: none;
+        font-size: 15px;
+        padding: 8px 10px;
+        color:blue;
+        width:100%;
     }
 }
 
@@ -40,7 +50,7 @@
 }
 
 
-.barranav a:hover{
+.barranav .barra a:hover{
     background-color:blue;
     color:white;
 }

@@ -20,7 +20,36 @@
                     <a href="{{ route('register') }}">Register</a>
                 @endif
             @endauth
-                <a href="{{ url('/Mapa') }}">Home</a>
+                <a href="{{ url('') }}">Home</a>
         @endif
+    </div>
+    <div class="barDropdown">
+        <div class="opcion">
+            <a href="{{ url('') }}">Home</a>
+        </div>
+        @if(Route::has('login'))
+            @auth
+                <div class="opcion">
+                    <a href="{{ url('/Administrador') }}">  Panel Administración</a>
+                </div>
+                <div class="opcion">
+                    <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                    </a>
+                </div>
+                <div class="opcion">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                    </form>
+                </div>
+            @else
+                <div class="opcion">
+                    <a href="{{ route('login') }}">Login</a>
+                </div>
+            @endauth
+        @endif
+
     </div>
 </div>
