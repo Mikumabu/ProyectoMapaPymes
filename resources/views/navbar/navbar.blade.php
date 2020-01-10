@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{asset('/css/navbar.css')}}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <div class="barranav">
-    Mapa PYMES
+    #VitrineaEmprendedores
     <div class="barra">
         @if (Route::has('login'))
             @auth
@@ -21,6 +21,7 @@
                 @endif
             @endauth
                 <a href="{{ url('') }}">Home</a>
+                <a href="{{ route('formulario') }}">¿Eres emprendedor? Pon tu vitrina acá</a>
         @endif
     </div>
     <div class="barDropdown">
