@@ -111,7 +111,7 @@ class MapaController extends Controller {
                          width=\"25\" height=\"25\"></a>", "", $datosMapa);
             }
             Mapper::informationWindow($latitud, $longitud, $datosMapa,
-                ['maxWidth' => 300, 'marker' => true, 'icon' => $icono]);
+                ['maxWidth' => 300, 'marker' => true, 'icon' => $icono, 'autoClose' => true]);
         }
     }
 }
