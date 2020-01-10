@@ -31,9 +31,36 @@
                            name="descripcion"
                            id="descripcion"
                            placeholder="¿Qué tipo de emprendimiento busca?">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="col-sm-3 m-auto">
+                <form method="POST" action="{{ route('filtrar') }}" id="form-id" class="d-inline">
+                    {{ csrf_field() }}
+                    <?php
+                    $datos = DB::table('formularios_aprobados')->select('categoria')->distinct()->get();
+                    ?>
+                    <p>Filtrar por Categoría
+                        <select
+                                id="categoria"
+                                name="categoria"
+                                class="form-control"
+                                required>
+                            <option value="">Seleccione una Categoría</option>
+                            @foreach($datos as $dato)
+                                <option value="{{ $dato->categoria }}">
+                                    {{ $dato->categoria }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </p>
+                    <div class="d-inline">
                         <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-search"></i>
+                            {{ __('Buscar por categoría') }}
                         </button>
+                    </div>
                 </form>
             </div>
         </div>
