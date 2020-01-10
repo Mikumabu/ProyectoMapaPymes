@@ -31,14 +31,34 @@
                 </p>
                 <small id="error" class="rut text-danger"></small>
             </div>
+            <div class="form-group">
+                <p align="left">¿Emites factura?
+                    <select id="formalizado"
+                            name="formalizado"
+                            class="form-control"
+                            required>
+
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                    </select></p>
+                <small id="error" class="formalizado text-danger"></small>
+            </div>
 
             <div class="form-group">
+                <p align="left">(Opcional) Página de Facebook <input type="text"
+                                                                     name="facebook"
+                                                                     class="form-control"
+                                                                     id="facebook"
+                                                                     placeholder="Ingrese Link de Facebook Oficial">
+                </p>
+                <small id="error" class="facebook text-danger"></small>
+            </div>
+            <div class="form-group">
                 <p align="left">Giro <select
-                        id="queOfrece"
-                        name="queOfrece"
-                        class="form-control"
-                        required>
-
+                            id="queOfrece"
+                            name="queOfrece"
+                            class="form-control"
+                            required>
                         <option value="Agricultura, ganadería, silvicultura y pesca">Agricultura, ganadería, silvicultura y pesca</option>
                         <option value="Explotación de minas y canteras">Explotación de minas y canteras</option>
                         <option value="Industria manufacturera">Industria manufacturera</option>
@@ -58,21 +78,8 @@
                         <option value="Actividades de atención de la salud humana y de asistencia social">Actividades de atención de la salud humana y de asistencia social</option>
                         <option value="Actividades artísticas, de entretenimiento y recreativas">Actividades artísticas, de entretenimiento y recreativas</option>
                         <option value="Otras actividades de servicios">Otras actividades de servicios</option>
-
-
                     </select>
                 </p>
-            </div>
-
-
-            <div class="form-group">
-                <p align="left">(Opcional) Página de Facebook <input type="text"
-                                                                     name="facebook"
-                                                                     class="form-control"
-                                                                     id="facebook"
-                                                                     placeholder="Ingrese Link de Facebook Oficial">
-                </p>
-                <small id="error" class="facebook text-danger"></small>
             </div>
         </div>
         <div class="col-md-3">
@@ -112,17 +119,21 @@
                     ></p>
                 <small class="instagram text-danger"></small>
             </div>
-            <div class="form-group">
-                <p align="left">¿Factura? <select
-                            id="formalizado"
-                            name="formalizado"
-                            class="form-control"
-                            required>
-
-                        <option value="Si">Si</option>
-                        <option value="No">No</option>
-                    </select></p>
-                <small id="error" class="formalizado text-danger"></small>
+            <div class="form-row justify-content-center">
+                <div class="col">
+                    <div class="form-group">
+                        <p align="left">Descripción de la empresa <textarea
+                                    name="descripcion"
+                                    class="form-control"
+                                    id="descripcion"
+                                    placeholder="Describa cómo es su empresa"
+                                    maxlength="300"
+                                    style="width:100%; height:200px;"
+                            ></textarea></p>
+                        <div id="textarea_feedback"></div>
+                        <small id="error" class="descripcion text-danger"></small>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-3">
@@ -162,34 +173,25 @@
                     ></p>
                 <small id="error" class="url text-danger"></small>
             </div>
-        </div>
-    </div>
-    <div class="form-row justify-content-center">
-        <div class="col-md-4">
             <div class="form-group">
-                <p align="left">Descripción de la empresa <textarea
-                                                   name="descripcion"
-                                                   class="form-control"
-                                                   id="descripcion"
-                                                   placeholder="Describa cómo es su empresa"
-                                                   maxlength="300"
-                                                   style="width:100%; height:200px;"
-                    ></textarea></p>
-                <div id="textarea_feedback"></div>
-                <small id="error" class="descripcion text-danger"></small>
+                <label for="archivo">
+                    <p align="left">
+                        Sube tu imagen o logo:
+                    </p>
+                </label>
+                <input type="file" name="archivo" required>
             </div>
         </div>
     </div>
 
-    <div class="form-row justify-content-center">
-            <label for="archivo"><b>Archivo: </b></label><br>
-            <input type="file" name="archivo" required>
-    </div>
     <div>
         <br>
     </div>
-    <div class="form-row justify-content-center">
-        Por último, confirme la dirección de su empresa en el mapa
+    <div class="form-row justify-content-center" style="font-size: 20px; color:red;">
+        ¡Ya casi! Confirma la dirección de tu Emprendimiento en el mapa.
+            <br>
+    </div>
+    <div>
         <br>
     </div>
     <div id="map">
