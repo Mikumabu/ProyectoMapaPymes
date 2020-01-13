@@ -202,16 +202,39 @@
     <div>
         <br>
     </div>
+
     <div class="form-row justify-content-center">
         <div class="col-md-3">
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Ingresar Datos') }}
-                </button>
+
+                <a class="btn btn-danger" href="#edit"data-toggle="modal">
+                    Ingresar Datos
+                </a>
+
+                <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">¿Está listo para enviar?</h4>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">{{ __('Enviar') }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+
 </form>
+
+
+
+
+
 
 <script>
     $(document).ready(function() {
