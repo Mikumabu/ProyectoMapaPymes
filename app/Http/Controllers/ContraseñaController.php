@@ -89,8 +89,6 @@ class ContraseñaController extends Controller
         return back()->with('error2','ERROR: Código Incorrecto');
 
 
-        return back()->with('error1','ERROR: El Correo no corresponde');
-
     }
 
 }
