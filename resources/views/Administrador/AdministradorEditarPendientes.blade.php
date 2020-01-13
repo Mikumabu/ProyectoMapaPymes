@@ -197,7 +197,7 @@
         <div class="col-md-3">
             <div class="form-group">
                 <a href="/Administrador/aceptar/{{$formularios->id}}" class="btn btn-success">
-                    Aceptar
+                    Aprobar Formulario
                 </a>
                 <button type="submit" class="btn btn-primary">
                     {{ __('Actualizar Datos', compact($formularios->id)) }}

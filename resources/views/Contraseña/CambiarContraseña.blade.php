@@ -9,23 +9,13 @@
     <br>
 </div>
 
-<h4> * Se ha enviado un Código Verificador a su Correo </h4>
+<div class="alert alert-danger alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>* Se ha enviado un Código Verificador a su Correo</strong>
+</div>
 
 <form method="POST" action="{{ route('nuevaContraseña') }}" enctype="multipart/form-data" id="form-id">
     {{ csrf_field() }}
-    <div class="form-row justify-content-center">
-        <div class="col-md-3">
-            <div class="form-group">
-                <p align="left">Correo Electrónico <input type="search"
-                                                          name="correo"
-                                                          class="form-control"
-                                                          id="correo"
-                                                          placeholder="Ingrese su Correo Electrónico">
-                </p>
-                <small id="error" class="contacto text-danger"></small>
-            </div>
-        </div>
-    </div>
 
     <div class="form-row justify-content-center">
         <div class="col-md-3">
