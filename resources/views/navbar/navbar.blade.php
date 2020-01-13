@@ -1,56 +1,56 @@
 <link rel="stylesheet" href="{{asset('/css/navbar.css')}}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <div class="barranav">
-    #VitrineaEmprendedores
-    <div class="barra">
-        @if (Route::has('login'))
-            @auth
+    <img id="banner" src="https://picturebooksummit.com/wp-content/uploads/2017/05/PBSummit-1500x150.jpg">
+</div>
+<div class="barra">
+    @if (Route::has('login'))
+        @auth
+            <a href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <a href="{{ url('/Administrador') }}">  Panel Administración</a>
+        @else
+            <a href="{{ route('login') }}">Login</a>
+            @if (Route::has('register'))
+                <a href="{{ route('register') }}">Register</a>
+            @endif
+        @endauth
+        <a href="{{ url('') }}">Home</a>
+        <a href="{{ route('formulario') }}">¿Eres emprendedor? Pon tu vitrina acá</a>
+    @endif
+</div>
+<div class="barDropdown">
+    <div class="opcion">
+        <a href="{{ url('') }}">Home</a>
+    </div>
+    @if(Route::has('login'))
+        @auth
+            <div class="opcion">
+                <a href="{{ url('/Administrador') }}">  Panel Administración</a>
+            </div>
+            <div class="opcion">
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
                 </a>
+            </div>
+            <div class="opcion">
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
-                <a href="{{ url('/Administrador') }}">  Panel Administración</a>
-            @else
+            </div>
+        @else
+            <div class="opcion">
                 <a href="{{ route('login') }}">Login</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
-                <a href="{{ url('') }}">Home</a>
-                <a href="{{ route('formulario') }}">¿Eres emprendedor? Pon tu vitrina acá</a>
-        @endif
-    </div>
-    <div class="barDropdown">
-        <div class="opcion">
-            <a href="{{ url('') }}">Home</a>
-        </div>
-        @if(Route::has('login'))
-            @auth
-                <div class="opcion">
-                    <a href="{{ url('/Administrador') }}">  Panel Administración</a>
-                </div>
-                <div class="opcion">
-                    <a href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                    </a>
-                </div>
-                <div class="opcion">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                    </form>
-                </div>
-            @else
-                <div class="opcion">
-                    <a href="{{ route('login') }}">Login</a>
-                </div>
-            @endauth
-        @endif
+            </div>
+        @endauth
+    @endif
 
-    </div>
 </div>

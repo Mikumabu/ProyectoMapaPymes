@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <div class ="col-sm-3 m-auto">
-                <form method="POST" action="{{ route('filtrarDescripcion') }}" id="form-escrito" class="d-inline">
+                <form method="POST" action="{{ route('filtrarDescripcion') }}" id="form-escrito" class="form-inline">
                     {{ csrf_field() }}
                     <input type="text"
                            class="form-control"
@@ -37,30 +37,26 @@
                 </form>
             </div>
             <div class="col-sm-3 m-auto">
-                <form method="POST" action="{{ route('filtrar') }}" id="form-id" class="d-inline">
+                <form method="POST" action="{{ route('filtrar') }}" id="form-id" class="form-inline">
                     {{ csrf_field() }}
                     <?php
                     $datos = DB::table('formularios_aprobados')->select('categoria')->distinct()->get();
                     ?>
-                    <p>Filtrar por Categoría
-                        <select
-                                id="categoria"
-                                name="categoria"
-                                class="form-control"
-                                required>
-                            <option value="">Seleccione una Categoría</option>
-                            @foreach($datos as $dato)
-                                <option value="{{ $dato->categoria }}">
-                                    {{ $dato->categoria }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </p>
-                    <div class="d-inline">
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('Buscar por categoría') }}
-                        </button>
-                    </div>
+                    <select
+                            id="categoria"
+                            name="categoria"
+                            class="form-control"
+                            required>
+                        <option value="">Seleccione una Categoría</option>
+                        @foreach($datos as $dato)
+                            <option value="{{ $dato->categoria }}">
+                                {{ $dato->categoria }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-filter"></i>
+                    </button>
                 </form>
             </div>
         </div>
