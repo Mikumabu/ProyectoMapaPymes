@@ -53,7 +53,6 @@ class MapaController extends Controller {
     public function buscarDescripcion(Request $request){
         $datos = DB::table('formularios_aprobados')->where('descripcion', 'LIKE', '%'.$request->descripcion.'%')->get();
         if($datos == ""){
-            dd("holi");
             Session::flash('notFound', 'No se encontró una empresa con esa descripción');
             return View::make('Mensajes');
         }

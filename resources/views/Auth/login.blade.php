@@ -25,7 +25,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>ERROR: Correo no registrado</strong>
+                                        <strong>ERROR: Correo o Contraseña incorrecto</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -39,7 +39,7 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>ERROR: Contraseña incorrecta</strong>
+                                        <strong>ERROR: Correo o Contraseña incorrecto</strong>
                                     </span>
                                 @enderror
                             </div>
