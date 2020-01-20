@@ -34,7 +34,7 @@
     <div class="form-row justify-content-center">
         <div class="col-md-3">
             <div class="form-group">
-                <p align="left">Nueva Contraseña <input type="search"
+                <p align="left">Nueva Contraseña <input type="password"
                                                           name="contraseña"
                                                           class="form-control"
                                                           id="contraseña"
@@ -48,7 +48,7 @@
     <div class="form-row justify-content-center">
         <div class="col-md-3">
             <div class="form-group">
-                <p align="left">Confirmar Nueva Contraseña <input type="search"
+                <p align="left">Confirmar Nueva Contraseña <input type="password"
                                                           name="contraseñaConfirmar"
                                                           class="form-control"
                                                           id="contraseñaConfirmar"
