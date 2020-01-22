@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="{{asset('/css/navbar.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div class="barranav">
+<div class="imgBar">
     <img id="banner" src="https://picturebooksummit.com/wp-content/uploads/2017/05/PBSummit-1500x150.jpg">
 </div>
 <div class="barra">

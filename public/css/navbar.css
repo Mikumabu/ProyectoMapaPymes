@@ -1,17 +1,20 @@
 /* Pantallas de PC */
 
 @media only screen and (max-width:1366px){
-    .barranav .barra{
-        display:inline;
+    .barra{
+        background-image: linear-gradient(90deg,#3fa6dc,#e22777);
+        width:100%;
+        display:inline-block;
     }
 
     .barra a{
+        font-family: 'Poppins';
         float: right;
         text-decoration: none;
-        font-size: 15px;
+        font-size: 13px;
+        font-weight: 500;
         padding: 8px 10px;
-        background-color:white;
-        color:blue;
+        color:white;
     }
 
     .barDropdown{
@@ -40,22 +43,12 @@
     }
 }
 
-.barranav{
-    color: white;
-    background-color:blue;
-    font-size: 20px;
-    text-align:center;
-    height:150px;
-    width:100%;
-}
-
 #banner{
     width:100%;
     height:150px;
 }
 
-
-.barranav .barra a:hover{
-    background-color:blue;
-    color:white;
+.barra a:hover{
+    color:gold;
+    transition:2s;
 }
