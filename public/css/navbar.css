@@ -25,21 +25,24 @@
 /* Pantallas de smartphone */
 
 @media only screen and (max-width:550px){
-    .barranav .barDropdown{
-        display: inline;
+    .barDropdown{
+        background-image: linear-gradient(90deg,#3fa6dc,#e22777);
+        width:100%;
+        display:inline-block;
     }
 
     .barra a{
         display: none;
     }
 
-    .barDropdown .opcion a{
-        float:right;
+    .opcion a{
+        font-family: 'Poppins';
+        float: right;
         text-decoration: none;
-        font-size: 15px;
+        font-size: 13px;
+        font-weight: 500;
         padding: 8px 10px;
-        color:blue;
-        width:100%;
+        color:white;
     }
 }
 

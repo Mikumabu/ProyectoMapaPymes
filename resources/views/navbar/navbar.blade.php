@@ -51,6 +51,9 @@
             <div class="opcion">
                 <a href="{{ route('login') }}">Login</a>
             </div>
+            <div class="opcion">
+                <a href="{{ route('formulario') }}">¿Eres emprendedor? Pon tu vitrina acá</a>
+            </div>
         @endauth
     @endif
 
