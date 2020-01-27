@@ -7,6 +7,10 @@ use DB;
 
 class AdministradorController extends Controller
 {
+
+    /* Método que envía correos electrónicos múltiples veces, donde $dato corresponde a los Formularios y $estado
+    indica si dicho Formulario fue aceptado o rechazado. */
+
     public function enviarCorreo($datos, $estado){
         foreach($datos as $dato){
             if($estado == 'rechazado'){
@@ -49,6 +53,8 @@ class AdministradorController extends Controller
         }
     }
 
+    /* Método que envía todos los datos de los Formularios Pendientes a la Vista del Administrador */
+
     public function mostrarDatos(Request $request){
 
         $formularios = DB::table('formularios')->get();
@@ -56,6 +62,9 @@ class AdministradorController extends Controller
         return view('Administrador/Administrador',compact('formularios', 'request'));
 
     }
+
+    /* Método que elimina (o rechaza) un Formulario Pendiente, el cual es borrado de la tabla "formularios"
+       y agregado en la tabla "historial_rechazados". También envía los datos al método "enviarCorreo". */
 
     public function rechazar($id){
 
@@ -109,6 +118,9 @@ class AdministradorController extends Controller
         return back()->with('exito2','Formulario rechazado correctamente');
     }
 
+    /* Método que rechaza múltiples Formularios, los elimina de la tabla "formularios" y se procede a insertar dichos
+       Formularios en "historial_rechazados". Luego se envían los datos al método "enviarCorreo" */
+
     public function rechazarMasa(Request $request){
         $idArray = $request->input('id');
         $emprendedor = DB::table("formularios")->whereIn('id', $idArray)->get();
@@ -158,6 +170,9 @@ class AdministradorController extends Controller
         }
         DB::table("formularios")->whereIn('id', $idArray)->delete();
     }
+
+    /* Método que se utiliza cuando el Administrador acepta un Formulario. Dicho Formulario se inserta en la tabla
+       "formularios_aprobados" y se procede a eliminar de la tabla "formulario" que corresponde a los pendientes */
 
     public function aceptar($id){
 
@@ -213,6 +228,9 @@ class AdministradorController extends Controller
 
     }
 
+    /* Método que acepta múltiples Formularios. Dichos Formularios se insertan en la tabla
+       "formularios_aprobados" y se procede a eliminar de la tabla "formulario" que corresponde a los pendientes */
+
     public function aceptarMasa(Request $request){
         $idArray = $request->input('id');
         $emprendedor = DB::table("formularios")->whereIn('id', $idArray)->get();
@@ -263,11 +281,15 @@ class AdministradorController extends Controller
         DB::table("formularios")->whereIn('id', $idArray)->delete();
     }
 
+    /* Método que envía los datos de todos los Formularios Aprobados a la Vista del Administrador */
+
     public function aprobados(){
 
         $formularios_aprobados = DB::select('select id, nombre_empresa, rut_empresa, categoria, ubicacion, horario, facebook, instagram, url, formalizado, comuna, contacto, telefono, mail, descripcion  from formularios_aprobados');
         return view('Administrador/AdministradorAprobados',compact('formularios_aprobados', 'request'));
     }
+
+    /* Método que elimina un Formulario Aprobado utilizando su ID enviada por el Administrador */
 
     public function eliminar($id){
 
@@ -276,11 +298,15 @@ class AdministradorController extends Controller
         return back()->with('exito2','Formulario eliminado correctamente');
     }
 
+    /* Método que envía los datos de todas las Palabras Prohibidas a la Vista del Administrador */
+
     public function palabrasProhibidas(){
 
         $palabras_prohibidas = DB::select('select insulto from palabras_prohibidas');
         return view('Administrador/AdministradorInsultos',compact('palabras_prohibidas', 'request'));
     }
+
+    /* Método que recibe una Palabra Prohibida para luego ser insertada en la tabla "palabras_prohibidas" */
 
     public function ingresarInsulto(Request $request){
 
@@ -300,12 +326,17 @@ class AdministradorController extends Controller
 
     }
 
+    /* Método que envía el historial de los Formularios Rechazados a la Vista del Administrador */
+
     public function historialRechazados(){
 
         $historial_rechazados = DB::table('historial_rechazados')->get();
 
         return view('Administrador/AdministradorHistorial',compact('historial_rechazados', 'request'));
     }
+
+    /* Método que recibe la ID de un Formulario que se encuentra en "historial_rechazados" para recuperarlo. En base a
+       dicha ID se recuperan sus datos y se vuelven a insertar en la tabla "formularios" */
 
     public function recuperarRechazado($id){
 
@@ -363,6 +394,8 @@ class AdministradorController extends Controller
 
     }
 
+    /* Método que elimina todos los datos de la tabla "historial_rechazados" */
+
     public function borrarHistorial(){
 
         DB::table('historial_rechazados')->delete();
@@ -371,10 +404,15 @@ class AdministradorController extends Controller
 
     }
 
+    /* Método que redirecciona a la Vista de agregar nuevos Administradores */
+
     public function ingresarDatosAdministrador(){
 
         return view('Administrador/AgregarAdministrador');
     }
+
+    /* Método que recibe los datos del nuevo Administrador para ser insertado en la tabla "users" que contiene a
+       los Administradores. Se comprueba que los parámetros estén correctos */
 
     public function agregarAdministrador(Request $request){
 

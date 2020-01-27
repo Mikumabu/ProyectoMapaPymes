@@ -9,11 +9,16 @@ use DB;
 class ContraseñaController extends Controller
 {
 
+    /* Método que redirecciona a la Vista de Recuperar Contraseña */
+
     public function menuRecuperar(){
 
         return view('Contraseña/MenuContraseña');
 
     }
+
+    /* Método que genera un Código Verificador, este código es guardado en la tabla "codigo_verificador" con el
+       correspondiente correo electrónico que solicita el cambio de contraseña */
 
     public function generarCodigo(Request $request){
 
@@ -59,6 +64,9 @@ class ContraseñaController extends Controller
         return back()->with('error1','ERROR: El Correo no Existe');
 
     }
+
+    /* Método que recibe como parámetros los datos para cambiar la Contraseña, se comprueba que esté correctamente
+       ingresado y luego se modifica la contraseña de la tabla "users". El Código Verificador es eliminado */
 
     public function nuevaContraseña(Request $request){
 
