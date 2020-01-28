@@ -72,6 +72,51 @@
         <div>
             <br>
         </div>
-        <div id="creditos">Sitio creado por: <a class="dirCorreo" href="mailto:jcmaury@gmail.com">Juan Maury</a> y <a class="dirCorreo" href="mailto:manuelzuletab@gmail.com">Manuel Zuleta</a></div>
+        <div id="creditos">
+            <div class="form-group">
+                <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-toggle="modal"
+                    data-target="#acercaDe">
+                    Acerca del Sitio
+                </button>
+            </div>
+        </div>
     </body>
 </html>
+
+<div class="modal fade" id="acercaDe"
+     tabindex="-1" role="dialog"
+     aria-labelledby="favoritesModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"
+                    id="favoritesModalLabel">Desarrollado por:</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <br>
+                    Juan Maury Rojas: <br style="color:#000000";>jcmauryr@gmail.com</br>
+                    <br>
+                    Manuel Zuleta Bernal: <br style="color:#000000";>manuelzuletab@gmail.com</br>
+                    <br>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-primary"
+                        data-dismiss="modal">Cerrar</button>
+                <span class="pull-right">
+
+        </span>
+            </div>
+        </div>
+    </div>
+</div>
+
