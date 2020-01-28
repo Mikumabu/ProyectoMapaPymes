@@ -180,6 +180,7 @@
                     </p>
                 </label>
                 <input type="file" name="archivo" required>
+                <small id="error" class="archivo text-danger"></small>
             </div>
         </div>
     </div>
@@ -218,7 +219,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="myModalLabel">¿Está listo para enviar?</h4>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer" data-dismiss="modal" aria-label="Close">
                                 <button type="submit" class="btn btn-primary">{{ __('Enviar') }}</button>
                             </div>
                         </div>
@@ -305,6 +306,9 @@
                 }
                 if(data.responseJSON.errors.url != null){
                     $('.url').text(data.responseJSON.errors.url[0]);
+                }
+                if(data.responseJSON.errors.archivo != null){
+                    $('.archivo').text(data.responseJSON.errors.archivo[0]);
                 }
             },
             processData: false,

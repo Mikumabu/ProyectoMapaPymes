@@ -116,7 +116,7 @@ class MapaController extends Controller {
                          width="25" height="25"></a>
                          <a href="'.$instagram.'"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/600px-Instagram-Icon.png"
                          width="25" height="25"></a>
-                         <a href="'.$url.'"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/600px-Instagram-Icon.png"
+                         <a href="'.$url.'"><img src="https://cdn.onlinewebfonts.com/svg/img_504359.png"
                          width="25" height="25"></a>';
             if($facebook == null){
                 $datosMapa = str_replace("<a href=\"\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/1024px-Facebook_icon_2013.svg.png\"
@@ -127,7 +127,7 @@ class MapaController extends Controller {
                          width=\"25\" height=\"25\"></a>", "", $datosMapa);
             }
             if($url == null){
-                $datosMapa = str_replace("<a href=\"\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/600px-Instagram-Icon.png\"
+                $datosMapa = str_replace("<a href=\"\"><img src=\"https://cdn.onlinewebfonts.com/svg/img_504359.png\"
                          width=\"25\" height=\"25\"></a>", "", $datosMapa);
             }
             Mapper::informationWindow($latitud, $longitud, $datosMapa,

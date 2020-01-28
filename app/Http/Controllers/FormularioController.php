@@ -33,7 +33,8 @@ class FormularioController extends Controller
             'contacto' => 'required',
             'telefono' => 'required',
             'email' => 'required|email',
-            'descripcion' => 'required|max:500'
+            'descripcion' => 'required|max:500',
+            'archivo' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ];
         if($formalizado == "Si"){
             $reglas['rutEmpresa'] = 'required|cl_rut';
@@ -55,6 +56,9 @@ class FormularioController extends Controller
             'email.email' => 'Debe ser un correo electronico.',
             'descripcion.required' => 'Debe incluir una descripción de la empresa.',
             'descripcion.max' => 'La descripción debe ser de unos 500 carácteres.',
+            'archivo.required' => 'Se tiene que incluir una imagen.',
+            'archivo.image' => 'El archivo tiene que ser una imagen.',
+            'archivo.mimes' => 'La imagen tiene que ser formato: jpeg, png, jpg, gif o svg.'
         ];
 
         $this->validate($request, $reglas, $mensajes);
@@ -85,8 +89,6 @@ class FormularioController extends Controller
         $longitud = request()->longitud;
         $rutaImagen = $request->file('archivo')->store('public');
         $rutaImagen = str_replace("public/", "", $rutaImagen);
-
-        //http://kml4earth.appspot.com/icons.html
 
         $icono = $this->agregarIcono($queOfrece);
 
@@ -220,8 +222,6 @@ class FormularioController extends Controller
         $latitud = request()->latitud;
         $longitud = request()->longitud;
         $descripcion = request()->descripcion;
-
-        //http://kml4earth.appspot.com/icons.html
 
         $icono = $this->agregarIcono($queOfrece);
 

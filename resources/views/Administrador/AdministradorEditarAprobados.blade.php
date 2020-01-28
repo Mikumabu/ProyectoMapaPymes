@@ -47,7 +47,32 @@
                 </p>
                 <small class="text-danger">{{ $errors->first('rutEmpresa') }}</small>
             </div>
-
+            <div class="form-group">
+                <p align="left">¿Emites factura? <select
+                            id="formalizado"
+                            name="formalizado"
+                            class="form-control"
+                            required>
+                        @if($formularios->formalizado == "Si"){
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        }
+                        @else
+                            <option value="Si">Si</option>
+                            <option value="No" selected>No</option>
+                        @endif
+                    </select></p>
+                <small class="text-danger">{{ $errors->first('formalizado') }}</small>
+            </div>
+            <div class="form-group">
+                <p align="left">(Opcional) Página de Facebook <input type="search"
+                                                                     name="facebook"
+                                                                     class="form-control"
+                                                                     id="facebook"
+                                                                     value="{{$formularios->facebook}}">
+                </p>
+                <small class="text-danger">{{ $errors->first('facebook') }}</small>
+            </div>
             <div class="form-group">
                 <p align="left">Giro <select
                         id="queOfrece"
@@ -78,17 +103,6 @@
 
                     </select></p>
                 <small class="text-danger">{{ $errors->first('queOfrece') }}</small>
-            </div>
-
-
-            <div class="form-group">
-                <p align="left">(Opcional) Página de Facebook <input type="search"
-                                                                     name="facebook"
-                                                                     class="form-control"
-                                                                     id="facebook"
-                                                                     value="{{$formularios->facebook}}">
-                </p>
-                <small class="text-danger">{{ $errors->first('facebook') }}</small>
             </div>
         </div>
         <div class="col-md-3">
@@ -128,22 +142,20 @@
                 </p>
                 <small class="text-danger">{{ $errors->first('instagram') }}</small>
             </div>
-            <div class="form-group">
-                <p align="left">¿Formalizado? <select
-                            id="formalizado"
-                            name="formalizado"
-                            class="form-control"
-                            required>
-                        @if($formularios->formalizado == "Si"){
-                        <option value="Si">Si</option>
-                        <option value="No">No</option>
-                        }
-                        @else
-                            <option value="Si">Si</option>
-                            <option value="No" selected>No</option>
-                        @endif
-                    </select></p>
-                <small class="text-danger">{{ $errors->first('formalizado') }}</small>
+            <div class="form-row justify-content-center">
+                <div class="col">
+                    <div class="form-group">
+                        <p align="left">Descripción de la empresa <textarea
+                                    name="descripcion"
+                                    class="form-control"
+                                    id="descripcion"
+                                    maxlength="300"
+                                    style="width:100%; height:200px;"
+                            >{{$formularios->descripcion}}</textarea></p>
+                        <div id="textarea_feedback"></div>
+                        <small class="text-danger">{{ $errors->first('descripcion') }}</small>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-3">
@@ -185,24 +197,12 @@
             </div>
         </div>
     </div>
-    <div class="form-row justify-content-center">
-        <div class="col-md-4">
-            <div class="form-group">
-                <p align="left">Descripción de la empresa <textarea
-                            name="descripcion"
-                            class="form-control"
-                            id="descripcion"
-                            maxlength="300"
-                            style="width:100%; height:200px;"
-                    >{{$formularios->descripcion}}</textarea></p>
-                <div id="textarea_feedback"></div>
-                <small class="text-danger">{{ $errors->first('descripcion') }}</small>
-            </div>
-        </div>
-    </div>
 
-    <div class="form-group">
-        Por último, confirme la dirección de su empresa en el mapa
+    <div class="form-row justify-content-center" style="font-size: 20px; color:red;">
+        Confirma la dirección del Emprendimiento en el mapa.
+        <br>
+    </div>
+    <div>
         <br>
     </div>
     <div id="map">

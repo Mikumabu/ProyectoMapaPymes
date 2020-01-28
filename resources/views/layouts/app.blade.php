@@ -15,22 +15,41 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('/css/navbar.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="imgBar">
+            <a href="{{url('')}}"><img id="banner" src="{{ Storage::url('banner.jpg') }}"></a>
+        </div>
+        <div class="barra">
+            @if (Route::has('login'))
+                @auth
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a href="{{ url('/Administrador') }}">  Panel Administración</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
+                @endauth
+                <a href="{{ url('') }}">Home</a>
+                <a href="{{ route('formulario') }}">¿Eres emprendedor? Pon tu vitrina acá</a>
+            @endif
+        </div>
             <div class="container">
-                <h2>Login de Administrador</h2>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -63,8 +82,6 @@
                     </ul>
                 </div>
             </div>
-        </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
