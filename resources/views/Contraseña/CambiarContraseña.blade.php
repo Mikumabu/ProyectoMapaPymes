@@ -33,15 +33,12 @@
         <strong>{{ $message }}</strong>
     </div>
 @endif
-
-
-<div>
-    <br>
-</div>
-
 <div class="alert alert-danger alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>
     <strong>* Se ha enviado un Código Verificador a su Correo</strong>
+</div>
+<div>
+    <br>
 </div>
 
 <form method="POST" action="{{ route('nuevaContraseña') }}" enctype="multipart/form-data" id="form-id">
