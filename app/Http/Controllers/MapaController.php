@@ -10,12 +10,18 @@ use Illuminate\Support\Facades\Storage;
 
 class MapaController extends Controller {
 
+    /* Método que despliega el Mapa inicial, mostrando los Formularios de las Empresas que estén aprobados en la tabla
+      "formularios_aprobados". También muestra un Banner distinto en caso que sea el Administrador quien esté en la
+       Vista del Mapa */
+
     public function maps() {
         Mapper::map(-23.6, -70.4, ['locate' => true, 'zoom' => 14, 'marker' => false]);
         $users = DB::table('formularios_aprobados')->get();
         $this->generateInfoWindow($users);
         return view('Mapa/PruebaMapa');
     }
+
+    /* Método que permite seleccionar la ubicación de una Empresa en el Mapa cuando se quiere enviar un Formulario */
 
     public function seleccionarPosicion(){
         Mapper::map(-23.6, -70.4, ['zoom' => 14, 'marker' => false]);
@@ -24,6 +30,9 @@ class MapaController extends Controller {
         Mapper::marker(-23.6, -70.4, ['locate' => true, 'draggable' => true, 'eventDragEnd' => '$newlat = event.latLng.lat(); $newlong = event.latLng.lng(); document.getElementById("latitud").value = $newlat; document.getElementById("longitud").value = $newlong']);
         return view('Formulario/Formulario');
     }
+
+    /* Método que permite seleccionar la ubicación de una Empresa en el Mapa cuando se quiere editar un Formulario
+       Pendiente desde el Administrador */
 
     public function editarMapa($id){
         $formularios = DB::table('formularios')->where('id', $id)->first();
@@ -34,6 +43,9 @@ class MapaController extends Controller {
         return view('Administrador/AdministradorEditarPendientes',compact('formularios', 'request'));
     }
 
+    /* Método que permite seleccionar la ubicación de una Empresa en el Mapa cuando se quiere editar un Formulario
+       Aprobado desde el Administrador */
+
     public function editarMapaAdmin($id){
         $formularios = DB::table('formularios_aprobados')->where('id', $id)->first();
         Mapper::map($formularios->latitud, $formularios->longitud, ['zoom' => 14, 'marker' => false]);
@@ -43,12 +55,18 @@ class MapaController extends Controller {
         return view('Administrador/AdministradorEditarAprobados',compact('formularios', 'request'));
     }
 
+    /* Método que recibe la Categoría del correspondiente filtro que se encuentra en la Vista del Mapa. Esta Categoría
+       es recibida y despliega todas las Empresas que tengan dicha Categoría, enviándolas a la Vista del Mapa */
+
     public function buscador(Request $request) {
         $datos = DB::table('formularios_aprobados')->where('categoria', $request->categoria)->get();
         Mapper::map(-23.6, -70.4, ['locate' => true, 'zoom' => 14, 'marker' => false]);
         $this->generateInfoWindow($datos);
         return view('Mapa/PruebaMapa');
     }
+
+    /* Método que recibe alguna palabra clave que permita filtrar dependiendo de la Descripción de una Empresa, si
+       se encuentra una Descripción que coincida con dicha palabra, muestra en el Mapa todas las Empresas correspondientes */
 
     public function buscarDescripcion(Request $request){
         $datos = DB::table('formularios_aprobados')->where('descripcion', 'LIKE', '%'.$request->descripcion.'%')->get();
@@ -60,6 +78,9 @@ class MapaController extends Controller {
         $this->generateInfoWindow($datos);
         return view('Mapa/PruebaMapa');
     }
+
+    /* Método que muestra la información de las Empresas en el Mapa cuando se selecciona su ubicación. Estas Empresas
+       se encuentran en "formularios_aprobados" */
 
     public function generateInfoWindow($datas){
         foreach($datas as $data){

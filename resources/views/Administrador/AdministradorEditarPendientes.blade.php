@@ -5,6 +5,25 @@
 
 <link rel="stylesheet" href="{{asset('/css/index.css')}}">
 @include('navbar.navbar')
+
+@if ($message = Session::get('exito1'))
+    <div class="alert alert-danger alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $message }}</strong>
+    </div>
+@endif
+
+@if ($message = Session::get('error1'))
+    <div class="alert alert-danger alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $message }}</strong>
+    </div>
+@endif
+
+<div>
+    <br>
+</div>
+
 <form method="POST" action="{{ route('actualizarFormularioPendiente') }}">
     {{ csrf_field() }}
     <div class="form-row justify-content-center">
@@ -209,19 +228,7 @@
         </div>
     </div>
 </form>
-@if ($message = Session::get('exito1'))
-    <div class="alert alert-danger alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-@endif
 
-@if ($message = Session::get('error1'))
-    <div class="alert alert-danger alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-@endif
 
 <script>
     $(document).ready(function() {
