@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <div class="imgBar">
-    <img id="banner" src="{{ Storage::url('banner.jpg') }}">
+    <a href="{{url('')}}"><img id="banner" src="{{ Storage::url('banner.jpg') }}"></a>
 </div>
 <div class="barra">
     @if (Route::has('login'))

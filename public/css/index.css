@@ -1,7 +1,11 @@
 /* Pantallas de PC */
 
 @media only screen and (max-width:1366px){
-
+    #creditos{
+        background-image: linear-gradient(90deg,#3fa6dc,#e22777);
+        color:white;
+        text-align: right;
+    }
 }
 
 /* Pantallas de smartphone */
@@ -22,6 +26,7 @@
     margin: 0 auto;
 }
 
+
 .barBusqueda{
     margin: 0 auto;
 }
@@ -34,9 +39,51 @@
     width:100%;
 }
 
-input[type=text]{
-    border:none;
-    border-bottom: 1px solid;
+#descripcionBusqueda{
+    background-color:#f07fb6;
+    color: white;
+    width:80%;
+}
+#descripcionBusqueda::placeholder{
+    color: white;
+}
+
+#categoria{
+    background-color:#86cfdb;
+    color:white;
+    width:80%
+}
+
+.curva{
+    border-radius: 10px 10px 0 0;
+}
+
+.editarForm{
+    background-color: #F9B540;
+    border-color: #F9B540;
+}
+
+.agregarPal{
+    background-color: #6cb862;
+    border-color: #6cb862;
+}
+
+.histoRech{
+    background-color: #e72b86;
+    border-color: #e72b86;
+}
+
+.agregarAdm{
+    background-color: #1fb3af;
+    border-color: #1fb3af;
+}
+
+.dirCorreo{
+    color:gold;
+}
+
+.dirCorreo:hover{
+    color:gold;
 }
 
 textarea {

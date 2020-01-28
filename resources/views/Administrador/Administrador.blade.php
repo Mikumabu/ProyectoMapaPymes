@@ -13,9 +13,6 @@
     </head>
     <body>
         @include('navbar.navbar')
-        <div>
-            <br>
-        </div>
         @if ($message = Session::get('exito2'))
             <div class="alert alert-danger alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button>
@@ -28,23 +25,25 @@
                 <strong>{{ $message }}</strong>
             </div>
         @endif
-
+        <div>
+            <br>
+        </div>
         <div class="container col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2>Solicitudes Pendientes</h2>
 
                     <td>
-                        <a href="/Administrador/Aprobados" class="btn btn-primary">
+                        <a href="/Administrador/Aprobados" class="btn curva editarForm btn-primary">
                             Editar Formularios Aprobados
                         </a>
-                        <a href="/Administrador/PalabrasProhibidas" class="btn btn-primary">
+                        <a href="/Administrador/PalabrasProhibidas" class="btn curva agregarPal btn-primary">
                             Agregar Palabras Prohibidas
                         </a>
-                        <a href="/Administrador/HistorialRechazados" class="btn btn-primary">
+                        <a href="/Administrador/HistorialRechazados" class="btn curva histoRech btn-primary">
                             Historial Rechazados
                         </a>
-                        <a href="/Administrador/AgregarAdministrador" class="btn btn-primary">
+                        <a href="/Administrador/AgregarAdministrador" class="btn curva agregarAdm btn-primary">
                             Agregar Administrador
                         </a>
                     </td>

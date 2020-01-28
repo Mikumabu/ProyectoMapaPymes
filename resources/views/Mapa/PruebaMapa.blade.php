@@ -19,24 +19,27 @@
             <br>
         </div>
         <div class="flash-message"></div>
-        <div id="presentacion">
+        <div id="presentacion" style="font-size:20px;">
             Encuentra lo que buscas en este <b>Mapa de Emprendimientos</b>
         </div>
-        <div class="row">
-            <div class ="col-sm-3 m-auto">
+        <div>
+            <br>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-3">
                 <form method="POST" action="{{ route('filtrarDescripcion') }}" id="form-escrito" class="form-inline">
                     {{ csrf_field() }}
                     <input type="text"
                            class="form-control"
-                           name="descripcion"
-                           id="descripcion"
-                           placeholder="¿Qué tipo de emprendimiento busca?">
+                           name="descripcionBusqueda"
+                           id="descripcionBusqueda"
+                           placeholder="¿Qué buscas?">
                     <button type="submit" class="btn btn-primary">
                         <i class="fa fa-search"></i>
                     </button>
                 </form>
             </div>
-            <div class="col-sm-3 m-auto">
+            <div class="col-sm-3">
                 <form method="POST" action="{{ route('filtrar') }}" id="form-id" class="form-inline">
                     {{ csrf_field() }}
                     <?php
@@ -47,7 +50,7 @@
                             name="categoria"
                             class="form-control"
                             required>
-                        <option value="">Seleccione una Categoría</option>
+                        <option value="">Selecciona una Categoría</option>
                         @foreach($datos as $dato)
                             <option value="{{ $dato->categoria }}">
                                 {{ $dato->categoria }}
@@ -66,5 +69,9 @@
         <div id="map">
             {!! Mapper::render(0) !!}
         </div>
+        <div>
+            <br>
+        </div>
+        <div id="creditos">Sitio creado por: <a class="dirCorreo" href="mailto:jcmaury@gmail.com">Juan Maury</a> y <a class="dirCorreo" href="mailto:manuelzuletab@gmail.com">Manuel Zuleta</a></div>
     </body>
 </html>
