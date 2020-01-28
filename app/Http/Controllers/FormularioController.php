@@ -14,6 +14,10 @@ use View;
 
 class FormularioController extends Controller
 {
+
+    /* Método que envía un mensaje en caso de haber un campo obligatoria mal ingresado en el Formulario que se
+       desea enviar */
+
     public function validar(Request $request){
         $formalizado = $request->get('formalizado');
         $reglas = [
@@ -55,6 +59,10 @@ class FormularioController extends Controller
 
         $this->validate($request, $reglas, $mensajes);
     }
+
+    /* Método que recibe el Formulario con todos sus datos y lo guarda en la tabla "formularios" que corresponde a
+       los Formularios Pendientes. Se verifica también que no exista un insulto o palabra prohibida en la Descripción */
+
     public function ingresar(Request $request){
 
         self::validar($request);
@@ -147,6 +155,9 @@ class FormularioController extends Controller
 
     }
 
+    /* Método que actualiza los datos de un Formulario Pendiente, que se encuentran en la tabla "formularios".
+       Este Método se accede a través del Administrador */
+
     public function actualizarPendiente(Request $request){
 
         self::validar($request);
@@ -182,6 +193,10 @@ class FormularioController extends Controller
         return back()->with('exito1','Formulario Actualizado con Éxito');
 
     }
+
+    /* Método que actualiza los datos de un Formulario Aprobado, que se encuentran en la tabla "formularios_aprobados".
+       Este Método se accede a través del Administrador */
+
 
     public function actualizarAprobado(Request $request){
 
@@ -219,6 +234,9 @@ class FormularioController extends Controller
         return back()->with('exito1','Formulario Actualizado con Éxito');
 
     }
+
+    /* Método que agrega el ícono que aparecerá en el mapa. Estas imágenes se encuentran en la carpeta Storage,
+       dependiendo de la Categoría del Formulario, le asignará su respectivo ícono */
 
     function agregarIcono($queOfrece){
 
