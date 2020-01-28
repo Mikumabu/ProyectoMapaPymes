@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{asset('/css/index.css')}}">
 @include('navbar.navbar')
 @if ($message = Session::get('exito1'))
-    <div class="alert alert-danger alert-block">
+    <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">×</button>
         <strong>{{ $message }}</strong>
     </div>
