@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use DB;
 use PhpParser\Node\Expr\Cast\Object_;
+use Illuminate\Support\Facades\Storage;
 use Session;
 use View;
 
@@ -224,61 +225,61 @@ class FormularioController extends Controller
         $icono = "null";
 
         if($queOfrece == "Agricultura, ganadería, silvicultura y pesca"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon12.png";
+            $icono = Storage::url('Agricultura, ganadería, silvicultura y pesca.png');
         }
         if($queOfrece == "Explotación de minas y canteras"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon58.png";
+            $icono = Storage::url('Explotación de minas y canteras.png');
         }
         if($queOfrece == "Industria manufacturera"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon29.png";
+            $icono = Storage::url('Industria manufacturera.png');
         }
         if($queOfrece == "Suministro de electricidad, gas, vapor y aire acondicionado"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal4/icon30.png";
+            $icono = Storage::url('Suministro de electricidad, gas, vapor y aire acondicionado.png');
         }
         if($queOfrece == "Suministro de agua; evacuación de aguas residuales, gestión de desechos y descontaminación"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon47.png";
+            $icono = Storage::url('Suministro de agua; evacuación de aguas residuales, gestión de desechos y descontaminación.png');
         }
         if($queOfrece == "Construcción"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon21.png";
+            $icono = Storage::url('Construcción.png');
         }
         if($queOfrece == "Comercio al por mayor y al por menor; reparación de vehiculos automotores y motocicletas"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon58.png";
+            $icono = Storage::url('Comercio al por mayor y al por menor; reparación de vehiculos automotores y motocicletas.png');
         }
         if($queOfrece == "Transporte y almacenamiento"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon47.png";
+            $icono = Storage::url('Transporte y almacenamiento.png');
         }
         if($queOfrece == "Actividades de alojamiento y de servicio de comidas"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon63.png";
+            $icono = Storage::url('Actividades de alojamiento y de servicio de comidas.png');
         }
         if($queOfrece == "Información y comunicaciones"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon30.png";
+            $icono = Storage::url('Información y comunicaciones.png');
         }
         if($queOfrece == "Actividades financieras y de seguros"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal4/icon8.png";
+            $icono = Storage::url('Actividades financieras y de seguros.png');
         }
         if($queOfrece == "Actividades inmobiliarias"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal5/icon12.png";
+            $icono = Storage::url('Actividades inmobiliarias.png');
         }
         if($queOfrece == "Actividades profesionales, cientificas y técnicas"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal4/icon37.png";
+            $icono = Storage::url('Actividades profesionales, cientificas y técnicas.png');
         }
         if($queOfrece == "Actividades de servicios administrativos y de apoyo"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal5/icon5.png";
+            $icono = Storage::url('Actividades de servicios administrativos y de apoyo.png');
         }
         if($queOfrece == "Administración pública y defensa; planes de seguridad social de afiliación obligatoria"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon25.png";
+            $icono = Storage::url('Administración pública y defensa; planes de seguridad social de afiliación obligatoria.png');
         }
         if($queOfrece == "Enseñanza"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon14.png";
+            $icono = Storage::url('Enseñanza.png');
         }
         if($queOfrece == "Actividades de atención de la salud humana y de asistencia social"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon46.png";
+            $icono = Storage::url('Actividades de atención de la salud humana y de asistencia social.png');
         }
         if($queOfrece == "Actividades artísticas, de entretenimiento y recreativas"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal2/icon57.png";
+            $icono = Storage::url('Actividades artísticas, de entretenimiento y recreativas.png');
         }
         if($queOfrece == "Otras actividades de servicios"){
-            $icono = "http://maps.google.com/mapfiles/kml/pal3/icon44.png";
+            $icono = Storage::url('Otras actividades de servicios.png');
         }
 
 
