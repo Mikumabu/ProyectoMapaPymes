@@ -78,13 +78,23 @@
     border-color: #1fb3af;
 }
 
-.dirCorreo{
-    color:gold;
+.creditos{
+    background-color: transparent;
+    border-color: transparent;
 }
 
-.dirCorreo:hover{
-    color:gold;
+.editarform:hover, .agregarPal:hover, .histoRech:hover, .agregarAdm:hover,
+.editarform:active, .agregarPal:active, .histoRech:active, .agregarAdm:active,
+.editarform:focus, .agregarPal:focus, .histoRech:focus, .agregarAdm:focus{
+    background-color: #9161A5;
+    border-color: #9161A5;
 }
+
+.creditos:hover, .creditos:active, .creditos:focus{
+    background-color: transparent;
+    border-color: transparent;
+}
+
 
 textarea {
     resize: none;
