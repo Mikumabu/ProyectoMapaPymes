@@ -80,6 +80,7 @@
                         class="form-control"
                         required>
 
+                        <option value="{{$formularios->categoria}}">Actual: {{$formularios->categoria}}</option>
                         <option value="Agricultura, ganadería, silvicultura y pesca">Agricultura, ganadería, silvicultura y pesca</option>
                         <option value="Explotación de minas y canteras">Explotación de minas y canteras</option>
                         <option value="Industria manufacturera">Industria manufacturera</option>
