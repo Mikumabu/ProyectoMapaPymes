@@ -84,18 +84,14 @@
     </body>
 </html>
 
-<div class="modal fade" id="acercaDe"
-     tabindex="-1" role="dialog"
-     aria-labelledby="favoritesModalLabel">
+<div class="modal" tabindex="-1" role="dialog" id="acercaDe">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close"
-                        data-dismiss="modal"
-                        aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"
-                    id="favoritesModalLabel">Desarrollado por:</h4>
+                <h5 class="modal-title">Desarrollado por:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <p>
@@ -107,14 +103,10 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button"
-                        class="btn btn-primary"
-                        data-dismiss="modal">Cerrar</button>
-                <span class="pull-right">
-
-        </span>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
+
 
