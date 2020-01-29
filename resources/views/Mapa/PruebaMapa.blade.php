@@ -73,15 +73,13 @@
             <br>
         </div>
         <div id="creditos">
-            <div class="form-group">
                 <button
                     type="button"
-                    class="btn btn-danger"
+                    class="btn creditos btn-danger"
                     data-toggle="modal"
                     data-target="#acercaDe">
                     Acerca del Sitio
                 </button>
-            </div>
         </div>
     </body>
 </html>
