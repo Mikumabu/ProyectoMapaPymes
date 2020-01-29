@@ -93,3 +93,7 @@ textarea {
 table th td {
     width: auto !important;
 }
+
+.modal-open[style] {
+    padding-right: 0px !important;
+}
