@@ -48,7 +48,7 @@ class ContraseñaController extends Controller
             \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                 $message->to($to_email, $to_name)
                     ->subject('Cambiar Contraseña');
-                $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                $message->from('jmr025@alumnos.ucn.cl','Administrador #VitrineaEmprendedores');
             });
 
 

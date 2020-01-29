@@ -16,7 +16,7 @@ class AdministradorController extends Controller
             if($estado == 'rechazado'){
                 $to_name = 'JC';
                 $to_email = $dato->mail;
-                $data = array('name'=>"Lamentamos informar que su solicitud a Mapas PYMES ha sido rechazada",
+                $data = array('name'=>"Lamentamos informar que su solicitud a #VitrineaEmprendedores ha sido rechazada",
                     "body" => "Estimado, junto con saludar, le informamos que su Empresa no cumple con los requisitos
                            para ser figurar en el Mapa, estos pueden ser:
                            \n
@@ -31,14 +31,14 @@ class AdministradorController extends Controller
                 \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                     $message->to($to_email, $to_name)
                         ->subject('Solicitud Rechazada');
-                    $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador #VitrineaEmprendedores');
                 });
                 return;
             }
             if($estado == 'aceptado'){
                 $to_name = 'JC';
                 $to_email = $dato->mail;
-                $data = array('name'=>"¡Felicitaciones! Su Solicitud de ingresar a Mapa PYMES ha sido aceptada",
+                $data = array('name'=>"¡Felicitaciones! Su Solicitud de ingresar a #VitrineaEmprendedores ha sido aceptada",
                     "body" => "Estimado, 
                            le informamos que su solicitud ha sido aceptada, ahora podrá visualizar su Empresa
                            en http://proyectomapapymes.test/ con todos los datos ingresados.
@@ -47,7 +47,7 @@ class AdministradorController extends Controller
                 \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
                     $message->to($to_email, $to_name)
                         ->subject('Solicitud Aceptada');
-                    $message->from('jmr025@alumnos.ucn.cl','Administrador Mapa PYMES');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador #VitrineaEmprendedores');
                 });
             }
         }
