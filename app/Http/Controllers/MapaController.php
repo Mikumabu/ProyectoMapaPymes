@@ -69,7 +69,8 @@ class MapaController extends Controller {
        se encuentra una Descripción que coincida con dicha palabra, muestra en el Mapa todas las Empresas correspondientes */
 
     public function buscarDescripcion(Request $request){
-        $datos = DB::table('formularios_aprobados')->where('descripcion', 'LIKE', '%'.$request->descripcion.'%')->get();
+
+        $datos = DB::table('formularios_aprobados')->where('descripcion', 'LIKE', '%'.$request->descripcionBusqueda.'%')->get();
         if($datos == ""){
             Session::flash('notFound', 'No se encontró una empresa con esa descripción');
             return View::make('Mensajes');
