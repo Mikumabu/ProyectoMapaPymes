@@ -34,7 +34,7 @@ class AdministradorController extends Controller
                 $data = array('name'=>"¡Felicitaciones! Su Solicitud de ingresar a #VitrineaEmprendedores ha sido aceptada",
                     "body" => "Estimado, 
                            le informamos que su solicitud ha sido aceptada, ahora podrá visualizar su Empresa
-                           en http://proyectomapapymes.test/ con todos los datos ingresados.
+                           en http://usqai.cl/vitrineaemprendedores con todos los datos ingresados.
                            Saludos cordiales.");
 
                 \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
