@@ -43,6 +43,24 @@ class AdministradorController extends Controller
                     $message->from('jmr025@alumnos.ucn.cl','Administrador #VitrineaEmprendedores');
                 });
             }
+            if($estado == 'eliminar'){
+
+                $to_name = 'JC';
+                $to_email = $dato->mail;
+                $data = array('name'=>"Lamentamos informar que ha sido eliminado de #VitrineaEmprendedores",
+                    "body" => "Estimado, 
+                           junto con saludar, le informamos que su Empresa ha sido eliminada ya que 
+                           no cumple con los términos y
+                           condiciones de USQAI para permanecer en #VitrineaEmprendedores. 
+                           Saludos cordiales.");
+
+                \Mail::send('Email\send_email', $data, function($message) use ($to_name, $to_email) {
+                    $message->to($to_email, $to_name)
+                        ->subject('Empresa Eliminada');
+                    $message->from('jmr025@alumnos.ucn.cl','Administrador #VitrineaEmprendedores');
+                });
+
+            }
         }
     }
 
@@ -286,7 +304,12 @@ class AdministradorController extends Controller
 
     public function eliminar($id){
 
+        $formularios = DB::select('select mail from formularios_aprobados where id = :id', ['id' => $id]);
+        $this->enviarCorreo($formularios, 'eliminar');
+
         DB::table('formularios_aprobados')->where('id', '=', $id)->delete();
+
+
 
         return back()->with('exito2','Formulario eliminado correctamente');
     }

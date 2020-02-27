@@ -109,7 +109,7 @@ class MapaController extends Controller {
                         '<br><b>Dirección: </b>'.$calle.
                         '<br><b>Ciudad: </b>'.$comuna.
                         '<br><b>Horario atención: </b>'.$horario.
-                        '<br><b>¿Formalizado? </b>'.$formalizado.
+                        '<br><b>¿Emite Factura? </b>'.$formalizado.
                         '<br><b>Contacto: </b>'.$contacto.
                         '<br><b>Teléfono: </b>'.$telefono.
                         '<br><b>Correo: </b>'.$email.
